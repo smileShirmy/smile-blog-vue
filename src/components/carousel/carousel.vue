@@ -167,13 +167,15 @@ export default {
 .carousel-wrapper {
   position: relative;
   display: block;
-  height: 300px;
+  height: 100%;
+  min-height: 1px;
   overflow: hidden;
 }
 
 .carousel-nav {
   position: absolute;
   top: 50%;
+  margin-top: -15px;
   padding: 12px;
   border: solid #dcdfe7;
   background: transparent;

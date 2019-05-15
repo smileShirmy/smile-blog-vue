@@ -1,12 +1,10 @@
 <template>
   <div>
-    <div style="width: 100%;">
-      <carousel>
-        <carousel-item v-for="item in 4" :key="item">
-          <carousel-card></carousel-card>
-        </carousel-item>
-      </Carousel>
-    </div>
+    <carousel class="carousel-container">
+      <carousel-item v-for="item in 4" :key="item">
+        <carousel-card></carousel-card>
+      </carousel-item>
+    </Carousel>
   </div>
 </template>
 
@@ -25,4 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.carousel-container {
+  height: calc(100vh - 245px);
+}
 </style>
