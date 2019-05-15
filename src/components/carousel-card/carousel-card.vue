@@ -4,9 +4,11 @@
     <article class="feature-wrapper">
       <div class="feature-tag">JavaScript</div>
       <h2 class="feature-text">
-        <a>I think it's the responsibility of a designer to try to break rules and barriers</a>
+        <a>I think it's the responsibility of a designer to try to break rules and barriers<span
+            class="feature-dot"></span></a>
       </h2>
-      <span class="feature-author">by&nbsp;<a href>西麦</a>、<a href>qiushiming</a><time datetime="2018-5-14">&nbsp;a year ago</time></span>
+      <span class="feature-author">by&nbsp;<a href>西麦</a>、<a href>qiushiming</a><time datetime="2018-5-14">&nbsp;a year
+          ago</time></span>
     </article>
   </div>
 </template>
@@ -26,6 +28,14 @@ export default {};
   padding: 0 85px;
   box-sizing: border-box;
 
+  @media (min-width: 1024px) and (max-width:1399px) {
+    padding: 0;
+  }
+
+  @media (max-width: 1023px) {
+    padding: 0;
+  }
+
   .card-image {
     width: calc(50% - 45px);
     height: 100%;
@@ -37,7 +47,7 @@ export default {};
   .feature-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     width: 50%;
     padding: 10vh 8% 10vh 45px;
     box-sizing: border-box;
@@ -47,6 +57,35 @@ export default {};
       font-size: 54px;
       font-weight: $--font-weight-bold;
       line-height: 1.2;
+
+      a {
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+          .feature-dot {
+            background-color: #2821fc!important;
+          }
+        }
+      }
+
+      .feature-dot {
+        display: inline-block;
+        position: absolute;
+        right: -14px;
+        width: 12px;
+        height: 12px;
+        margin-top: 8px;
+        border-radius: 50%;
+        transition: all .25s ease;
+        
+        @media (min-width: 1024px) and (max-width:1199px) {
+          right: -14px;
+          width: 10px;
+          height: 10px;
+          margin-top: 10px;
+        }
+      }
     }
 
     .feature-author {

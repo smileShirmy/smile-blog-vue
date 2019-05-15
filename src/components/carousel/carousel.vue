@@ -6,10 +6,12 @@
   >
     <div :style="{ height: height }" class="carousel-wrapper">
       <button
+        v-show="showLeftArrow"
         class="carousel-nav prev-nav"
         @click="throttledArrowClick(activeIndex - 1)"
       ></button>
       <button
+        v-show="showRightArrow"
         class="carousel-nav next-nav"
         @click="throttledArrowClick(activeIndex + 1)"
       ></button>
@@ -26,6 +28,14 @@ export default {
   name: "Carousel",
 
   props: {
+    showLeftArrow: {
+      type: Boolean,
+      default: true
+    },
+    showRightArrow: {
+      type: Boolean,
+      default: true
+    },
     initialIndex: {
       type: Number,
       default: 0

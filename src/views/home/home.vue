@@ -1,6 +1,6 @@
 <template>
   <div>
-    <carousel class="carousel-container">
+    <carousel class="carousel-container" :showLeftArrow="false">
       <carousel-item v-for="item in 4" :key="item">
         <carousel-card></carousel-card>
       </carousel-item>
