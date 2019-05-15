@@ -6,13 +6,13 @@
   >
     <div :style="{ height: height }" class="carousel-wrapper">
       <button
-        class="carousel-btn left-btn"
+        class="carousel-nav prev-nav"
         @click="throttledArrowClick(activeIndex - 1)"
-      >left</button>
+      ></button>
       <button
-        class="carousel-btn right-btn"
+        class="carousel-nav next-nav"
         @click="throttledArrowClick(activeIndex + 1)"
-      >right</button>
+      ></button>
       <slot></slot>
     </div>
   </div>
@@ -109,8 +109,6 @@ export default {
       }
     },
 
-    handleResize() {},
-
     setActiveItem(index) {
       let length = this.items.length;
       const oldIndex = this.activeIndex;
@@ -142,7 +140,7 @@ export default {
   mounted() {
     this.updateItems();
     this.$nextTick(() => {
-      on(window, "resize", this.handleResize);
+      on(window, "resize", this.resetItemPosition);
       if (this.initialIndex < this.items.length && this.initialIndex >= 0) {
         this.activeIndex = this.initialIndex;
       }
@@ -151,7 +149,7 @@ export default {
   },
 
   beforeDestroy() {
-    off(window, "resize", this.handleResize);
+    off(window, "resize", this.resetItemPosition);
     this.pauseTimer();
   }
 };
@@ -173,16 +171,31 @@ export default {
   overflow: hidden;
 }
 
-.carousel-btn {
+.carousel-nav {
   position: absolute;
+  top: 50%;
+  padding: 12px;
+  border: solid #dcdfe7;
+  background: transparent;
+  cursor: pointer;
+  transition: all .2s ease;
+  transform: rotate(-45deg);
+  outline: none;
   z-index: $--index-normal;
+
+  &:hover {
+    padding: 8px;
+    border-color: #2821fc;
+  }
 }
 
-.left-btn {
-  left: 0;
+.prev-nav {
+  left: 30px;
+  border-width: 8px 0 0 8px;
 }
 
-.right-btn {
-  right: 0;
+.next-nav {
+  right: 30px;
+  border-width: 0 8px 8px 0;
 }
 </style>
