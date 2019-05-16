@@ -45,7 +45,7 @@ export default {};
     width: calc(50% - 45px);
     height: 100%;
     border-radius: 5px;
-    background: #2d9fff no-repeat center center;
+    background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
     background-size: cover;
   }
 
@@ -71,7 +71,7 @@ export default {};
 
     &:hover {
       .feature-dot {
-        background-color: #2821fc !important;
+        background-color: var(--nav-active) !important;
       }
     }
   }

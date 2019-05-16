@@ -1,6 +1,9 @@
 <template>
   <header class="container">
-    <i class="header-logo">smile</i>
+    <div class="header-logo">
+      <i class="icon" :class="isLight ? 'icon-dark' : 'icon-light'" @click="switchTheme"></i>
+      <i class="logo">smile</i>
+    </div>
     <nav class="nav-wrapper">
       <ul class="nav-list">
         <li class="nav-list-item" v-for="(item, index) in navList" :key="index">
@@ -9,6 +12,9 @@
         </li>
         <li class="nav-list-item nav-search"></li>
       </ul>
+      <div class="mobile-nav-btn" :class="{'is-active': isShowMobileNav}" @click="isShowMobileNav = !isShowMobileNav">
+        <span class="mobile-nav-inner"></span>
+      </div>
     </nav>
   </header>
 </template>
@@ -36,23 +42,68 @@ const navList = [
 export default {
   data() {
     return {
-      navList
+      navList,
+      isShowMobileNav: false,
+      isLight: true
     };
+  },
+
+  methods: {
+    switchTheme() {
+      this.isLight = !this.isLight
+
+      const theme = this.isLight ? 'light' : 'dark'
+      document.body.id = theme
+    }
+  },
+
+  created() {
+    document.body.id = 'light'
   }
 };
 </script>
 
 <style lang="scss" scoped>
+@import "@/common/scss/variable.scss";
+
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
   height: 160px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
+  z-index: $--index-normal;
+  box-sizing: border-box;
 
   @media (max-width: 1399px) and (min-width: 480px) {
-    width: calc(100% - 85px - 85px);
+    padding: 0 85px;
+  }
+
+  @media (max-width: 1023px) {
+    position: fixed;
+  }
+
+  @media (max-width: 479px) {
+    height: 100px;
+    padding: 0 35px;
+  }
+}
+
+.header-logo {
+  .icon {
+    margin-right: 10px;
+    font-size: $--title-font-size-medium;
+    cursor: pointer;
+  }
+
+  .logo {
+    font-size: $--title-font-size-medium;
+  }
+
+  @media (max-width: 1024px) {
+    color: #fff;
   }
 }
 
@@ -79,11 +130,11 @@ export default {
 
     .nav-active {
       & ~ .nav-dot {
-        background-color: #2821fc;
+        background-color: var(--nav-active);
       }
 
       &:hover ~ .nav-dot {
-        background-color: #2821fc;
+        background-color: var(--nav-active);
       }
     }
 
@@ -103,7 +154,7 @@ export default {
     position: relative;
     width: 18px;
     height: 18px;
-    border: 4px solid #161b3d;
+    border: 4px solid var(--font-color-primary);
     border-radius: 50%;
     transition: all .25s ease;
     cursor: pointer;
@@ -113,7 +164,7 @@ export default {
       position: absolute;
       width: 8px;
       height: 4px;
-      background: #161b3d;
+      background: var(--font-color-primary);
       top: 110%;
       right: -8px;
       transform: rotate(45deg);
@@ -121,12 +172,85 @@ export default {
     }
 
     &:hover {
-      border-color: #2821fc;
+      border-color: var(--nav-active);
 
       &::after {
-        background: #2821fc;
+        background: var(--nav-active);
       }
     }
+  }
+}
+
+.mobile-nav-btn {
+  position: relative;
+  display: none;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+
+  .mobile-nav-inner {
+    position: absolute;
+    top: 10px;
+    width: 30px;
+    height: 4px;
+    background-color: var(--font-color-primary);
+    transition: bottom .08s 0s ease-out, top .08s 0s ease-out, opacity 0s linear;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -10px;
+      width: 30px;
+      height: 4px;
+      background-color: var(--font-color-primary);
+      transition: bottom .08s 0s ease-out, top .08s 0s ease-out, opacity 0s linear;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 10px;
+      width: 30px;
+      height: 4px;
+      background-color: var(--font-color-primary);
+      transition: bottom .08s 0s ease-out, top .08s 0s ease-out, opacity 0s linear;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .mobile-nav-inner {
+      background-color: #fff;
+      
+      &::before,
+      &::after {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.is-active {
+  .mobile-nav-inner {
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      top: 0;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .nav-list {
+    display: none;
+  }
+
+  .mobile-nav-btn {
+    display: inline-block;
   }
 }
 </style>

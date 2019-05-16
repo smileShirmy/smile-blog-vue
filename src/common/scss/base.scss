@@ -13,7 +13,9 @@ body {
   line-height: 1.5;
   word-wrap: break-word;
   word-break: break-word;
-  color: #161b3d;
+  color: var(--font-color-primary);
+  background-color: var(--app-background-color);
+  transition: all .1s linear;
 }
 
 a {
@@ -22,6 +24,6 @@ a {
   text-decoration: none;
   
   &:visited {
-    color: #161b3d;
+    color: var(--font-color-primary);
   }
 }

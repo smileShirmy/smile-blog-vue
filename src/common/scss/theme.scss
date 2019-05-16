@@ -1,0 +1,36 @@
+
+@mixin theme(
+  $theme-primary,
+  $theme-color,
+  $theme-active,
+  $border-color
+) {  
+  --app-background-color: #{$theme-primary};
+
+  --font-color-primary: #{$theme-color};
+
+  --nav-active: #{$theme-active};
+  
+  --border-color: #{$border-color};
+}
+
+
+body {
+  &#light {
+    @include theme(
+      $theme-primary: #fff,
+      $theme-color: #161b3d,
+      $theme-active: #2821fc,
+      $border-color: #dcdfe6
+    )
+  }
+
+  &#dark {
+    @include theme(
+      $theme-primary: #282c35,
+      $theme-color: #c0c0c0,
+      $theme-active: #22b3eb,
+      $border-color: #dcdfe6
+    )
+  }
+}

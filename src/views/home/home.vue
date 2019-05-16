@@ -1,6 +1,6 @@
 <template>
   <div>
-    <carousel class="carousel-container" :showLeftArrow="false">
+    <carousel class="carousel-container">
       <carousel-item v-for="item in 4" :key="item">
         <carousel-card></carousel-card>
       </carousel-item>
@@ -25,11 +25,10 @@ export default {
 <style lang="scss" scoped>
 .carousel-container {
   height: calc(100vh - 245px);
-}
-
-@media (max-width: 1023px) {
-  .carousel-container {
-    height: calc(100vh - 160px);
+  
+  @media (max-width: 1023px) {
+    height: 100vh;
   }
 }
+
 </style>
