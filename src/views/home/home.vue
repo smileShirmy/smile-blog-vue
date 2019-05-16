@@ -26,4 +26,10 @@ export default {
 .carousel-container {
   height: calc(100vh - 245px);
 }
+
+@media (max-width: 1023px) {
+  .carousel-container {
+    height: calc(100vh - 160px);
+  }
+}
 </style>

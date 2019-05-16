@@ -31,12 +31,16 @@ export default {
   height: 86px;
   max-width: 90vh;
   margin: auto;
-  font-size: 13px;
+  font-size: $--font-size-small;
   font-weight: $--font-weight-bold;
   text-align: center;
   letter-spacing: 2.5px;
   text-transform: uppercase;
   transform: rotate(-90deg) translate(-50%, 50%);
   transform-origin: 0 50%;
+
+  @media (max-width: 479px) {
+    display: none;
+  }
 }
 </style>

@@ -199,15 +199,23 @@ export default {
     padding: 8px;
     border-color: #2821fc;
   }
+
+  @media (max-width: 1023px) {
+    top: calc(50% - 5vh);
+  }
 }
 
 .prev-nav {
-  left: 30px;
+  left: 40px;
   border-width: 8px 0 0 8px;
 }
 
 .next-nav {
-  right: 30px;
+  right: 40px;
   border-width: 0 8px 8px 0;
+
+  @media (max-width: 479px) {
+    opacity: 0;
+  }
 }
 </style>

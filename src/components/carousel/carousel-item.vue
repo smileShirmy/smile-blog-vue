@@ -91,6 +91,6 @@ export default {
 }
 
 .is-animating {
-  transition: transform .4s ease-in-out;
+  transition: transform .5s ease-in-out;
 }
 </style>
