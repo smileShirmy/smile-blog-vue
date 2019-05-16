@@ -27,8 +27,16 @@ $--title-font-size-medium: 30px !default;
 $--title-font-size-base: 22px !default;
 $--title-font-size-small: 16px !default;
 
-/* color
+/* normal-color
+-------------------------- */
+$--nav-dot-color: #d3d5dc;
+
+/* theme-color
 -------------------------- */
 $--primary-color: var(--app-background-color);
 
 $--app-background-color: var(--app-background-color);
+
+/* transition
+-------------------------- */
+$--theme-transition: all .1s linear;
