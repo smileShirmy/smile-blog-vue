@@ -7,6 +7,7 @@
           <router-link active-class="nav-active" class="nav-link" tag="a" :to="item.link">{{item.name}}</router-link>
           <span class="nav-dot"></span>
         </li>
+        <li class="nav-list-item nav-search"></li>
       </ul>
     </nav>
   </header>
@@ -93,7 +94,38 @@ export default {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      transition: all 0.25s ease;
+      transition: all .25s ease;
+    }
+  }
+
+  .nav-search {
+    box-sizing: border-box;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border: 4px solid #161b3d;
+    border-radius: 50%;
+    transition: all .25s ease;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 4px;
+      background: #161b3d;
+      top: 110%;
+      right: -8px;
+      transform: rotate(45deg);
+      transition: all .25s ease;
+    }
+
+    &:hover {
+      border-color: #2821fc;
+
+      &::after {
+        background: #2821fc;
+      }
     }
   }
 }

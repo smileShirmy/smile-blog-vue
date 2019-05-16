@@ -61,7 +61,7 @@ export default {};
 
 .feature-text {
   margin: 20px 0 25px;
-  font-size: $--title-font-size-extra-large;
+  font-size: $--title-font-size-maximum;
   font-weight: $--font-weight-bold;
   line-height: 1.2;
 
@@ -108,6 +108,10 @@ export default {};
     .card-image {
       border-radius: 0 5px 5px 0;
     }
+  }
+
+  .feature-text {
+    font-size: $--title-font-size-extra-large;
   }
 
   .feature-dot {
