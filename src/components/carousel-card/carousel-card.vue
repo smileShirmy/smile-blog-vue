@@ -71,7 +71,7 @@ export default {};
 
     &:hover {
       .feature-dot {
-        background-color: var(--nav-active) !important;
+        background-color: $--nav-active !important;
       }
     }
   }
@@ -89,12 +89,10 @@ export default {};
 }
 
 .feature-author {
-  font-family: sans-serif;
   font-size: $--font-size-base;
   font-weight: $--font-weight-primary;
 
   a {
-    font-family: "noto-sans";
     font-size: $--font-size-large;
     font-weight: $--font-weight-bold;
     cursor: pointer;

@@ -7,14 +7,14 @@ html, body {
 }
 
 body {
-  font-family: 'noto-sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
   word-wrap: break-word;
   word-break: break-word;
-  color: var(--font-color-primary);
-  background-color: var(--app-background-color);
+  color: $--font-color-primary;
+  background-color: $--app-background-color;
   transition: $--theme-transition;
 }
 
@@ -22,8 +22,9 @@ a {
   -webkit-user-drag: none;
   user-select: none;
   text-decoration: none;
+  color: $--font-color-primary;
   
   &:visited {
-    color: var(--font-color-primary);
+    color: $--font-color-primary;
   }
 }

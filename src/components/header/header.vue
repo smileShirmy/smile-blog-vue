@@ -141,11 +141,11 @@ export default {
 
     .nav-active {
       & ~ .nav-dot {
-        background-color: var(--nav-active);
+        background-color: $--nav-active;
       }
 
       &:hover ~ .nav-dot {
-        background-color: var(--nav-active);
+        background-color: $--nav-active;
       }
     }
 
@@ -165,7 +165,7 @@ export default {
       transition: $--theme-transition;
 
       &:hover {
-        color: var(--nav-active);
+        color: $--nav-active;
       }
     }
   }
@@ -179,7 +179,7 @@ export default {
 
 @media (max-width: 1023px) {
   .home-mobile-class {
-    position: fixed;
+    position: absolute;
 
     .header-logo {
       color: #fff;

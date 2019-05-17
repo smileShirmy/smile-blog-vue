@@ -7,22 +7,20 @@
     >
       <span class="mobile-nav-inner"></span>
     </div>
-    <transition mame="fade">
-      <ul class="nav-list" v-if="isShowMobileNav">
-        <li class="nav-list-item" v-for="(item, index) in navList" :key="index">
-          <router-link
-            active-class="nav-active"
-            class="nav-link"
-            tag="a"
-            :to="item.link"
-          >{{item.name}}</router-link>
-          <span class="nav-dot"></span>
-        </li>
-        <li class="nav-list-item">
-          <i class="icon icon-search"></i>
-        </li>
-      </ul>
-    </transition>
+    <ul class="nav-list" v-if="isShowMobileNav">
+      <li class="nav-list-item" v-for="(item, index) in navList" :key="index">
+        <router-link
+          active-class="nav-active"
+          class="nav-link"
+          tag="a"
+          :to="item.link"
+        >{{item.name}}</router-link>
+        <span class="nav-dot"></span>
+      </li>
+      <li class="nav-list-item">
+        <i class="icon icon-search"></i>
+      </li>
+    </ul>
   </nav>
 </template>
 
@@ -66,7 +64,7 @@ export default {
     top: 10px;
     width: 30px;
     height: 4px;
-    background-color: var(--font-color-primary);
+    background-color: $--font-color-primary;
     transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out,
       opacity 0s linear, color .1s linear;
 
@@ -77,7 +75,7 @@ export default {
       top: -10px;
       width: 30px;
       height: 4px;
-      background-color: var(--font-color-primary);
+      background-color: $--font-color-primary;
       transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out,
         opacity 0s linear, color .1s linear;
     }
@@ -89,7 +87,7 @@ export default {
       top: 10px;
       width: 30px;
       height: 4px;
-      background-color: var(--font-color-primary);
+      background-color: $--font-color-primary;
       transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out,
         opacity 0s linear;
     }
@@ -97,11 +95,11 @@ export default {
 
   @media (max-width: 1023px) {
     .mobile-nav-inner {
-      background-color: var(--font-color-primary);
+      background-color: $--font-color-primary;
 
       &::before,
       &::after {
-        background-color: var(--font-color-primary);
+        background-color: $--font-color-primary;
       }
     }
   }
@@ -154,11 +152,11 @@ export default {
 
     .nav-active {
       & ~ .nav-dot {
-        background-color: var(--nav-active);
+        background-color: $--nav-active;
       }
 
       &:hover ~ .nav-dot {
-        background-color: var(--nav-active);
+        background-color: $--nav-active;
       }
     }
 
@@ -178,7 +176,7 @@ export default {
       transition: $--theme-transition;
 
       &:hover {
-        color: var(--nav-active);
+        color: $--nav-active;
       }
     }
   }
@@ -204,12 +202,5 @@ export default {
       }
     }
   }
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 1s ease;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
 }
 </style>

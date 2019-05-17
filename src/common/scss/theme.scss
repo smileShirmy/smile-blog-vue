@@ -1,13 +1,16 @@
 
 @mixin theme(
   $theme-primary,
-  $theme-color,
+  $font-color,
+  $font-color-article,
   $theme-active,
   $border-color
 ) {  
   --app-background-color: #{$theme-primary};
+  --article-background-color: #{lighten($theme-primary, 5%)};
 
-  --font-color-primary: #{$theme-color};
+  --font-color-primary: #{$font-color};
+  --font-color-article: #{$font-color-article};
 
   --nav-active: #{$theme-active};
   
@@ -19,7 +22,8 @@ body {
   &#light {
     @include theme(
       $theme-primary: #fff,
-      $theme-color: #161b3d,
+      $font-color: #161b3d,
+      $font-color-article: #666,
       $theme-active: #2821fc,
       $border-color: #dcdfe6
     )
@@ -28,7 +32,8 @@ body {
   &#dark {
     @include theme(
       $theme-primary: #282c35,
-      $theme-color: #c0c0c0,
+      $font-color: #c0c0c0,
+      $font-color-article: #c0c0c0,
       $theme-active: #22b3eb,
       $border-color: #dcdfe6
     )

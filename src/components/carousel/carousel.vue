@@ -197,7 +197,7 @@ export default {
 
   &:hover {
     padding: 8px;
-    border-color: var(--nav-active);
+    border-color: $--nav-active;
   }
 
   @media (max-width: 1023px) {

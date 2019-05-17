@@ -33,10 +33,20 @@ $--nav-dot-color: #d3d5dc;
 
 /* theme-color
 -------------------------- */
-$--primary-color: var(--app-background-color);
-
 $--app-background-color: var(--app-background-color);
+$--article-background-color: var(--article-background-color);
+
+$--font-color-primary: var(--font-color-primary);
+$--font-color-article: var(--font-color-article);
+
+$--nav-active: var(--nav-active);
+
+$--border-color: var(--border-color);
 
 /* transition
 -------------------------- */
 $--theme-transition: all .1s linear;
+
+/* font-family
+-------------------------- */
+$--font-family-normal: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
