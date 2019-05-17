@@ -3,7 +3,7 @@
     <ul class="article-list-wrapper">
       <li class="article-item" v-for="article in articleList" :key="article.id">
         <article class="article-wrapper">
-          <a class="category">{{article.tag}}</a>
+          <a class="tag">{{article.tag}}</a>
           <h1 class="title">{{article.title}}</h1>
           <p class="content">{{article.content}}</p>
           <footer class="footer">
@@ -153,12 +153,13 @@ export default {
 
   .tag {
     cursor: pointer;
+    color: $--font-color-article-tag;
   }
 
   .title {
     margin: 0;
     font-weight: $--font-weight-bold;
-    color: $--font-color-primary;
+    color: $--font-color-article-title;
 
     @media (max-width: 479px) {
       font-size: $--title-font-size-base;

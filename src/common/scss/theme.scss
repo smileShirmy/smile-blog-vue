@@ -3,6 +3,8 @@
   $theme-primary,
   $font-color,
   $font-color-article,
+  $font-color-article-tag,
+  $font-color-article-title,
   $theme-active,
   $border-color
 ) {  
@@ -11,6 +13,8 @@
 
   --font-color-primary: #{$font-color};
   --font-color-article: #{$font-color-article};
+  --font-color-article-tag: #{$font-color-article-tag};
+  --font-color-article-title: #{$font-color-article-title};
 
   --nav-active: #{$theme-active};
   
@@ -24,6 +28,8 @@ body {
       $theme-primary: #fff,
       $font-color: #161b3d,
       $font-color-article: #666,
+      $font-color-article-tag: #999,
+      $font-color-article-title: #161b3d,
       $theme-active: #2821fc,
       $border-color: #dcdfe6
     )
@@ -34,6 +40,8 @@ body {
       $theme-primary: #282c35,
       $font-color: #c0c0c0,
       $font-color-article: #c0c0c0,
+      $font-color-article-tag: #999,
+      $font-color-article-title: #d3d3d3,
       $theme-active: #22b3eb,
       $border-color: #dcdfe6
     )
