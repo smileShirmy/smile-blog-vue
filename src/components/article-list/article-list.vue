@@ -27,18 +27,18 @@
 const articleList = [
   {
     id: 1,
-    tag: 'tag1',
-    title: 'title1',
-    content: `content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1 content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1content1`,
-    author: 'author1',
+    tag: 'JavaScript',
+    title: '前端性能优化 —— 项目瘦身',
+    content: `在我们的日常开发中，我们经常需要引入各种各样的第三方模块来帮助我们提升开发速度。但是有时候这些模块里面又包含了许多我们用不到的模块，在打包的时候又一并打包进去了，这就造成了没必要的带宽浪费。这里以Vue项目为例。`,
+    author: 'smile',
     time: '2018-5-16'
   },
   {
     id: 2,
     tag: 'tag2',
-    title: 'title2',
-    content: 'content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2content2',
-    author: 'author2',
+    title: '前端性能优化 —— 项目瘦身',
+    content: `在我们的日常开发中，我们经常需要引入各种各样的第三方模块来帮助我们提升开发速度。但是有时候这些模块里面又包含了许多我们用不到的模块，在打包的时候又一并打包进去了，这就造成了没必要的带宽浪费。这里以Vue项目为例。`,
+    author: 'qiushiming',
     time: '2018-5-16'
   },
   {
@@ -128,9 +128,15 @@ export default {
       text-align: left;
     }
 
+    @media (max-width: 1399px) {
+      right: -50px;
+      width: calc(100% + 60px);
+    }
+
     @media (max-width: 1023px) {
       flex-direction: column-reverse;
       right: auto;
+      width: 100%;
       margin-bottom: 40px;
       text-align: left;
 
@@ -161,7 +167,11 @@ export default {
     font-weight: $--font-weight-bold;
     color: $--font-color-article-title;
 
-    @media (max-width: 479px) {
+    @media (max-width: 1399px) {
+      font-size: $--title-font-size-medium;
+    }
+
+    @media (max-width: 1023px) {
       font-size: $--title-font-size-base;
     }
   }
