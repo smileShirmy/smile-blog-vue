@@ -98,7 +98,7 @@ export default {
   padding: 75px;
   background-color: #fff;
   border-radius: 5px;
-  background-color: $--article-background-color;
+  background-color: $--app-background-color-light;
   box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
   transition: $--theme-transition;
 

@@ -19,7 +19,7 @@
           <i class="icon icon-search"></i>
         </li>
       </ul>
-      <mobile-nav :navList="navList" :homeMobileClass="homeMobileClass"></mobile-nav>
+      <mobile-nav :navList="navList"></mobile-nav>
     </nav>
   </header>
 </template>

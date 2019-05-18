@@ -1,34 +1,37 @@
 <template>
   <nav class="mobile-nav-container">
+    <div class="search-wrapper">
+      <i class="icon icon-search"></i>
+    </div>
     <div
       class="mobile-nav-btn"
-      :class="{'is-active': isShowMobileNav, homeMobileClass}"
+      :class="{'is-active': isShowMobileNav}"
       @click="isShowMobileNav = !isShowMobileNav"
     >
       <span class="mobile-nav-inner"></span>
     </div>
-    <ul class="nav-list" v-if="isShowMobileNav">
-      <li class="nav-list-item" v-for="(item, index) in navList" :key="index">
-        <router-link
-          active-class="nav-active"
-          class="nav-link"
-          tag="a"
-          :to="item.link"
-        >{{item.name}}</router-link>
-        <span class="nav-dot"></span>
-      </li>
-      <li class="nav-list-item">
-        <i class="icon icon-search"></i>
-      </li>
-    </ul>
+    <transition name="slide">
+      <div class="nav-list-wrapper" v-if="isShowMobileNav">
+        <div class="close-btn" @click="isShowMobileNav = false">
+          <i class="icon icon-close"></i>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-list-item" v-for="(item, index) in navList" :key="index">
+            <router-link active-class="nav-active" class="nav-link" tag="a" :to="item.link" @click.native="isShowMobileNav = false">
+              {{item.name}}
+              <span class="nav-dot"></span>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </transition>
   </nav>
 </template>
 
 <script>
 export default {
   props: {
-    navList: Array,
-    homeMobileClass: String
+    navList: Array
   },
 
   data() {
@@ -44,15 +47,28 @@ export default {
 @import "@/common/scss/mixin.scss";
 
 .mobile-nav-container {
-  position: relative;
   display: none;
+  margin-top: 14px;
 
   @media (max-width: 1023px) {
     display: inline-block;
   }
 }
 
+.search-wrapper {
+  @include extend-click;
+  float: left;
+  margin-right: 20px;
+  cursor: pointer;
+
+  .icon-search {
+    font-size: $--font-size-extra-large;
+    transition: $--theme-transition;
+  }
+}
+
 .mobile-nav-btn {
+  float: left;
   @include extend-click;
   position: relative;
   width: 30px;
@@ -66,7 +82,7 @@ export default {
     height: 4px;
     background-color: $--font-color-primary;
     transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out,
-      opacity 0s linear, color .1s linear;
+      opacity 0s linear, color 0.1s linear;
 
     &::before {
       content: "";
@@ -77,7 +93,7 @@ export default {
       height: 4px;
       background-color: $--font-color-primary;
       transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out,
-        opacity 0s linear, color .1s linear;
+        opacity 0s linear, color 0.1s linear;
     }
 
     &::after {
@@ -117,45 +133,59 @@ export default {
   }
 }
 
-.nav-list {
+.nav-list-wrapper {
   box-sizing: border-box;
   position: absolute;
-  top: 40px;
-  right: -10px;
-  width: 160px;
-  padding: 20px 28px 20px 0;
-  border-radius: 4px;
-  background: rgba(0, 0, 0, .1);
+  top: 0;
+  right: 0;
+  width: 200px;
+  padding: 40px 30px 20px;
+  border-bottom-left-radius: 5px;
+  background: $--app-background-color-light;
+  box-shadow: 0 2px 24px 5px rgba(0, 0, 0, 0.1);
+  z-index: $--index-top;
+}
 
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+
+  .icon-close {
+    font-size: $--title-font-size-base;
+    cursor: pointer;
+
+    &:hover {
+      color: $--theme-active;
+    }
+  }
+}
+
+.nav-list {
   .nav-list-item {
-    position: relative;
     display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
+    justify-content: flex-start;
+    margin-top: 16px;
     font-weight: $--font-weight-bold;
 
     &:first-child {
       margin-top: 0;
     }
 
-    a {
-      cursor: pointer;
-    }
-
     .nav-link {
-      cursor: pointer;
+      position: relative;
 
-      &:hover ~ .nav-dot {
+      &:hover .nav-dot {
         background-color: $--nav-dot-color;
       }
     }
 
     .nav-active {
-      & ~ .nav-dot {
+      & .nav-dot {
         background-color: $--theme-active;
       }
 
-      &:hover ~ .nav-dot {
+      &:hover .nav-dot {
         background-color: $--theme-active;
       }
     }
@@ -169,36 +199,33 @@ export default {
       border-radius: 50%;
       transition: all 0.25s ease;
     }
-
-    .icon-search {
-      font-size: $--font-size-large;
-      cursor: pointer;
-      transition: $--theme-transition;
-
-      &:hover {
-        color: $--theme-active;
-      }
-    }
   }
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(100%);
 }
 
 @media (max-width: 1023px) {
   .home-mobile-class {
+    .search-wrapper {
+      .icon-search {
+        color: #fff;
+      }
+    }
+
     .mobile-nav-inner {
       background-color: #fff;
 
       &::before,
       &::after {
         background-color: #fff;
-      }
-    }
-
-    .nav-list {
-      color: #fff;
-
-      .nav-link {
-        color: #fff;
-        transition: $--theme-transition;
       }
     }
   }

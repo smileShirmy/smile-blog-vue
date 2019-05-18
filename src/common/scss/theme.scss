@@ -9,7 +9,7 @@
   $border-color
 ) {  
   --app-background-color: #{$theme-primary};
-  --article-background-color: #{lighten($theme-primary, 5%)};
+  --app-background-color-light: #{lighten($theme-primary, 5%)};
 
   --font-color-primary: #{$font-color};
   --font-color-article: #{$font-color-article};
