@@ -5,7 +5,9 @@
         <switch-theme :size="'18px'"></switch-theme>
         <span class="logo">Smile</span>
       </a>
-      <div class="menu-wrapper">menu</div>
+      <div class="menu-wrapper">
+        <desktop-nav :navList="navList"></desktop-nav>
+      </div>
       <div class="social-links between">
         <a href="mailto:qiushiming1997@gmail.com" target="_blank">
           <i class="icon icon-mail"></i>
@@ -23,10 +25,41 @@
 
 <script>
 import SwitchTheme from '@/components/switch-theme/switch-theme'
+import DesktopNav from '@/components/nav/desktop-nav'
+
+const navList = [
+  {
+    link: "home",
+    name: "首页"
+  },
+  {
+    link: "archive",
+    name: "归档"
+  },
+  {
+    link: "tags",
+    name: "标签"
+  },
+  {
+    link: "about",
+    name: "关于"
+  },
+  {
+    link: "messages",
+    name: "留言墙"
+  }
+];
 
 export default {
   components: {
-    SwitchTheme
+    SwitchTheme,
+    DesktopNav
+  },
+
+  data() {
+    return {
+      navList
+    }
   }
 }
 </script>
@@ -56,6 +89,10 @@ export default {
 
     @media (max-width: 1023px) {
       flex-direction: column;
+    }
+
+    @media (max-width: 479px) {
+      width: 100%;
     }
 
     .menu-wrapper {

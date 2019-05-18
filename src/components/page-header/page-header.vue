@@ -5,15 +5,15 @@
       <i class="logo">Smile</i>
     </div>
     <nav class="nav-wrapper">
-      <desktop-nav :navList="navList"></desktop-nav>
+      <desktop-nav class="desktop-nav" :navList="navList"></desktop-nav>
       <mobile-nav :navList="navList"></mobile-nav>
     </nav>
   </header>
 </template>
 
 <script>
-import DesktopNav from "./desktop-nav"
-import MobileNav from "./mobile-nav"
+import DesktopNav from "@/components/nav/desktop-nav"
+import MobileNav from "@/components/nav/mobile-nav"
 import SwitchTheme from '@/components/switch-theme/switch-theme'
 
 const navList = [
@@ -99,6 +99,12 @@ export default {
     .header-logo {
       color: #fff;
     }
+  }
+}
+
+@media (max-width: 1023px) {
+  .desktop-nav {
+    display: none;
   }
 }
 </style>

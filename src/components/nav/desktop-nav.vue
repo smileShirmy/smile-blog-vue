@@ -35,12 +35,13 @@ export default {
 
 .nav-list {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
 
   .nav-list-item {
     position: relative;
-    margin-left: 24px;
     font-weight: bold;
+    margin: 5px 12px;
 
     &:first-child {
       margin-left: 0;
@@ -84,12 +85,6 @@ export default {
         color: $--theme-active;
       }
     }
-  }
-}
-
-@media (max-width: 1023px) {
-  .nav-list {
-    display: none;
   }
 }
 </style>
