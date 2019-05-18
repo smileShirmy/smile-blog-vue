@@ -1,5 +1,6 @@
 const state = {
-  theme: 'light'
+  theme: 'light',
+  isShowSearch: false,
 }
 
 export default state

@@ -2,7 +2,7 @@
   <header class="container" :class="homeMobileClass">
     <div class="header-logo">
       <switch-theme :size="'30px'"></switch-theme>
-      <i class="logo">smile</i>
+      <i class="logo">Smile</i>
     </div>
     <nav class="nav-wrapper">
       <ul class="nav-list">
@@ -16,7 +16,7 @@
           <span class="nav-dot"></span>
         </li>
         <li class="nav-list-item">
-          <i class="icon icon-search"></i>
+          <i class="icon icon-search" @click="showSearch"></i>
         </li>
       </ul>
       <mobile-nav :navList="navList"></mobile-nav>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import MobileNav from "./mobile-nav";
 import SwitchTheme from '@/components/switch-theme/switch-theme'
 
@@ -68,6 +69,16 @@ export default {
       return this.$route.path.includes("home") ? "home-mobile-class" : "";
     }
   },
+
+  methods: {
+    showSearch() {
+      this.setShowSearch(true)
+    },
+
+    ...mapMutations({
+      setShowSearch: "SET_SHOW_SEARCH"
+    })
+  }
 };
 </script>
 

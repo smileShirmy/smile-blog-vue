@@ -1,6 +1,6 @@
 <template>
   <nav class="mobile-nav-container">
-    <div class="search-wrapper">
+    <div class="search-wrapper" @click="showSearch">
       <i class="icon icon-search"></i>
     </div>
     <div
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   props: {
     navList: Array
@@ -38,6 +40,16 @@ export default {
     return {
       isShowMobileNav: false
     };
+  },
+
+  methods: {
+    showSearch() {
+      this.setShowSearch(true)
+    },
+
+    ...mapMutations({
+      setShowSearch: 'SET_SHOW_SEARCH'
+    })
   }
 };
 </script>
@@ -152,7 +164,7 @@ export default {
   right: 20px;
 
   .icon-close {
-    font-size: $--title-font-size-base;
+    font-size: $--font-size-large;
     cursor: pointer;
 
     &:hover {
