@@ -1,13 +1,15 @@
 <template>
   <i
     class="icon"
-    :class="isLight ? 'icon-dark' : 'icon-light'"
+    :class="theme === 'light' ? 'icon-dark' : 'icon-light'"
     :style="{fontSize: size}"
     @click="switchTheme"
   ></i>
 </template>
 
 <script>
+import {mapGetters, mapMutations} from 'vuex'
+
 export default {
   props: {
     size: {
@@ -16,19 +18,26 @@ export default {
     }
   },
 
-  data() {
-    return {
-      isLight: true
-    };
+  computed: {
+    ...mapGetters([
+      'theme'
+    ])
   },
 
   methods: {
     switchTheme() {
-      this.isLight = !this.isLight;
+      if (this.theme === 'light') {
+        this.setTheme('dark')
+      } else {
+        this.setTheme('light')
+      }
 
-      const theme = this.isLight ? "light" : "dark";
-      document.body.id = theme;
-    }
+      document.body.id = this.theme;
+    },
+
+    ...mapMutations({
+      setTheme: 'SET_THEME'
+    }),
   }
 };
 </script>
