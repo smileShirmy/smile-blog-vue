@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="footer-copyright">
-      <span class="copyright">© 2019 <span class="author">Smile</span></span>. All Right Reserved.
+      <span class="copyright">© 2019 <span class="logo">Smile</span></span>. All Right Reserved.
     </div>
   </footer>
 </template>
@@ -97,7 +97,7 @@ export default {
     .copyright {
       font-weight: $--font-weight-bold;
 
-      .author {
+      .logo {
         color: $--font-color-dark;
       }
     }

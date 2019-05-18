@@ -174,6 +174,10 @@ export default {
     @media (max-width: 1023px) {
       font-size: $--title-font-size-base;
     }
+
+    @media (max-width: 767px) {
+      font-size: $--title-font-size-small;
+    }
   }
 
   .content {
