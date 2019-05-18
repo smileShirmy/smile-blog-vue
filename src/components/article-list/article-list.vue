@@ -159,13 +159,13 @@ export default {
 
   .tag {
     cursor: pointer;
-    color: $--font-color-article-tag;
+    color: $--font-color-light;
   }
 
   .title {
     margin: 0;
     font-weight: $--font-weight-bold;
-    color: $--font-color-article-title;
+    color: $--font-color-dark;
 
     @media (max-width: 1399px) {
       font-size: $--title-font-size-medium;

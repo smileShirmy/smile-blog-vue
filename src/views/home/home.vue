@@ -22,7 +22,7 @@ export default {
     Carousel,
     CarouselItem,
     CarouselCard,
-    ArticleList
+    ArticleList,
   }
 }
 </script>

@@ -7,6 +7,7 @@ const Home = () => import('@/views/home/home')
 const Archive = () => import('@/views/archive/archive')
 const Tags = () => import('@/views/tags/tags')
 const About = () => import('@/views/about/about')
+const Messages = () => import('@/views/messages/messages')
 
 export default new Router({
   mode: 'history',
@@ -30,6 +31,10 @@ export default new Router({
     {
       path: '/about',
       component: About
+    },
+    {
+      path: '/messages',
+      component: Messages
     }
   ]
 })

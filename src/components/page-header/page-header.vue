@@ -1,7 +1,7 @@
 <template>
   <header class="container" :class="homeMobileClass">
     <div class="header-logo">
-      <i class="icon" :class="isLight ? 'icon-dark' : 'icon-light'" @click="switchTheme"></i>
+      <switch-theme :size="'30px'"></switch-theme>
       <i class="logo">smile</i>
     </div>
     <nav class="nav-wrapper">
@@ -26,6 +26,7 @@
 
 <script>
 import MobileNav from "./mobile-nav";
+import SwitchTheme from '@/components/switch-theme/switch-theme'
 
 const navList = [
   {
@@ -43,18 +44,22 @@ const navList = [
   {
     link: "about",
     name: "关于"
+  },
+  {
+    link: "messages",
+    name: "留言墙"
   }
 ];
 
 export default {
   components: {
-    MobileNav
+    MobileNav,
+    SwitchTheme
   },
 
   data() {
     return {
-      navList,
-      isLight: true
+      navList
     };
   },
 
@@ -63,19 +68,6 @@ export default {
       return this.$route.path.includes("home") ? "home-mobile-class" : "";
     }
   },
-
-  methods: {
-    switchTheme() {
-      this.isLight = !this.isLight;
-
-      const theme = this.isLight ? "light" : "dark";
-      document.body.id = theme;
-    }
-  },
-
-  created() {
-    document.body.id = "light";
-  }
 };
 </script>
 
@@ -104,14 +96,8 @@ export default {
 }
 
 .header-logo {
-  .icon {
-    margin-right: 10px;
-    font-size: $--title-font-size-medium;
-    cursor: pointer;
-    transition: $--theme-transition;
-  }
-
   .logo {
+    margin-left: 10px;
     font-size: $--title-font-size-medium;
     transition: $--theme-transition;
   }
@@ -141,11 +127,11 @@ export default {
 
     .nav-active {
       & ~ .nav-dot {
-        background-color: $--nav-active;
+        background-color: $--theme-active;
       }
 
       &:hover ~ .nav-dot {
-        background-color: $--nav-active;
+        background-color: $--theme-active;
       }
     }
 
@@ -165,7 +151,7 @@ export default {
       transition: $--theme-transition;
 
       &:hover {
-        color: $--nav-active;
+        color: $--theme-active;
       }
     }
   }

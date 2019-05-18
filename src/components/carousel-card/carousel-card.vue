@@ -71,7 +71,7 @@ export default {};
 
     &:hover {
       .feature-dot {
-        background-color: $--nav-active !important;
+        background-color: $--theme-active !important;
       }
     }
   }

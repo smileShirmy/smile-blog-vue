@@ -152,11 +152,11 @@ export default {
 
     .nav-active {
       & ~ .nav-dot {
-        background-color: $--nav-active;
+        background-color: $--theme-active;
       }
 
       &:hover ~ .nav-dot {
-        background-color: $--nav-active;
+        background-color: $--theme-active;
       }
     }
 
@@ -176,7 +176,7 @@ export default {
       transition: $--theme-transition;
 
       &:hover {
-        color: $--nav-active;
+        color: $--theme-active;
       }
     }
   }

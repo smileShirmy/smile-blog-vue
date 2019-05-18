@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <Header></Header>
+    <page-header></page-header>
     <router-view></router-view>
+    <page-footer></page-footer>
   </div>
 </template>
 
 <script>
-import Header from '@/components/header/header'
+import PageHeader from '@/components/page-header/page-header'
+import PageFooter from '@/components/page-footer/page-footer'
 
 export default {
   components: {
-    Header
+    PageHeader,
+    PageFooter
   }
 }
 </script>
