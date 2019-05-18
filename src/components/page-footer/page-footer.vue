@@ -5,7 +5,7 @@
         <switch-theme :size="'18px'"></switch-theme>
         <span class="logo">Smile</span>
       </a>
-      <div>menu</div>
+      <div class="menu-wrapper">menu</div>
       <div class="social-links between">
         <a href="mailto:qiushiming1997@gmail.com" target="_blank">
           <i class="icon icon-mail"></i>
@@ -44,6 +44,7 @@ export default {
   .footer-wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: calc(100% - 85px - 85px);
     max-width: 1024px;
     margin-top: 8vh;
@@ -53,8 +54,23 @@ export default {
       max-width: 950px;
     }
 
+    @media (max-width: 1023px) {
+      flex-direction: column;
+    }
+
+    .menu-wrapper {
+      @media (max-width: 1023px) {
+        margin: 14px 0;
+      }
+    }
+
     .between {
       width: 100px;
+
+      @media (max-width: 1023px) {
+        display: flex;
+        justify-content: center;
+      }
     }
 
     .logo {
@@ -64,6 +80,10 @@ export default {
     .social-links {
       display: flex;
       justify-content: flex-end;
+
+      @media (max-width: 1023px) {
+        justify-content: center;
+      }
 
       a {
         margin-left: 24px;
