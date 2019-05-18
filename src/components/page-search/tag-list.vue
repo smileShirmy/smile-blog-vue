@@ -25,7 +25,7 @@ export default {
 
 .tag-title {
   font-size: $--title-font-size-medium;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   @media (max-width: 767px) {
     font-size: $--title-font-size-base;
