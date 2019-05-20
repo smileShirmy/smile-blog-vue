@@ -19,6 +19,7 @@
         <div class="split"></div>
         <div class="article-image"></div>
       </li>
+      <div class="load-more" @click="loadMore"></div>
     </ul>
   </div>
 </template>
@@ -72,17 +73,25 @@ export default {
     return {
       articleList,
     }
+  },
+
+  methods: {
+    loadMore() {
+      
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "@/common/scss/variable.scss";
+@import "@/common/scss/animation.scss";
 
 .article-list-container {
   box-sizing: border-box;
   max-width: 1120px;
   margin: 0 auto;
+  animation: slideTop .7s ease-in-out both;
 
   @media (max-width: 1399px) {
     padding: 0 85px;
@@ -249,6 +258,7 @@ export default {
   background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
   background-size: cover;
   box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
+  animation: slideTop .7s ease-in-out both;
 
   @media (min-width: 1024px) and (max-width: 1399px) {
     width: 360px;
@@ -270,6 +280,23 @@ export default {
 
   @media (max-width: 479px) {
     height: 250px;
+  }
+}
+
+.load-more {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  border: 8px solid #dcdfe7;
+  border-radius: 50%;
+  transition: all .25s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $--theme-active;
+    background-color: $--theme-active;
+    transform: scale(.65);
   }
 }
 </style>

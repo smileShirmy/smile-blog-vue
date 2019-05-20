@@ -63,6 +63,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/common/scss/variable.scss';
 @import '@/common/scss/mixin.scss';
+@import "@/common/scss/animation.scss";
 
 .tag-container {
   width: 100%;
@@ -70,6 +71,7 @@ export default {
   margin: 0 auto;
   z-index: $--index-normal;
   box-sizing: border-box;
+  animation: slideTop .6s ease-in-out;
 
   @media (max-width: 1399px) {
     padding: 0 85px;
