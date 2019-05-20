@@ -31,7 +31,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## TODO
 
 - 完成静态页面
-- 白天主题/黑夜主题 切换
+- 白天主题/黑夜主题 (根据昼夜自动切换，如果 `storage` 有则优先读取)
 
 ## Vuex
 

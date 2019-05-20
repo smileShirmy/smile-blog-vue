@@ -112,6 +112,7 @@ export default {
 
     .logo {
       margin-left: 8px;
+      line-height: 1.8;
     }
 
     .social-links {

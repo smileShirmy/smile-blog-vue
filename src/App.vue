@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" class="app-container">
     <page-header></page-header>
-    <router-view></router-view>
+    <main class="view">
+      <router-view></router-view>
+    </main>
     <page-footer></page-footer>
     <transition name="slide">
       <page-search v-if="isShowSearch"></page-search>
@@ -32,6 +34,17 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/common/scss/variable.scss";
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.view {
+  flex: 1;
+}
 
 .slide-enter-active,
 .slide-leave-active {

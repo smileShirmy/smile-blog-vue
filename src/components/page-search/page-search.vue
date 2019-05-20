@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="search-container">
     <div class="search-image"></div>
     <aside class="section-search">
       <div class="search-close" @click="closeSearch">
@@ -126,7 +126,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/common/scss/variable.scss";
 
-.container {
+.search-container {
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -150,6 +150,9 @@ export default {
 }
 
 .section-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 60%;
   padding: 140px 5% 30px;
   box-sizing: border-box;
@@ -191,8 +194,6 @@ export default {
 }
 
 .search-wrapper {
-  min-height: calc(100vh - 260px);
-
   .search-input {
     width: 100%;
     height: 62px;

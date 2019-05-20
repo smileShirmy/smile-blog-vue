@@ -203,6 +203,10 @@ export default {
   @media (max-width: 1023px) {
     top: calc(50% - 5vh);
   }
+
+  @media (max-width: 479px) {
+    display: none;
+  }
 }
 
 .prev-nav {
