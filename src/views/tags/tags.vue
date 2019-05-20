@@ -1,13 +1,13 @@
 <template>
   <div class="tag-container">
     <ul class="tag-list">
-      <li class="tag-item" v-for="tag in tagList" :key="tag.id">
+      <router-link tag="li" class="tag-item" v-for="tag in tagList" :key="tag.id" :to="'/tags/' + tag.id">
         <div class="tag-wrapper">
           <div class="tag-image"></div>
           <h2 class="title" :class="{center: !tag.desc}">{{tag.name}}</h2>
           <p v-if="tag.desc" class="desc">{{tag.desc}}</p>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -56,12 +56,13 @@ export default {
     return {
       tagList
     }
-  }  
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/common/scss/variable.scss';
+@import '@/common/scss/mixin.scss';
 
 .tag-container {
   width: 100%;
@@ -113,9 +114,9 @@ export default {
   width: 100%;
   height: 100%;
   color: #fff;
-  background-color: rgba(0, 0, 0, .3);
 
   .tag-image {
+    @include cover;
     position: absolute;
     top: 0;
     right: 0;
@@ -126,16 +127,6 @@ export default {
     background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
     background-size: cover;
     z-index: -1;
-
-    &::before {
-      display: block;
-      width: 100%;
-      height: 100%;
-      content: '';
-      opacity: .3;
-      background-color: #394245;
-      background-image: linear-gradient(234deg, #394245 0%,#000 100%);
-    }
   }
 
   .title {

@@ -32,6 +32,7 @@ export default {};
 
 <style lang="scss" scoped>
 @import "@/common/scss/variable.scss";
+@import "@/common/scss/mixin.scss";
 
 .card-container {
   display: flex;
@@ -42,6 +43,7 @@ export default {};
   box-sizing: border-box;
 
   .card-image {
+    @include cover;
     width: calc(50% - 45px);
     height: 100%;
     border-radius: 5px;
@@ -61,7 +63,7 @@ export default {};
 
 .feature-text {
   margin: 20px 0 25px;
-  font-size: $--title-font-size-maximum;
+  font-size: $--title-font-size-extra-maximum;
   font-weight: $--font-weight-bold;
   line-height: 1.2;
 
@@ -146,7 +148,6 @@ export default {};
       width: 100%;
       height: 100%;
       padding: 0 0 10vh 0;
-      background: rgba(0, 0, 0, .3);
       z-index: $--index-normal;
     }
 

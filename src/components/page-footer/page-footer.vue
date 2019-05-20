@@ -29,23 +29,23 @@ import DesktopNav from '@/components/nav/desktop-nav'
 
 const navList = [
   {
-    link: "home",
+    link: "/home",
     name: "首页"
   },
   {
-    link: "archive",
+    link: "/archive",
     name: "归档"
   },
   {
-    link: "tags",
+    link: "/tags",
     name: "标签"
   },
   {
-    link: "about",
+    link: "/about",
     name: "关于"
   },
   {
-    link: "messages",
+    link: "/messages",
     name: "留言墙"
   }
 ];

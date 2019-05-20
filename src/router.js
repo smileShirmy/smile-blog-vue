@@ -6,6 +6,7 @@ Vue.use(Router)
 const Home = () => import('@/views/home/home')
 const Archive = () => import('@/views/archive/archive')
 const Tags = () => import('@/views/tags/tags')
+const TagDetail = () => import('@/views/tags/tag-detail')
 const About = () => import('@/views/about/about')
 const Messages = () => import('@/views/messages/messages')
 
@@ -26,7 +27,11 @@ export default new Router({
     },
     {
       path: '/tags',
-      component: Tags
+      component: Tags,
+    },
+    {
+      path: '/tags/:id',
+      component: TagDetail
     },
     {
       path: '/about',

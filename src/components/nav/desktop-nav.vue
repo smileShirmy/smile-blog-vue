@@ -17,6 +17,12 @@ export default {
   props: {
     navList: Array
   },
+
+  watch: {
+    $route(old, val) {
+      console.log(old, val)
+    }
+  },
   
   methods: {
     showSearch() {
