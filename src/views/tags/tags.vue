@@ -70,7 +70,7 @@ export default {
   z-index: $--index-normal;
   box-sizing: border-box;
 
-  @media (min-width: 480px) {
+  @media (max-width: 1399px) {
     padding: 0 85px;
   }
 
