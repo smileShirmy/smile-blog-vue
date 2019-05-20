@@ -2,7 +2,7 @@
   <div class="tags-detail-container">
     <header class="tag-header">
       <div class="tag-content">
-        <h1 class="title">Peotry</h1>
+        <h1 class="title">Poetry</h1>
         <div class="posts-number">
           <i class="icon icon-tag"></i>
           <span>10 posts</span>

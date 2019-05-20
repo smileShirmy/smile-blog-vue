@@ -16,7 +16,7 @@
 const tagList = [
   {
     id: 1,
-    name: 'Peotry',
+    name: 'Poetry',
     desc: 'Donec elementum ligula eu sapien consequat eleifend. Donec nec dolor erat, condimentum sagittis sem. Praesent porttitor porttitor risus, dapibus rutrum ipsum gravida et. Integer lectus nisi, facilisis sit.'
   },
   {
