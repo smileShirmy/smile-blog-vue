@@ -1,10 +1,6 @@
 <template>
   <div class="archive-container">
-    <div class="count-wrapper">
-      <i class="icon icon-tag"></i>
-      <span class="article-count">10 posts</span>
-      <div class="split"></div>
-    </div>
+    <split-line :icon="'tag'" :desc="'10 posts'"></split-line>
     <div class="year-wrapper" v-for="year in archiveList" :key="year.year">
       <div class="year-name">{{year.year}}</div>
       <dl class="month-wrapper" v-for="month in year.monthList" :key="month.month">
@@ -20,6 +16,8 @@
 </template>
 
 <script>
+import SplitLine from '@/components/split-line/split-line'
+
 const monthMap = {
   1: 'January',
   2: 'February',
@@ -84,6 +82,10 @@ const archiveList = [
 ]
 
 export default {
+  components: {
+    SplitLine
+  },
+
   data() {
     return {
       archiveList
@@ -100,6 +102,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/common/scss/variable.scss';
+@import '@/common/scss/mixin.scss';
 
 @mixin margin {
   margin-top: .5em;
@@ -112,43 +115,8 @@ export default {
 }
 
 .archive-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  z-index: $--index-normal;
-  box-sizing: border-box;
+  @include container;
   animation: slideTop .6s ease-in-out;
-
-  @media (max-width: 1399px) {
-    padding: 0 85px;
-  }
-
-  @media (max-width: 479px) {
-    padding: 0 15px;
-  }
-}
-
-.count-wrapper {
-  display: flex;
-  align-items: center;
-
-  .icon-tag {
-    font-size: $--title-font-size-base;
-  }
-
-  .article-count {
-    font-size: 13px;
-    font-weight: 700;
-    padding: 0 10px 0 5px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .split {
-    flex: 1;
-    height: 1px;
-    background-color: $--border-color;
-  }
 }
 
 .year-wrapper {

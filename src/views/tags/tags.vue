@@ -66,23 +66,8 @@ export default {
 @import "@/common/scss/animation.scss";
 
 .tag-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  z-index: $--index-normal;
-  box-sizing: border-box;
+  @include container;
   animation: slideTop .6s ease-in-out;
-
-  @media (max-width: 1399px) {
-    padding: 0 85px;
-  }
-
-  @media (max-width: 1023px) {
-  }
-
-  @media (max-width: 479px) {
-    padding: 0 15px;
-  }
 }
 
 .tag-list {
