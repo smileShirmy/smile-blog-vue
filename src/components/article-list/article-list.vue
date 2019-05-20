@@ -57,6 +57,14 @@ const articleList = [
     author: 'author4',
     time: '2018-5-16'
   },
+  {
+    id: 5,
+    tag: 'tag4',
+    title: 'title4',
+    content: 'content4',
+    author: 'author4',
+    time: '2018-5-16'
+  },
 ]
 
 export default {
@@ -236,7 +244,7 @@ export default {
 .article-image {
   width: 420px;
   min-width: 420px;
-  height: 460px;
+  height: 430px;
   border-radius: 2px;
   background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
   background-size: cover;

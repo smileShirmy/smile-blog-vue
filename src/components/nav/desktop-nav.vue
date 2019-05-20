@@ -18,12 +18,6 @@ export default {
     navList: Array
   },
 
-  watch: {
-    $route(old, val) {
-      console.log(old, val)
-    }
-  },
-  
   methods: {
     showSearch() {
       this.setShowSearch(true)

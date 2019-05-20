@@ -43,12 +43,15 @@ export default {};
   box-sizing: border-box;
 
   .card-image {
-    @include cover;
     width: calc(50% - 45px);
     height: 100%;
     border-radius: 5px;
     background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
     background-size: cover;
+
+    @media (max-width: 1023px) {
+      @include cover;
+    }
   }
 
   .feature-wrapper {
