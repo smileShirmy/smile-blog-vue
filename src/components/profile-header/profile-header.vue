@@ -4,7 +4,7 @@
       <slot name="header"></slot>
       <h1 class="title">{{name}}</h1>
       <slot name="info"></slot>
-      <p class="desc">{{desc}}</p>
+      <p v-if="desc" class="desc">{{desc}}</p>
     </div>
   </header>
 </template>

@@ -59,5 +59,4 @@ export default {
 .slide-leave-to {
   transform: translateX(100%);
 }
-
 </style>
