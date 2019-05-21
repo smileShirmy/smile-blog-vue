@@ -155,17 +155,17 @@ export default {
     @media (max-width: 479px) {
       margin: 0 10px 0 0;
     }
-  }
-    
-  &:before {
-    content: '';
-    position: absolute;
-    top: 9px;
-    left: -18px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: $--font-color-primary;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: -18px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: $--font-color-primary;
+    }
   }
 
   .title {
