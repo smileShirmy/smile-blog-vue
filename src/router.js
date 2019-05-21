@@ -8,6 +8,7 @@ const Archive = () => import('@/views/archive/archive')
 const Tags = () => import('@/views/tags/tags')
 const TagDetail = () => import('@/views/tags/tag-detail')
 const About = () => import('@/views/about/about')
+const Profile = () => import('@/views/about/profile')
 const Messages = () => import('@/views/messages/messages')
 
 export default new Router({
@@ -36,6 +37,10 @@ export default new Router({
     {
       path: '/about',
       component: About
+    },
+    {
+      path: '/about/:id',
+      component: Profile
     },
     {
       path: '/messages',

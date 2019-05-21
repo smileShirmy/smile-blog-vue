@@ -257,7 +257,7 @@ export default {
   border-radius: 2px;
   background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
   background-size: cover;
-  box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
+  // box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
   animation: slideTop .7s ease-in-out both;
 
   @media (min-width: 1024px) and (max-width: 1399px) {

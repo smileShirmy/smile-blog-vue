@@ -1,15 +1,13 @@
 <template>
   <div class="tags-detail-container">
-    <header class="tag-header">
-      <div class="tag-content">
-        <h1 class="title">Poetry</h1>
+    <profile-header :name="name" :desc="desc" :coverUrl="coverUrl">
+      <template v-slot:info>
         <div class="posts-number">
           <i class="icon icon-post"></i>
           <span>10 posts</span>
         </div>
-        <p class="desc">Enean malesuada imperdiet orci nec euismod. Vivamus posuere sapien ac congue posuere. Sed ut mattis massa. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-      </div>
-    </header>
+      </template>
+    </profile-header>
     <article class="article-list">
       <article-list></article-list>
     </article>
@@ -18,87 +16,42 @@
 
 <script>
 import ArticleList from '@/components/article-list/article-list'
+import ProfileHeader from '@/components/profile-header/profile-header'
 
 export default {
   components: {
-    ArticleList
+    ArticleList,
+    ProfileHeader
+  },
+
+  data() {
+    return {
+      name: 'JavaScript',
+      desc: 'Enean malesuada imperdiet orci nec euismod. Vivamus posuere sapien ac congue posuere. Sed ut mattis massa. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
+      coverUrl: '../../common/image/lighthouse.jpeg'
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/common/scss/variable.scss';
-@import '@/common/scss/mixin.scss';
 
-.tag-header {
-  @include cover;
-  width: calc(100% - 85px - 85px);
-  height: 100%;
+.posts-number {
+  display: flex;
+  align-items: center;
   margin: 0 auto;
-  padding: 10vh 5% 17vh;
-  color: #fff;
-  font-weight: $--font-weight-bold;
-  border-radius: 5px;
-  background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
-  background-size: cover;
-  box-sizing: border-box;
 
-  @media (max-width: 1399px) {
-    width: 100%;
-    border-radius: 0;
+  .icon-post {
+    font-size: $--title-font-size-base;
   }
 
-  .tag-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .title {
-      margin: 5px 0 25px;
-      font-size: $--title-font-size-maximum;
-      text-align: center;
-
-      @media (max-width: 1023px) {
-        font-size: $--title-font-size-extra-large;
-      }
-
-      @media (max-width: 479px) {
-        margin: 3px 0 15px;
-        font-size: $--title-font-size-medium;
-      }
-    }
-
-    .posts-number {
-      display: flex;
-      align-items: center;
-      margin: 0 auto;
-
-      .icon-post {
-        font-size: $--title-font-size-base;
-      }
-
-      span {
-        font-size: $--font-size-small;
-        font-weight: $--font-weight-bold;
-        padding-left: 5px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-      }
-    }
-
-    .desc {
-      max-width: 750px;
-      margin: 3vh auto 0;
-      padding: 0 50px;
-      font-size: $--title-font-size-base;
-      text-align: center;
-
-      @media (max-width: 479px) {
-        padding: 0 15px;
-        font-size: $--font-size-medium;
-      }
-    }
+  span {
+    font-size: $--font-size-small;
+    font-weight: $--font-weight-bold;
+    padding-left: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
 }
 

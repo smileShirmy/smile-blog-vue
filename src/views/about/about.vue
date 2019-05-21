@@ -1,13 +1,29 @@
 <template>
   <div class="about-container">
-    <split-line :icon="'about'" :desc="'我们'"></split-line>
+    <split-line
+      :icon="'about'"
+      :desc="'我们'"
+    ></split-line>
     <ul class="author-list">
-      <li class="author-item" v-for="author in authorList" :key="author.id">
+      <li
+        class="author-item"
+        v-for="author in authorList"
+        :key="author.id"
+        @click="showProfile(author.id)"
+      >
         <div class="author-avatar"></div>
         <div class="author-info-wrapper">
           <h2 class="author-name">{{author.name}}</h2>
-          <div v-if="author.social" class="social-wrapper">
-            <a v-for="social in author.social" :key="social.type" :class="'social-item icon icon-' + social.type"></a>
+          <div
+            v-if="author.social"
+            class="social-wrapper"
+          >
+            <a
+              v-for="social in author.social"
+              :key="social.type"
+              :class="'social-item icon icon-' + social.type"
+              @click.stop="showSocial(social.type)"
+            ></a>
           </div>
           <div class="author-social"></div>
           <p class="author-desc">{{author.desc}}</p>
@@ -87,6 +103,18 @@ export default {
     return {
       authorList
     }
+  },
+
+  methods: {
+    showProfile(id) {
+      this.$router.push({
+        path: `/about/${id}`
+      })
+    },
+
+    showSocial(type) {
+      console.log(type)
+    }
   }
 }
 </script>
@@ -143,6 +171,8 @@ export default {
         .social-item {
           font-size: $--title-font-size-base;
           margin-right: 20px;
+          transition: color .25s ease-in-out;
+          cursor: pointer;
 
           &:last-child {
             margin-right: 0;
