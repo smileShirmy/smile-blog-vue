@@ -56,7 +56,6 @@ export default {
 
     hide() {
       this.isShowMobileNav = false
-      this.setShowSearch(false);
     },
 
     ...mapMutations({
