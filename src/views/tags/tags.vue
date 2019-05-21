@@ -1,14 +1,16 @@
 <template>
   <div class="tag-container">
-    <split-line :icon="'cloud'" :desc="'标签云'"></split-line>
-    <div>标签云</div>
+    <split-line :icon="'cloud'" :desc="'标签'"></split-line>
+    <div class="tag-wrapper">
+      <tag-list :tagList="tagList"></tag-list>
+    </div>
     <split-line :icon="'tag'" :desc="'分类'"></split-line>
-    <ul class="tag-list">
-      <router-link tag="li" class="tag-item" v-for="tag in tagList" :key="tag.id" :to="'/tags/' + tag.id">
-        <div class="tag-wrapper">
-          <div class="tag-image"></div>
-          <h2 class="title" :class="{center: !tag.desc}">{{tag.name}}</h2>
-          <p v-if="tag.desc" class="desc">{{tag.desc}}</p>
+    <ul class="category-list">
+      <router-link tag="li" class="category-item" v-for="category in categories" :key="category.id" :to="'/tags/' + category.id">
+        <div class="category-wrapper">
+          <div class="category-image"></div>
+          <h2 class="title" :class="{center: !category.desc}">{{category.name}}</h2>
+          <p v-if="category.desc" class="desc">{{category.desc}}</p>
         </div>
       </router-link>
     </ul>
@@ -17,8 +19,9 @@
 
 <script>
 import SplitLine from '@/components/split-line/split-line'
+import TagList from '@/components/tag-list/tag-list'
 
-const tagList = [
+const categories = [
   {
     id: 1,
     name: 'Poetry',
@@ -56,13 +59,38 @@ const tagList = [
   },
 ]
 
+const tagList = [
+  {
+    id: 1,
+    name: 'tag1'
+  },
+  {
+    id: 2,
+    name: 'tag1'
+  },
+  {
+    id: 3,
+    name: 'tag1'
+  },
+  {
+    id: 4,
+    name: 'tag1'
+  },
+  {
+    id: 5,
+    name: 'tag1'
+  },
+]
+
 export default {
   components: {
-    SplitLine
+    SplitLine,
+    TagList
   },
 
   data() {
     return {
+      categories,
       tagList
     }
   }
@@ -79,13 +107,17 @@ export default {
   animation: slideTop .6s ease-in-out;
 }
 
-.tag-list {
+.tag-wrapper {
+  margin: 10px 0;
+}
+
+.category-list {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   margin: 0 -15px;
 
-  .tag-item {
+  .category-item {
     flex: 1 auto;
     position: relative;
     margin: 15px;
@@ -104,14 +136,14 @@ export default {
   }
 }
 
-.tag-wrapper {
+.category-wrapper {
   position: relative;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   color: #fff;
 
-  .tag-image {
+  .category-image {
     @include cover;
     position: absolute;
     top: 0;

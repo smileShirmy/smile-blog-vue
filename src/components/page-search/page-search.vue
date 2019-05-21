@@ -16,7 +16,7 @@
         </ul>
         <dl class="suggestion-wrapper">
           <dd class="suggestion-item">
-            <tag-list :title="'标签'" :tagList="tagList"></tag-list>
+            <tag-list :title="'分类'" :tagList="categories"></tag-list>
           </dd>
           <dd class="suggestion-item">
             <tag-list :title="'作者'" :tagList="authorList"></tag-list>
@@ -34,7 +34,7 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import TagList from './tag-list'
+import TagList from '@/components/tag-list/tag-list'
 import SwitchTheme from '@/components/switch-theme/switch-theme'
 
 const resultList = [
@@ -55,7 +55,7 @@ const resultList = [
   },
 ]
 
-const tagList = [
+const categories = [
   {
     id: 1,
     name: 'JavaScript',
@@ -98,7 +98,7 @@ export default {
   data() {
     return {
       resultList,
-      tagList,
+      categories,
       authorList,
     }
   },

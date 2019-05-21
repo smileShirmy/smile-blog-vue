@@ -1,6 +1,6 @@
 <template>
   <section class="section-tag">
-    <h5 class="tag-title">{{title}}</h5>
+    <h5 v-if="title" class="tag-title">{{title}}</h5>
     <ul class="tag-list">
       <li class="tag-item" v-for="(tag, index) in tagList" :key="index">{{tag.name}}</li>
     </ul>
@@ -37,11 +37,12 @@ export default {
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
+  margin: 0 -5px;
 
   .tag-item {
     display: inline-block;
     padding: 5px 12px;
-    margin: 10px 10px 0 0;
+    margin: 5px;
     font-size: $--font-size-minimum;
     font-weight: $--font-weight-bold;
     letter-spacing: 1.5px;

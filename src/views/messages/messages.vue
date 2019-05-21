@@ -95,6 +95,7 @@ export default {
 
 .messages-container {
   @include container;
+  animation: slideTop .6s ease-in-out;
 }
 
 .messages-wrapper {
@@ -111,7 +112,6 @@ export default {
     padding: 1em;
     background-color: $--tag-color;
     transition: all .25s ease-in-out;
-    animation: slideTop .6s ease-in-out;
 
     &:hover {
       transform: translateY(-4px);
