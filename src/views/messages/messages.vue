@@ -46,7 +46,7 @@ const messageList = [
   {
     id: 5,
     author: 'author1',
-    content: 'content1',
+    content: 'content1content1content1content1content1content1content1content1content1content1',
     time: '2019.01.01 23:33'
   },
   {
@@ -54,7 +54,25 @@ const messageList = [
     author: 'author1',
     content: 'content1',
     time: '2019.01.01 23:33'
-  }
+  },
+  {
+    id: 7,
+    author: 'author1',
+    content: 'content1',
+    time: '2019.01.01 23:33'
+  },
+  {
+    id: 8,
+    author: 'author1',
+    content: 'content1',
+    time: '2019.01.01 23:33'
+  },
+  {
+    id: 9,
+    author: 'author1',
+    content: 'content1',
+    time: '2019.01.01 23:33'
+  },
 ]
 
 export default {
@@ -93,7 +111,7 @@ export default {
     padding: 1em;
     background-color: $--tag-color;
     transition: all .25s ease-in-out;
-    animation: slideTop .7s ease-in-out;
+    animation: slideTop .6s ease-in-out;
 
     &:hover {
       transform: translateY(-4px);

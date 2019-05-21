@@ -205,7 +205,7 @@ export default {
     border-style: solid;
     border-color: $--border-color;
     background-color: $--app-background-color;
-    transition: none;
+    transition: border .25s ease-in-out;
 
     &:focus {
       border-bottom-color: $--theme-active;

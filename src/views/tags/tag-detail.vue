@@ -4,7 +4,7 @@
       <div class="tag-content">
         <h1 class="title">Poetry</h1>
         <div class="posts-number">
-          <i class="icon icon-tag"></i>
+          <i class="icon icon-post"></i>
           <span>10 posts</span>
         </div>
         <p class="desc">Enean malesuada imperdiet orci nec euismod. Vivamus posuere sapien ac congue posuere. Sed ut mattis massa. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
@@ -74,7 +74,7 @@ export default {
       align-items: center;
       margin: 0 auto;
 
-      .icon-tag {
+      .icon-post {
         font-size: $--title-font-size-base;
       }
 

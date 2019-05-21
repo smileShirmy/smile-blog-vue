@@ -1,5 +1,8 @@
 <template>
   <div class="tag-container">
+    <split-line :icon="'cloud'" :desc="'标签云'"></split-line>
+    <div>标签云</div>
+    <split-line :icon="'tag'" :desc="'分类'"></split-line>
     <ul class="tag-list">
       <router-link tag="li" class="tag-item" v-for="tag in tagList" :key="tag.id" :to="'/tags/' + tag.id">
         <div class="tag-wrapper">
@@ -13,6 +16,8 @@
 </template>
 
 <script>
+import SplitLine from '@/components/split-line/split-line'
+
 const tagList = [
   {
     id: 1,
@@ -52,6 +57,10 @@ const tagList = [
 ]
 
 export default {
+  components: {
+    SplitLine
+  },
+
   data() {
     return {
       tagList

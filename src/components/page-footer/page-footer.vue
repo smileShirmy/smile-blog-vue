@@ -132,7 +132,7 @@ export default {
       }
 
       .icon {
-        font-size: $--font-size-extra-large;
+        font-size: $--title-font-size-base;
 
         &:hover {
           color: $--theme-active;

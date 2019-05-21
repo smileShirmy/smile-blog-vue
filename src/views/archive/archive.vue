@@ -1,6 +1,6 @@
 <template>
   <div class="archive-container">
-    <split-line :icon="'tag'" :desc="'10 posts'"></split-line>
+    <split-line :icon="'post'" :desc="'10 posts'"></split-line>
     <div class="year-wrapper" v-for="year in archiveList" :key="year.year">
       <div class="year-name">{{year.year}}</div>
       <dl class="month-wrapper" v-for="month in year.monthList" :key="month.month">
@@ -103,6 +103,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/common/scss/variable.scss';
 @import '@/common/scss/mixin.scss';
+@import '@/common/scss/animation.scss';
 
 @mixin margin {
   margin-top: .5em;
@@ -110,7 +111,7 @@ export default {
 
   @media (max-width: 479px) {
     margin-top: .3em;
-    margin-left: 1em;
+    margin-left: 0;
   }
 }
 
@@ -150,17 +151,21 @@ export default {
     position: relative;
     margin: 0 14px;
     white-space: nowrap;
-    
-    &:before {
-      content: '';
-      position: absolute;
-      top: 9px;
-      left: -18px;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: $--font-color-primary;
+
+    @media (max-width: 479px) {
+      margin: 0 10px 0 0;
     }
+  }
+    
+  &:before {
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: -18px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: $--font-color-primary;
   }
 
   .title {
@@ -178,6 +183,10 @@ export default {
     opacity: 0;
     transform: translate(0);
     transition: all .25s ease-in-out;
+
+    @media (max-width: 479px) {
+      margin: -3px 0 0 10px;
+    }
   }
 
   &:hover {
