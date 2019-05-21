@@ -75,6 +75,7 @@ export default {
   z-index: $--index-normal;
 
   .footer-wrapper {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
