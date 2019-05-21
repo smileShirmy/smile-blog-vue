@@ -1,5 +1,5 @@
 <template>
-  <nav class="mobile-nav-container">
+  <nav class="mobile-nav-container" v-click-outside="hide">
     <div class="search-wrapper" @click="showSearch">
       <i class="icon icon-search"></i>
     </div>
@@ -17,7 +17,13 @@
         </div>
         <ul class="nav-list">
           <li class="nav-list-item" v-for="(item, index) in navList" :key="index">
-            <router-link active-class="nav-active" class="nav-link" tag="a" :to="item.link" @click.native="isShowMobileNav = false">
+            <router-link
+              active-class="nav-active"
+              class="nav-link"
+              tag="a"
+              :to="item.link"
+              @click.native="isShowMobileNav = false"
+            >
               {{item.name}}
               <span class="nav-dot"></span>
             </router-link>
@@ -29,7 +35,8 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations } from "vuex";
+import ClickOutside from "@/common/js/click-outside";
 
 export default {
   props: {
@@ -44,12 +51,23 @@ export default {
 
   methods: {
     showSearch() {
-      this.setShowSearch(true)
+      this.setShowSearch(true);
+    },
+
+    hide() {
+      this.isShowMobileNav = false
+      this.setShowSearch(false);
     },
 
     ...mapMutations({
-      setShowSearch: 'SET_SHOW_SEARCH'
+      setShowSearch: "SET_SHOW_SEARCH"
     })
+  },
+
+  mounted() {},
+
+  directives: {
+    ClickOutside
   }
 };
 </script>
