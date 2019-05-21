@@ -156,15 +156,17 @@ export default {
       margin: 0 10px 0 0;
     }
 
-    &:before {
-      content: '';
-      position: absolute;
-      top: 9px;
-      left: -18px;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: $--font-color-primary;
+    @media (min-width: 480px) {
+      &:before {
+        content: '';
+        position: absolute;
+        top: 9px;
+        left: -18px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: $--font-color-primary;
+      }
     }
   }
 
