@@ -201,7 +201,7 @@ export default {};
   .card-container {
 
     .feature-content {
-      padding: 30px 38px;
+      padding: 30px 15px;
     }
   }
 
