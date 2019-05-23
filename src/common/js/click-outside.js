@@ -58,6 +58,7 @@ exports = module.exports = {
       callback: binding.value
     }
     !isServer(vNode) && document.addEventListener('click', handler)
+    !isServer(vNode) && document.addEventListener('touchstart', handler)
   },
 
   update: function (el, binding) {
@@ -67,6 +68,7 @@ exports = module.exports = {
   unbind: function (el, binding, vNode) {
     // Remove Event Listeners
     !isServer(vNode) && document.removeEventListener('click', el.__vueClickOutside__.handler)
+    !isServer(vNode) && document.removeEventListener('touchstart', el.__vueClickOutside__.handler)
     delete el.__vueClickOutside__
   }
 }
