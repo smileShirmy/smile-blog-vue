@@ -157,6 +157,7 @@ export default {
   padding: 140px 5% 30px;
   box-sizing: border-box;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 
   @media (max-width: 767px) {
     width: 100%;
