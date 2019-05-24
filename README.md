@@ -39,6 +39,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 实际上，本项目用不着`Vuex`，只是强行为了用而用，其实更好的解决方案是使用[Store 模式](https://cn.vuejs.org/v2/guide/state-management.html#%E7%AE%80%E5%8D%95%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E8%B5%B7%E6%AD%A5%E4%BD%BF%E7%94%A8)
 
+## 设计
+
+
+
 ## 规范
 
 ### CSS

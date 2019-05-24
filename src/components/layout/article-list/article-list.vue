@@ -17,7 +17,7 @@
           </footer>
         </article>
         <div class="split"></div>
-        <div class="article-image"></div>
+        <img class="article-image" src="http://resource.shirmy.me/lighthouse.jpeg"/>
       </li>
       <div class="load-more" @click="loadMore"></div>
     </ul>
@@ -29,16 +29,16 @@ const articleList = [
   {
     id: 1,
     tag: 'JavaScript',
-    title: '前端性能优化 —— 项目瘦身',
-    content: `在我们的日常开发中，我们经常需要引入各种各样的第三方模块来帮助我们提升开发速度。但是有时候这些模块里面又包含了许多我们用不到的模块，在打包的时候又一并打包进去了，这就造成了没必要的带宽浪费。这里以Vue项目为例。`,
+    title: '标题',
+    content: `这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容`,
     author: 'smile',
     time: '2018-5-16'
   },
   {
     id: 2,
     tag: 'tag2',
-    title: '前端性能优化 —— 项目瘦身',
-    content: `在我们的日常开发中，我们经常需要引入各种各样的第三方模块来帮助我们提升开发速度。但是有时候这些模块里面又包含了许多我们用不到的模块，在打包的时候又一并打包进去了，这就造成了没必要的带宽浪费。这里以Vue项目为例。`,
+    title: '标题',
+    content: `这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容`,
     author: 'qiushiming',
     time: '2018-5-16'
   },
@@ -112,7 +112,7 @@ export default {
 
 .article-list-wrapper {
   box-sizing: border-box;
-  padding: 75px;
+  padding: 60px;
   background-color: #fff;
   border-radius: 5px;
   background-color: $--app-background-color-light;
@@ -133,22 +133,9 @@ export default {
     position: relative;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    right: -110px;
+    align-items: flex-start;
     margin-bottom: 60px;
-    text-align: right;
-
-    &:nth-child(2n) {
-      flex-direction: row-reverse;
-      right: auto;
-      left: -110px;
-      text-align: left;
-    }
-
-    @media (max-width: 1399px) {
-      right: -50px;
-      width: calc(100% + 60px);
-    }
+    text-align: left;
 
     @media (max-width: 1023px) {
       flex-direction: column-reverse;
@@ -253,11 +240,10 @@ export default {
 .article-image {
   width: 420px;
   min-width: 420px;
-  height: 430px;
   border-radius: 2px;
-  background: url(../../../common/image/lighthouse.jpeg) no-repeat center center;
   background-size: cover;
-  // box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
+  box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
+  cursor: pointer;
   animation: slideTop .7s ease-in-out both;
 
   @media (min-width: 1024px) and (max-width: 1399px) {
@@ -268,18 +254,12 @@ export default {
   @media (max-width: 1023px) {
     width: 100%;
     min-width: auto;
-    height: 400px;
     margin-bottom: 30px;
     box-shadow: none;
   }
   
   @media (max-width: 767px) {
-    height: 300px;
     margin-bottom: 20px;
-  }
-
-  @media (max-width: 479px) {
-    height: 250px;
   }
 }
 
