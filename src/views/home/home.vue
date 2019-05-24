@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import Carousel from '@/components/carousel/carousel'
-import CarouselItem from '@/components/carousel/carousel-item'
-import CarouselCard from '@/components/carousel-card/carousel-card'
-import ArticleList from '@/components/article-list/article-list'
+import Carousel from '@/components/base/carousel/carousel'
+import CarouselItem from '@/components/base/carousel/carousel-item'
+import CarouselCard from '@/components/layout/carousel-card/carousel-card'
+import ArticleList from '@/components/layout/article-list/article-list'
 
 export default {
   components: {

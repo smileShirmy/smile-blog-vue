@@ -46,7 +46,7 @@ export default {};
     width: calc(50% - 45px);
     height: 100%;
     border-radius: 5px;
-    background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
+    background: url(../../../common/image/lighthouse.jpeg) no-repeat center center;
     background-size: cover;
 
     @media (max-width: 1023px) {

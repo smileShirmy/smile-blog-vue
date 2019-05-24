@@ -34,8 +34,8 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import TagList from '@/components/tag-list/tag-list'
-import SwitchTheme from '@/components/switch-theme/switch-theme'
+import TagList from '@/components/base/tag-list/tag-list'
+import SwitchTheme from '@/components/base/switch-theme/switch-theme'
 
 const resultList = [
   {
@@ -141,7 +141,7 @@ export default {
 .search-image {
   width: 40%;
   height: 100%;
-  background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
+  background: url(../../../common/image/lighthouse.jpeg) no-repeat center center;
   background-size: cover;
 
   @media (max-width: 767px) {

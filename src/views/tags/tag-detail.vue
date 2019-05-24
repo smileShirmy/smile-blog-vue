@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import ArticleList from '@/components/article-list/article-list'
-import ProfileHeader from '@/components/profile-header/profile-header'
+import ArticleList from '@/components/layout/article-list/article-list'
+import ProfileHeader from '@/components/layout/profile-header/profile-header'
 
 export default {
   components: {

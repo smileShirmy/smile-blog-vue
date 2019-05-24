@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import DesktopNav from "@/components/nav/desktop-nav"
-import MobileNav from "@/components/nav/mobile-nav"
-import SwitchTheme from '@/components/switch-theme/switch-theme'
+import DesktopNav from "@/components/base/nav/desktop-nav"
+import MobileNav from "@/components/base/nav/mobile-nav"
+import SwitchTheme from '@/components/base/switch-theme/switch-theme'
 
 const navList = [
   {

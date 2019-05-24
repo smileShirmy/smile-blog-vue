@@ -255,7 +255,7 @@ export default {
   min-width: 420px;
   height: 430px;
   border-radius: 2px;
-  background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
+  background: url(../../../common/image/lighthouse.jpeg) no-repeat center center;
   background-size: cover;
   // box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
   animation: slideTop .7s ease-in-out both;

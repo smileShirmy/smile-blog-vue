@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import SplitLine from '@/components/split-line/split-line'
-import TagList from '@/components/tag-list/tag-list'
+import SplitLine from '@/components/base/split-line/split-line'
+import TagList from '@/components/base/tag-list/tag-list'
 
 const categories = [
   {

@@ -13,9 +13,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import PageHeader from '@/components/page-header/page-header'
-import PageFooter from '@/components/page-footer/page-footer'
-import PageSearch from '@/components/page-search/page-search'
+import PageHeader from '@/components/layout/page-header/page-header'
+import PageFooter from '@/components/layout/page-footer/page-footer'
+import PageSearch from '@/components/layout/page-search/page-search'
 
 export default {
   components: {

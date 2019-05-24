@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import SwitchTheme from '@/components/switch-theme/switch-theme'
-import DesktopNav from '@/components/nav/desktop-nav'
+import SwitchTheme from '@/components/base/switch-theme/switch-theme'
+import DesktopNav from '@/components/base/nav/desktop-nav'
 
 const navList = [
   {

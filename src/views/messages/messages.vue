@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import SplitLine from '@/components/split-line/split-line';
+import SplitLine from '@/components/base/split-line/split-line';
 
 const messageList = [
   {
