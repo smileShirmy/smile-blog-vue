@@ -1,5 +1,7 @@
 # vue-blog
 
+[![Build Status](https://www.travis-ci.org/smileShirmy/vue-blog.svg?branch=develop)](https://www.travis-ci.org/smileShirmy/vue-blog)
+
 ## Project setup
 ```
 npm install
