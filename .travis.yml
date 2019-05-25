@@ -17,10 +17,7 @@ before_install:
 - chmod 600 ~/.ssh/deploy_rsa
 - ssh-add ~/.ssh/deploy_rsa
 after_success:
-- ssh "$DEPLOY_USER"@"$DEPLOY_HOST" -o StrictHostKeyChecking=no
-- ls
-# - ssh "$DEPLOY_USER"@"$DEPLOY_HOST" -o StrictHostKeyChecking=no 'cd /usr/local/nginx/html && git pull && npm install && npm build'
-# - rsync -rav dist/* "$DEPLOY_USER"@"$DEPLOY_HOST":/usr/local/nginx/html
+- ssh "$DEPLOY_USER"@"$DEPLOY_HOST" -o StrictHostKeyChecking=no 'cd /data/vue-blog && git pull && bash ./script/deploy.sh'
 # notifications:
 #   email:
 #     recipients:
