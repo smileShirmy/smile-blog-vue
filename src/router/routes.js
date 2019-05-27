@@ -6,6 +6,7 @@ const About = () => import('@/views/about/about')
 const Profile = () => import('@/views/about/profile')
 const Messages = () => import('@/views/messages/messages')
 const ErrorPage = () => import('@/views/error-page/404')
+const ArticleDetail = () => import('@/views/article-detail/article-detail')
 
 const routes = [{
     path: '/',
@@ -38,6 +39,10 @@ const routes = [{
   {
     path: '/messages',
     component: Messages
+  },
+  {
+    path: '/article/:id',
+    component: ArticleDetail
   },
   {
     path: '*',

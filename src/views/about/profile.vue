@@ -1,6 +1,6 @@
 <template>
   <div class="profile-container">
-    <profile-header :name="author.name" :desc="author.desc">
+    <detail-header :name="author.name" :desc="author.desc">
       <template v-slot:header>
         <div class="avatar"></div>
       </template>
@@ -14,7 +14,7 @@
           ></a>
         </div>
       </template>
-    </profile-header>
+    </detail-header>
     <article class="article-list">
       <article-list></article-list>
     </article>
@@ -22,12 +22,12 @@
 </template>
 
 <script>
-import ProfileHeader from "@/components/layout/profile-header/profile-header";
+import DetailHeader from "@/components/layout/detail-header/detail-header";
 import ArticleList from "@/components/layout/article-list/article-list";
 
 export default {
   components: {
-    ProfileHeader,
+    DetailHeader,
     ArticleList
   },
 

@@ -1,13 +1,13 @@
 <template>
   <div class="tags-detail-container">
-    <profile-header :name="name" :desc="desc" :coverUrl="coverUrl">
+    <detail-header :name="name" :desc="desc" :coverUrl="coverUrl">
       <template v-slot:info>
         <div class="posts-number">
           <i class="icon icon-post"></i>
           <span>10 posts</span>
         </div>
       </template>
-    </profile-header>
+    </detail-header>
     <article class="article-list">
       <article-list></article-list>
     </article>
@@ -16,19 +16,19 @@
 
 <script>
 import ArticleList from '@/components/layout/article-list/article-list'
-import ProfileHeader from '@/components/layout/profile-header/profile-header'
+import DetailHeader from '@/components/layout/detail-header/detail-header'
 
 export default {
   components: {
     ArticleList,
-    ProfileHeader
+    DetailHeader
   },
 
   data() {
     return {
       name: 'JavaScript',
       desc: 'Enean malesuada imperdiet orci nec euismod. Vivamus posuere sapien ac congue posuere. Sed ut mattis massa. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
-      coverUrl: '../../common/image/lighthouse.jpeg'
+      coverUrl: 'http://resource.shirmy.me/lighthouse.jpeg'
     }
   }
 }

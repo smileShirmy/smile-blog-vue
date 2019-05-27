@@ -7,7 +7,7 @@
         <dt class="month-name">{{month.month | monthTrans}}</dt>
         <dd class="article-item" v-for="article in month.articleList" :key="article.id">
           <span class="time">{{article.time}}</span>
-          <span class="title">{{article.title}}</span>
+          <router-link class="title" :to="'/article/' + article.id">{{article.title}}</router-link>
           <i class="avatar"></i>
         </dd>
       </dl>

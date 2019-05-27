@@ -4,7 +4,11 @@
       <li class="article-item" v-for="article in articleList" :key="article.id">
         <article class="article-wrapper">
           <a class="tag">{{article.tag}}</a>
-          <h1 class="title">{{article.title}}</h1>
+          <h1 class="title">
+            <router-link :to="'/article/' + article.id" class="article-link">
+              {{article.title}}<span class="hover-dot"></span>
+            </router-link>
+          </h1>
           <p class="content">{{article.content}}</p>
           <footer class="footer">
             <div class="author-wrapper">
@@ -167,7 +171,7 @@ export default {
   }
 
   .title {
-    margin: 0;
+    margin: 10px 0 0;
     font-weight: $--font-weight-bold;
     color: $--font-color-dark;
 
@@ -182,6 +186,26 @@ export default {
     @media (max-width: 767px) {
       font-size: $--title-font-size-small;
     }
+
+    .article-link {
+      position: relative;
+      cursor: pointer;
+
+      &:hover .hover-dot {
+        background-color: $--theme-active;
+      }
+
+      .hover-dot {
+        position: absolute;
+        top: 0;
+        right: -10px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        transition: all 0.25s ease;
+      }
+    }
+
   }
 
   .content {

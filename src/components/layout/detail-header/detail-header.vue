@@ -1,6 +1,6 @@
 <template>
-  <header class="profile-header" :style="{backgroundImage: coverUrl}" :class="coverUrl ? 'is-cover' : ''">
-    <div class="profile-content">
+  <header class="detail-header" :style="coverImage" :class="coverUrl ? 'is-cover' : ''">
+    <div class="detail-content">
       <slot name="header"></slot>
       <h1 class="title">{{name}}</h1>
       <slot name="info"></slot>
@@ -15,6 +15,13 @@ export default {
     name: String,
     desc: String,
     coverUrl: String
+  },
+  computed: {
+    coverImage() {
+      return {
+        backgroundImage: `url(${this.coverUrl})`
+      }
+    }
   }
 }
 </script>
@@ -28,7 +35,7 @@ export default {
   @include cover;
 }
 
-.profile-header {
+.detail-header {
   width: calc(100% - 85px - 85px);
   height: 100%;
   margin: 0 auto;
@@ -44,7 +51,7 @@ export default {
     border-radius: 0;
   }
 
-  .profile-content {
+  .detail-content {
     position: relative;
     display: flex;
     flex-direction: column;

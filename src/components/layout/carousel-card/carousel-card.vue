@@ -5,12 +5,12 @@
       <article class="feature-content">
         <div class="feature-tag">JavaScript</div>
         <h2 class="feature-text">
-          <a>
+          <router-link :to="'/article/' + id">
             I think it's the responsibility of a designer to try to break rules and barriers
             <span
               class="feature-dot"
             ></span>
-          </a>
+          </router-link>
         </h2>
         <span class="feature-author">
           by&nbsp;
@@ -27,7 +27,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      id: 1,
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
