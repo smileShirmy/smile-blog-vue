@@ -1,4 +1,3 @@
-
 const Home = () => import('@/views/home/home')
 const Archive = () => import('@/views/archive/archive')
 const Tags = () => import('@/views/tags/tags')
@@ -6,6 +5,7 @@ const TagDetail = () => import('@/views/tags/tag-detail')
 const About = () => import('@/views/about/about')
 const Profile = () => import('@/views/about/profile')
 const Messages = () => import('@/views/messages/messages')
+const ErrorPage = () => import('@/views/error-page/404')
 
 const routes = [{
     path: '/',
@@ -38,6 +38,10 @@ const routes = [{
   {
     path: '/messages',
     component: Messages
+  },
+  {
+    path: '*',
+    component: ErrorPage
   }
 ]
 

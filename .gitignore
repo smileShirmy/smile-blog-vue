@@ -20,5 +20,5 @@ yarn-error.log*
 *.sln
 *.sw?
 
-# build files
-build.sh
+# deploy shell
+deploy.sh
