@@ -20,7 +20,7 @@ highlight.registerLanguage('sql', require('highlight.js/lib/languages/sql'))
 highlight.registerLanguage('stylus', require('highlight.js/lib/languages/stylus'))
 
 highlight.configure({
-  classPrefix: ''     // 去掉 class 样式前缀
+  classPrefix: 'hljs-'     // class 样式前缀
 })
 
 module.exports = highlight

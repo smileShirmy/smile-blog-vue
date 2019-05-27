@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
-import 'highlight.js/styles/github.css';
+import 'highlight.js/styles/darkula.css';
+
 import '@/common/scss/index.scss'
 
 Vue.config.productionTip = false
