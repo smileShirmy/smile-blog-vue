@@ -11,29 +11,40 @@
       </div>
     </header>
     <div class="article-container">
-      <article class="article-content">
-        {{content}}
-      </article>
+      <article class="article-content article-markdown" v-html="marked(content)"></article>
     </div>
   </div>
 </template>
 
 <script>
+import markdown from '@/common/js/marked'
 
 export default {
   data() {
     return {
       title: '这是文章题目',
       coverUrl: 'http://resource.shirmy.me/lighthouse.jpeg',
-      content: 'content'
+      content: ''
     }
   },
+
   computed: {
     coverImage() {
       return {
         backgroundImage: `url(${this.coverUrl})`
       }
     }
+  },
+
+  methods: {
+    marked(content) {
+      return markdown(content)
+    }
+  },
+
+  // 测试
+  mounted() {
+    this.content = "# 标题\n# 内容\n```javascript\nfunction abc() {console.log(abc)}\n```"
   }
 }
 </script>
@@ -54,7 +65,7 @@ export default {
   }
 
   @media (max-width: 479px) {
-    padding: 10px 0;
+    padding: 10px 5px;
   }
 }
 
@@ -130,6 +141,7 @@ export default {
 
     @media (max-width: 479px) {
       box-shadow: none;
+      background-color: $--app-background-color;
     }
   }
 }

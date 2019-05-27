@@ -7,10 +7,11 @@
   $font-color-dark,
   $theme-active,
   $border-color,
-  $tag-color
+  $tag-color,
+  $code-bg
 ) {  
   --app-background-color: #{$theme-primary};
-  --app-background-color-light: #{lighten($theme-primary, 5%)};
+  --app-background-color-light: #{lighten($theme-primary, 3%)};
 
   --font-color-primary: #{$font-color};
   --font-color-article: #{$font-color-article};
@@ -22,6 +23,8 @@
   --border-color: #{$border-color};
 
   --tag-color: #{$tag-color};
+
+  --code-background: #{$code-bg};
 }
 
 
@@ -35,7 +38,8 @@ body {
       $font-color-dark: #161b3d,
       $theme-active: #2821fc,
       $border-color: #dcdfe7,
-      $tag-color: #f4f4f4
+      $tag-color: #f4f4f4,
+      $code-bg: #f9f9f9,
     )
   }
 
@@ -47,9 +51,9 @@ body {
       $font-color-light: #999,
       $font-color-dark: #d3d3d3,
       $theme-active: #22b3eb,
-      // $theme-active: #c62f2f,
       $border-color: #545c6f,
-      $tag-color: #333844
+      $tag-color: #333844,
+      $code-bg: #282c35
     )
   }
 }
