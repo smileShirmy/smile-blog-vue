@@ -2,7 +2,10 @@
   <div id="app" class="app-container">
     <page-header></page-header>
     <main class="view">
-      <router-view></router-view>
+      <transition name="fade-transform"
+                  mode="out-in">
+        <router-view></router-view>
+      </transition>
     </main>
     <page-footer></page-footer>
     <transition name="slide">
@@ -34,6 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/common/scss/variable.scss";
+@import "@/common/scss/animation.scss";
 
 .app-container {
   display: flex;

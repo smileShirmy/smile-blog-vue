@@ -103,7 +103,6 @@ export default {
 <style lang="scss" scoped>
 @import '@/common/scss/variable.scss';
 @import '@/common/scss/mixin.scss';
-@import '@/common/scss/animation.scss';
 
 @mixin margin {
   margin-top: .5em;
@@ -117,7 +116,6 @@ export default {
 
 .archive-container {
   @include container;
-  animation: slideTop .6s ease-in-out;
 }
 
 .year-wrapper {

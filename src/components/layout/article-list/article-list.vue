@@ -89,13 +89,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/common/scss/variable.scss";
-@import "@/common/scss/animation.scss";
 
 .article-list-container {
   box-sizing: border-box;
   max-width: 1120px;
   margin: 0 auto;
-  animation: slideTop .7s ease-in-out both;
 
   @media (max-width: 1399px) {
     padding: 0 85px;
@@ -268,7 +266,6 @@ export default {
   background-size: cover;
   box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
   cursor: pointer;
-  animation: slideTop .7s ease-in-out both;
 
   @media (min-width: 1024px) and (max-width: 1399px) {
     width: 360px;

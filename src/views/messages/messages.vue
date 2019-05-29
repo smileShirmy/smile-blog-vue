@@ -90,12 +90,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/common/scss/variable.scss';
-@import '@/common/scss/animation.scss';
 @import '@/common/scss/mixin.scss';
 
 .messages-container {
   @include container;
-  animation: slideTop .6s ease-in-out;
 }
 
 .messages-wrapper {

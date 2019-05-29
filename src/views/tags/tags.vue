@@ -100,11 +100,9 @@ export default {
 <style lang="scss" scoped>
 @import '@/common/scss/variable.scss';
 @import '@/common/scss/mixin.scss';
-@import "@/common/scss/animation.scss";
 
 .tag-container {
   @include container;
-  animation: slideTop .6s ease-in-out;
 }
 
 .tag-wrapper {

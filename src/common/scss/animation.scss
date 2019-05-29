@@ -1,10 +1,24 @@
-@keyframes slideTop {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+// 页面切换动画
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+// 从右侧进入
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-right-enter,
+.slide-right-leave-to {
+  transform: translateX(100%);
 }

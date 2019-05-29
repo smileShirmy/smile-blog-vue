@@ -10,7 +10,7 @@
     >
       <span class="mobile-nav-inner"></span>
     </div>
-    <transition name="slide">
+    <transition name="slide-right">
       <div class="nav-list-wrapper" v-if="isShowMobileNav">
         <div class="close-btn" @click="isShowMobileNav = false">
           <i class="icon icon-close"></i>
@@ -74,6 +74,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/common/scss/variable.scss";
 @import "@/common/scss/mixin.scss";
+@import "@/common/scss/animation.scss";
 
 .mobile-nav-container {
   display: none;
@@ -229,16 +230,6 @@ export default {
       transition: all 0.25s ease;
     }
   }
-}
-
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 0.2s ease-in-out;
-}
-
-.slide-enter,
-.slide-leave-to {
-  transform: translateX(100%);
 }
 
 @media (max-width: 1023px) {
