@@ -13,8 +13,8 @@ body {
   line-height: 1.5;
   word-wrap: break-word;
   word-break: break-word;
-  color: $--font-color-primary;
-  background-color: $--app-background-color;
+  color: var(--font-color-primary);
+  background-color: var(--app-background-color);
   transition: $--theme-transition;
 }
 
@@ -22,10 +22,10 @@ a {
   -webkit-user-drag: none;
   user-select: none;
   text-decoration: none;
-  color: $--font-color-primary;
+  color: var(--font-color-primary);
   
   &:visited {
-    color: $--font-color-primary;
+    color: var(--font-color-primary);
   }
 }
 

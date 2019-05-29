@@ -38,7 +38,7 @@ export default {
   .split {
     flex: 1;
     height: 1px;
-    background-color: $--border-color;
+    background-color: var(--border-color);
   }
 }
 </style>

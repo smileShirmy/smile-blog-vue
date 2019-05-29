@@ -177,7 +177,7 @@ export default {
           }
 
           &:hover {
-            color: $--theme-active;
+            color: var(--theme-active);
           }
 
           @media (max-width: 479px) {

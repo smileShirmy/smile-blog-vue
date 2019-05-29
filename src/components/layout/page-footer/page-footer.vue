@@ -137,7 +137,7 @@ export default {
         font-size: $--title-font-size-base;
 
         &:hover {
-          color: $--theme-active;
+          color: var(--theme-active);
         }
       }
     }
@@ -152,13 +152,13 @@ export default {
     padding: 25px 30px;
     text-align: center;
     letter-spacing: .7px;
-    color: $--font-color-light;
+    color: var(--font-color-light);
 
     .copyright {
       font-weight: $--font-weight-bold;
 
       .logo {
-        color: $--font-color-dark;
+        color: var(--font-color-dark);
       }
     }
   }

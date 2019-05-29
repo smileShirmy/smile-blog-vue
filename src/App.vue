@@ -8,7 +8,7 @@
       </transition>
     </main>
     <page-footer></page-footer>
-    <transition name="slide">
+    <transition name="search-slide">
       <page-search v-if="isShowSearch"></page-search>
     </transition>
   </div>
@@ -48,19 +48,5 @@ export default {
 
 .view {
   flex: 1;
-}
-
-.slide-enter-active,
-.slide-leave-active {
-  transition: all .35s ease-in-out;
-
-  @media (max-width: 1023px) {
-    transition: all .25s ease-in-out;
-  }
-}
-
-.slide-enter,
-.slide-leave-to {
-  transform: translateX(100%);
 }
 </style>

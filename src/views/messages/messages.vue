@@ -108,7 +108,7 @@ export default {
     min-height: 11em;
     margin: .5em;
     padding: 1em;
-    background-color: $--tag-color;
+    background-color: var(--tag-color);
     transition: all .25s ease-in-out;
 
     &:hover {

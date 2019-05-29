@@ -34,7 +34,12 @@ export default {
   height: calc(100vh - 245px);
   
   @media (max-width: 1023px) {
+    margin-top: -160px;
     height: 100vh;
+  }
+
+  @media (max-width: 479px) {
+    margin-top: -100px;
   }
 }
 

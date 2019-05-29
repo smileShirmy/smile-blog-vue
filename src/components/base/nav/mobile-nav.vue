@@ -10,7 +10,7 @@
     >
       <span class="mobile-nav-inner"></span>
     </div>
-    <transition name="slide-right">
+    <transition name="mobile-slide">
       <div class="nav-list-wrapper" v-if="isShowMobileNav">
         <div class="close-btn" @click="isShowMobileNav = false">
           <i class="icon icon-close"></i>
@@ -110,7 +110,7 @@ export default {
     top: 10px;
     width: 30px;
     height: 4px;
-    background-color: $--font-color-primary;
+    background-color: var(--font-color-primary);
     transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out,
       opacity 0s linear, color 0.1s linear;
 
@@ -121,7 +121,7 @@ export default {
       top: -10px;
       width: 30px;
       height: 4px;
-      background-color: $--font-color-primary;
+      background-color: var(--font-color-primary);
       transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out,
         opacity 0s linear, color 0.1s linear;
     }
@@ -133,7 +133,7 @@ export default {
       top: 10px;
       width: 30px;
       height: 4px;
-      background-color: $--font-color-primary;
+      background-color: var(--font-color-primary);
       transition: bottom 0.08s 0s ease-out, top 0.08s 0s ease-out,
         opacity 0s linear;
     }
@@ -141,11 +141,11 @@ export default {
 
   @media (max-width: 1023px) {
     .mobile-nav-inner {
-      background-color: $--font-color-primary;
+      background-color: var(--font-color-primary);
 
       &::before,
       &::after {
-        background-color: $--font-color-primary;
+        background-color: var(--font-color-primary);
       }
     }
   }
@@ -171,7 +171,7 @@ export default {
   width: 200px;
   padding: 40px 30px 20px;
   border-bottom-left-radius: 5px;
-  background: $--app-background-color-light;
+  background: var(--app-background-color-light);
   box-shadow: 0 2px 24px 5px rgba(0, 0, 0, 0.1);
   z-index: $--index-top;
 }
@@ -186,7 +186,7 @@ export default {
     cursor: pointer;
 
     &:hover {
-      color: $--theme-active;
+      color: var(--theme-active);
     }
   }
 }
@@ -212,11 +212,11 @@ export default {
 
     .nav-active {
       & .nav-dot {
-        background-color: $--theme-active;
+        background-color: var(--theme-active);
       }
 
       &:hover .nav-dot {
-        background-color: $--theme-active;
+        background-color: var(--theme-active);
       }
     }
 

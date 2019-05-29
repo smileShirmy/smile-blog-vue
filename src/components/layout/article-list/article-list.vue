@@ -117,7 +117,7 @@ export default {
   padding: 60px;
   background-color: #fff;
   border-radius: 5px;
-  background-color: $--app-background-color-light;
+  background-color: var(--app-background-color-light);
   box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
   transition: $--theme-transition;
 
@@ -128,7 +128,7 @@ export default {
   @media (max-width: 479px) {
     padding: 0;
     box-shadow: none;
-    background: $--app-background-color;
+    background: var(--app-background-color);
   }
 
   .article-item {
@@ -161,17 +161,17 @@ export default {
 
 .article-wrapper {
   width: 100%;
-  color: $--font-color-article;
+  color: var(--font-color-article);
 
   .tag {
     cursor: pointer;
-    color: $--font-color-light;
+    color: var(--font-color-light);
   }
 
   .title {
     margin: 10px 0 0;
     font-weight: $--font-weight-bold;
-    color: $--font-color-dark;
+    color: var(--font-color-dark);
 
     @media (max-width: 1399px) {
       font-size: $--title-font-size-medium;
@@ -190,7 +190,7 @@ export default {
       cursor: pointer;
 
       &:hover .hover-dot {
-        background-color: $--theme-active;
+        background-color: var(--theme-active);
       }
 
       .hover-dot {
@@ -295,8 +295,8 @@ export default {
   cursor: pointer;
 
   &:hover {
-    border-color: $--theme-active;
-    background-color: $--theme-active;
+    border-color: var(--theme-active);
+    background-color: var(--theme-active);
     transform: scale(.65);
   }
 }

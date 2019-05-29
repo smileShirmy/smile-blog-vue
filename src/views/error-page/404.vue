@@ -41,12 +41,12 @@ export default {
   margin-top: 50px;
   letter-spacing: .1em;
   border-radius: 30px;
-  background: $--tag-color;
+  background: var(--tag-color);
   cursor: pointer;
   transition: all .1s ease-in-out;
 
   &:hover {
-    background: $--theme-active;
+    background: var(--theme-active);
     color: #fff;
   }
 }

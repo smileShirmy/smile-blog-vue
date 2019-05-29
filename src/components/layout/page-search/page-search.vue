@@ -134,7 +134,7 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  background: $--app-background-color;
+  background: var(--app-background-color);
   z-index: $--index-top;
 }
 
@@ -185,7 +185,7 @@ export default {
     cursor: pointer;
     
     &:hover {
-      color: $--theme-active;
+      color: var(--theme-active);
     }
 
     @media (max-width: 1023px) {
@@ -198,22 +198,22 @@ export default {
   .search-input {
     width: 100%;
     height: 62px;
-    color: $--font-color-primary;
+    color: var(--font-color-primary);
     font-size: $--title-font-size-medium;
     font-weight: $--font-weight-bold;
     outline: none;
     border-width: 0 0 7px 0;
     border-style: solid;
-    border-color: $--border-color;
-    background-color: $--app-background-color;
+    border-color: var(--border-color);
+    background-color: var(--app-background-color);
     transition: border .25s ease-in-out;
 
     &:focus {
-      border-bottom-color: $--theme-active;
+      border-bottom-color: var(--theme-active);
     }
 
     &::-webkit-input-placeholder {
-      color: $--border-color;
+      color: var(--border-color);
     }
 
     @media (max-width: 747px) {
@@ -273,7 +273,7 @@ export default {
 .footer {
   .logo {
     margin-left: 8px;
-    color: $--font-color-dark;
+    color: var(--font-color-dark);
   }
 
   .desc {

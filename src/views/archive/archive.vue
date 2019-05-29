@@ -163,7 +163,7 @@ export default {
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background-color: $--font-color-primary;
+        background-color: var(--font-color-primary);
       }
     }
   }
@@ -179,7 +179,7 @@ export default {
     height: 30px;
     margin: -3px 0 0 30px;
     border-radius: 50%;
-    background-color: $--border-color;
+    background-color: var(--border-color);
     opacity: 0;
     transform: translate(0);
     transition: all .25s ease-in-out;

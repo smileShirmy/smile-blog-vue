@@ -94,7 +94,6 @@ export default {
 
 @media (max-width: 1023px) {
   .home-mobile-class {
-    position: absolute;
 
     .header-logo {
       color: #fff;

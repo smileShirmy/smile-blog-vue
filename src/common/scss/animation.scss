@@ -12,13 +12,28 @@
   transform: translateX(30px);
 }
 
-// 从右侧进入
-.slide-right-enter-active,
-.slide-right-leave-active {
+// 移动端导航动画
+.mobile-slide-enter-active,
+.mobile-slide-leave-active {
   transition: all 0.2s ease-in-out;
 }
 
-.slide-right-enter,
-.slide-right-leave-to {
+.mobile-slide-enter,
+.mobile-slide-leave-to {
+  transform: translateX(100%);
+}
+
+// 搜索页动画
+.search-slide-enter-active,
+.search-slide-leave-active {
+  transition: all .35s ease-in-out;
+
+  @media (max-width: 1023px) {
+    transition: all .25s ease-in-out;
+  }
+}
+
+.search-slide-enter,
+.search-slide-leave-to {
   transform: translateX(100%);
 }

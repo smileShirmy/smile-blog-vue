@@ -135,13 +135,13 @@ export default {
   .article-content {
     @include contentPadding;
     border-radius: 5px;
-    background-color: $--app-background-color-light;
+    background-color: var(--app-background-color-light);
     box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
     transition: $--theme-transition;
 
     @media (max-width: 479px) {
       box-shadow: none;
-      background-color: $--app-background-color;
+      background-color: var(--app-background-color);
     }
   }
 }

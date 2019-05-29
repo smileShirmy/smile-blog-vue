@@ -58,11 +58,11 @@ export default {
 
     .nav-active {
       & ~ .nav-dot {
-        background-color: $--theme-active;
+        background-color: var(--theme-active);
       }
 
       &:hover ~ .nav-dot {
-        background-color: $--theme-active;
+        background-color: var(--theme-active);
       }
     }
 
@@ -82,7 +82,7 @@ export default {
       transition: $--theme-transition;
 
       &:hover {
-        color: $--theme-active;
+        color: var(--theme-active);
       }
     }
   }

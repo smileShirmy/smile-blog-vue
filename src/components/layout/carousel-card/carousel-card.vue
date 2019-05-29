@@ -82,7 +82,7 @@ export default {
 
     &:hover {
       .feature-dot {
-        background-color: $--theme-active !important;
+        background-color: var(--theme-active) !important;
       }
     }
   }

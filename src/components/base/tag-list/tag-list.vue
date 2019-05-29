@@ -47,7 +47,7 @@ export default {
     font-weight: $--font-weight-bold;
     letter-spacing: 1.5px;
     border-radius: 20px;
-    background: $--tag-color;
+    background: var(--tag-color);
     cursor: pointer;
 
     &:last-child {
@@ -56,7 +56,7 @@ export default {
 
     &:hover {
       color: #fff;
-      background: $--theme-active;
+      background: var(--theme-active);
       transition: all .25s ease-in-out;
     }
   }
