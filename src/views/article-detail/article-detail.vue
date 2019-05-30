@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       title: '这是文章题目',
-      coverUrl: 'http://resource.shirmy.me/lighthouse.jpeg',
+      coverUrl: 'https://resource.shirmy.me/lighthouse.jpeg',
       content: ''
     }
   },

@@ -28,7 +28,7 @@ export default {
     return {
       name: 'JavaScript',
       desc: 'Enean malesuada imperdiet orci nec euismod. Vivamus posuere sapien ac congue posuere. Sed ut mattis massa. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
-      coverUrl: 'http://resource.shirmy.me/lighthouse.jpeg'
+      coverUrl: 'https://resource.shirmy.me/lighthouse.jpeg'
     }
   }
 }

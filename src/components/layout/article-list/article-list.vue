@@ -21,7 +21,7 @@
           </footer>
         </article>
         <div class="split"></div>
-        <img class="article-image" src="http://resource.shirmy.me/lighthouse.jpeg"/>
+        <img class="article-image" src="https://resource.shirmy.me/lighthouse.jpeg"/>
       </li>
       <div class="load-more" @click="loadMore"></div>
     </ul>
