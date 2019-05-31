@@ -17,7 +17,7 @@ before_install:
 - chmod 600 ~/.ssh/deploy_rsa
 - ssh-add ~/.ssh/deploy_rsa
 after_success:
-- ssh "$DEPLOY_USER"@"$DEPLOY_HOST" -o StrictHostKeyChecking=no 'cd /data/vue-blog && git pull && bash ./script/deploy.sh'
+- ssh "$DEPLOY_USER"@"$DEPLOY_HOST" -o StrictHostKeyChecking=no 'cd /data/smile-blog-vue && git pull && bash ./script/deploy.sh'
 # notifications:
 #   email:
 #     recipients:
