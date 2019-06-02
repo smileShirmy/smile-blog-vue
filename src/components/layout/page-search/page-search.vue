@@ -124,7 +124,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/common/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .search-container {
   display: flex;
@@ -141,7 +141,7 @@ export default {
 .search-image {
   width: 40%;
   height: 100%;
-  background: url(../../../common/image/lighthouse.jpeg) no-repeat center center;
+  background: url(../../../assets/image/lighthouse.jpeg) no-repeat center center;
   background-size: cover;
 
   @media (max-width: 767px) {

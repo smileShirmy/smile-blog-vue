@@ -101,8 +101,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/common/scss/variable.scss';
-@import '@/common/scss/mixin.scss';
+@import '@/assets/scss/variable.scss';
+@import '@/assets/scss/mixin.scss';
 
 @mixin margin {
   margin-top: .5em;

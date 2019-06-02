@@ -88,7 +88,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/common/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .article-list-container {
   box-sizing: border-box;

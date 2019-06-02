@@ -120,8 +120,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/common/scss/variable.scss';
-@import '@/common/scss/mixin.scss';
+@import '@/assets/scss/variable.scss';
+@import '@/assets/scss/mixin.scss';
 
 .about-container {
   @include container;
@@ -152,7 +152,7 @@ export default {
       display: block;
       width: 100%;
       height: 250px;
-      background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
+      background: url(../../assets/image/lighthouse.jpeg) no-repeat center center;
       background-size: cover;
     }
 

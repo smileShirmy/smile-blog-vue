@@ -22,7 +22,7 @@
 
 <script>
 import { throttle } from "throttle-debounce";
-import { on, off } from "@/common/js/dom";
+import { on, off } from "@/services/utils/dom";
 
 export default {
   name: "Carousel",
@@ -166,7 +166,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/common/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .caoursel-container {
   position: relative;

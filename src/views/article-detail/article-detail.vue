@@ -11,15 +11,34 @@
       </div>
     </header>
     <div class="article-container">
-      <article class="article-content article-markdown" v-html="marked(content)"></article>
+      <div class="article-wrapper">
+        <article class="article-markdown" v-html="marked(content)"></article>
+      </div>
+      <split-line class="split-line" :icon="'recommend'" :desc="'相关推荐'"></split-line>
+      <div class="recommend-wrapper">
+        <recommend></recommend>
+      </div>
+      <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
+      <div class="comment-wrapper">
+        <comment></comment>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import markdown from '@/common/js/marked'
+import markdown from '@/services/markdown/marked'
+import Recommend from '@/components/layout/recommend/recommend'
+import Comment from '@/components/layout/comment/comment'
+import SplitLine from '@/components/base/split-line/split-line'
 
 export default {
+  components: {
+    Recommend,
+    Comment,
+    SplitLine
+  },
+
   data() {
     return {
       title: '这是文章题目',
@@ -50,8 +69,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/common/scss/variable.scss';
-@import '@/common/scss/mixin.scss';
+@import '@/assets/scss/variable.scss';
+@import '@/assets/scss/mixin.scss';
 
 @mixin contentPadding {
   padding: 50px 60px;
@@ -129,20 +148,21 @@ export default {
 
 .article-container {
   @include container;
+  @include contentPadding;
   position: relative;
   margin-top: -10vh;
+  border-radius: 5px;
+  background-color: var(--app-background-color-light);
+  box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
+  transition: $--theme-transition;
 
-  .article-content {
-    @include contentPadding;
-    border-radius: 5px;
-    background-color: var(--app-background-color-light);
-    box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
-    transition: $--theme-transition;
+  @media (max-width: 479px) {
+    box-shadow: none;
+    background-color: var(--app-background-color);
+  }
 
-    @media (max-width: 479px) {
-      box-shadow: none;
-      background-color: var(--app-background-color);
-    }
+  .split-line {
+    margin: 20px 0;
   }
 }
 </style>

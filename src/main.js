@@ -6,7 +6,7 @@ import './registerServiceWorker'
 
 import 'highlight.js/styles/darkula.css';
 
-import '@/common/scss/index.scss'
+import '@/assets/scss/index.scss'
 
 Vue.config.productionTip = false
 

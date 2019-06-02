@@ -36,8 +36,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/common/scss/variable.scss";
-@import "@/common/scss/animation.scss";
+@import "@/assets/scss/variable.scss";
+@import "@/assets/scss/animation.scss";
 
 .app-container {
   display: flex;

@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/common/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .section-tag {
   font-weight: $--font-weight-bold;

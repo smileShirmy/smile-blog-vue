@@ -75,14 +75,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/common/scss/variable.scss';
+@import '@/assets/scss/variable.scss';
 
 .avatar {
   width: 120px;
   height: 120px;
   margin: 0 auto 20px;
   border-radius: 26px;
-  background: url(../../common/image/lighthouse.jpeg) no-repeat center center;
+  background: url(../../assets/image/lighthouse.jpeg) no-repeat center center;
   background-size: cover;
 }
 

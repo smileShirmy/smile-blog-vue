@@ -31,7 +31,7 @@ export default {
 </script>
 
  <style lang="scss" scoped>
-@import "@/common/scss/variable.scss";
+@import "@/assets/scss/variable.scss";
 
 .nav-list {
   display: flex;

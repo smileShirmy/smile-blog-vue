@@ -36,7 +36,7 @@
 
 <script>
 import { mapMutations } from "vuex";
-import ClickOutside from "@/common/js/click-outside";
+import ClickOutside from "@/services/directives/click-outside";
 
 export default {
   props: {
@@ -72,9 +72,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/common/scss/variable.scss";
-@import "@/common/scss/mixin.scss";
-@import "@/common/scss/animation.scss";
+@import "@/assets/scss/variable.scss";
+@import "@/assets/scss/mixin.scss";
+@import "@/assets/scss/animation.scss";
 
 .mobile-nav-container {
   display: none;
