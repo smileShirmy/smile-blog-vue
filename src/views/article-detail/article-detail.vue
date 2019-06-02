@@ -11,16 +11,18 @@
       </div>
     </header>
     <div class="article-container">
-      <div class="article-wrapper">
-        <article class="article-markdown" v-html="marked(content)"></article>
-      </div>
-      <split-line class="split-line" :icon="'recommend'" :desc="'相关推荐'"></split-line>
-      <div class="recommend-wrapper">
-        <recommend></recommend>
-      </div>
-      <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
-      <div class="comment-wrapper">
-        <comment></comment>
+      <div class="content">
+        <div class="article-wrapper">
+          <article class="article-markdown" v-html="marked(content)"></article>
+        </div>
+        <split-line class="split-line" :icon="'recommend'" :desc="'相关推荐'"></split-line>
+        <div class="recommend-wrapper">
+          <recommend></recommend>
+        </div>
+        <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
+        <div class="comment-wrapper">
+          <comment></comment>
+        </div>
       </div>
     </div>
   </div>
@@ -84,7 +86,7 @@ export default {
   }
 
   @media (max-width: 479px) {
-    padding: 10px 5px;
+    padding: 10px 0;
   }
 }
 
@@ -104,6 +106,10 @@ export default {
   @media (max-width: 1399px) {
     width: 100%;
     border-radius: 0;
+  }
+
+  @media (max-width: 479px) {
+    padding: 15vh 0 15vh;
   }
 
   .header-wrapper {
@@ -148,17 +154,25 @@ export default {
 
 .article-container {
   @include container;
-  @include contentPadding;
   position: relative;
   margin-top: -10vh;
   border-radius: 5px;
-  background-color: var(--app-background-color-light);
-  box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
-  transition: $--theme-transition;
 
   @media (max-width: 479px) {
+    margin-top: 0;
+  }
+
+  .content {
+    @include contentPadding;
+    border-radius: 5px;
+    background-color: var(--app-background-color-light);
+    box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
+    transition: $--theme-transition;
+
+    @media (max-width: 479px) {
     box-shadow: none;
     background-color: var(--app-background-color);
+  }
   }
 
   .split-line {
