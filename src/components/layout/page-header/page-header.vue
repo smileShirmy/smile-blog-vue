@@ -62,8 +62,10 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/variable.scss";
+@import "@/assets/scss/mixin.scss";
 
 .container {
+  @include container;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,13 +76,8 @@ export default {
   z-index: $--index-normal;
   box-sizing: border-box;
 
-  @media (max-width: 1399px) and (min-width: 480px) {
-    padding: 0 85px;
-  }
-
   @media (max-width: 479px) {
     height: 100px;
-    padding: 0 15px;
   }
 }
 

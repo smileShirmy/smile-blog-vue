@@ -19,6 +19,14 @@
         <div class="recommend-wrapper">
           <recommend></recommend>
         </div>
+        <!-- <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
+        <div class="comment-wrapper">
+          <comment></comment>
+        </div> -->
+      </div>
+    </div>
+    <div class="article-container comment-container">
+      <div class="content">
         <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
         <div class="comment-wrapper">
           <comment></comment>
@@ -177,6 +185,26 @@ export default {
 
   .split-line {
     margin: 20px 0;
+
+    @media (max-width: 479px) {
+      margin: 10px 0;
+    }
+  }
+}
+
+.comment-container {
+  margin-top: 20px;
+
+  .content {
+    padding-top: 5px;
+  }
+
+  @media (max-width: 479px) {
+    margin-top: 0;
+
+    .content {
+      padding-top: 0;
+    }
   }
 }
 </style>

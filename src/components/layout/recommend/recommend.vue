@@ -2,7 +2,7 @@
   <ul class="recommend-container">
     <li class="recommend-item" v-for="article in articleList" :key="article.id">
       <time class="time" datetime="2018-5-17">{{article.time}}</time>
-      <h4 class="title">{{article.title}}</h4>
+      <span class="title">{{article.title}}</span>
     </li>
   </ul>
 </template>
@@ -53,12 +53,30 @@ export default {
   margin: 6px 0;
 
   .time {
-    margin-right: 30px;
+    margin-right: 20px;
     font-size: $--font-size-medium;
   }
 
   .title {
     font-size: $--font-size-large;
+  }
+
+  @media (max-width: 1023px) {
+    .time {
+      margin-right: 16px;
+      font-size: $--font-size-base;
+    }
+
+    .title {
+      font-size: $--font-size-medium;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .time {
+      margin-right: 12px;
+      font-size: $--font-size-minimum;
+    }
   }
 }
 </style>

@@ -4,11 +4,11 @@
       <li class="article-item" v-for="article in articleList" :key="article.id">
         <article class="article-wrapper">
           <a class="tag">{{article.tag}}</a>
-          <h1 class="title">
+          <h2 class="title">
             <router-link :to="'/article/' + article.id" class="article-link">
               {{article.title}}<span class="hover-dot"></span>
             </router-link>
-          </h1>
+          </h2>
           <p class="content">{{article.content}}</p>
           <footer class="footer">
             <div class="author-wrapper">
@@ -89,27 +89,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/variable.scss";
+@import "@/assets/scss/mixin.scss";
 
 .article-list-container {
+  @include container;
   box-sizing: border-box;
-  max-width: 1120px;
   margin: 0 auto;
-
-  @media (max-width: 1399px) {
-    padding: 0 85px;
-  }
-
-  @media (max-width: 1023px) {
-    padding: 0 45px;
-  }
-
-  @media (max-width: 767px) {
-    padding: 0 35px;
-  }
-
-  @media (max-width: 479px) {
-    padding: 0 15px;
-  }
 }
 
 .article-list-wrapper {

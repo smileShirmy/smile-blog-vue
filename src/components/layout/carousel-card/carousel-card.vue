@@ -72,7 +72,7 @@ export default {
 
 .feature-text {
   margin: 20px 0 25px;
-  font-size: $--title-font-size-extra-maximum;
+  font-size: $--title-font-size-extra-large;
   font-weight: $--font-weight-bold;
   line-height: 1.2;
 
@@ -120,7 +120,7 @@ export default {
   }
 
   .feature-text {
-    font-size: $--title-font-size-extra-large;
+    font-size: $--title-font-size-large;
   }
 
   .feature-dot {
@@ -128,12 +128,6 @@ export default {
     width: 10px;
     height: 10px;
     margin-top: 10px;
-  }
-}
-
-@media (max-width: 1199px) {
-  .feature-text {
-    font-size: $--title-font-size-large;
   }
 }
 
