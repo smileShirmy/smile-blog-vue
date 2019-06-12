@@ -124,6 +124,12 @@ export default {
     .user-item {
       order: 1;
       margin: 5px 0 10px;
+
+      @media (max-width: 767px) {
+        .user-input {
+          width: 100%;
+        }
+      }
     }
 
     .editor-item {
@@ -209,9 +215,11 @@ export default {
     align-items: center;
 
     .user-input {
-      box-sizing: border-box;
-      width: 32%;
-      padding: 5px;
+      // box-sizing: border-box;
+      width: calc(32% - 20px);
+      height: 1em;
+      line-height: 1em;
+      padding: 8px 10px;
       outline: none;
       color: var(--font-color-article);
       white-space: nowrap;
