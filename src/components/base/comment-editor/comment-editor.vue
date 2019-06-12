@@ -176,12 +176,14 @@ export default {
   .editor {
     box-sizing: border-box;
     width: 100%;
-    height: 100px;
+    min-height: 6em;
+    max-height: 30em;
     padding: 10px;
     color: var(--font-color-article);
     border: 1px solid var(--border-color);
     border-radius: 4px;
     outline: none;
+    overflow-y: auto;
     transition: $--theme-transition;
 
     &:empty:before {
