@@ -1,6 +1,9 @@
 <template>
   <div class="messages-container">
     <split-line :icon="'message'" :desc="'留言墙'"></split-line>
+    <section class="editor-wrapper">
+      <comment-editor :isMessageEditor="true"></comment-editor>
+    </section>
     <ul class="messages-wrapper">
       <li class="message-item" v-for="message in messageList" :key="message.id">
         <span class="author">{{message.author}}</span>
@@ -17,6 +20,7 @@
 
 <script>
 import SplitLine from '@/components/base/split-line/split-line';
+import CommentEditor from '@/components/base/comment-editor/comment-editor';
 
 const messageList = [
   {
@@ -77,7 +81,8 @@ const messageList = [
 
 export default {
   components: {
-    SplitLine
+    SplitLine,
+    CommentEditor
   },
 
   data() {
@@ -94,6 +99,10 @@ export default {
 
 .messages-container {
   @include container;
+
+  .editor-wrapper {
+    margin: .5em;
+  }
 }
 
 .messages-wrapper {
