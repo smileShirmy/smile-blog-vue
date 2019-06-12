@@ -231,6 +231,7 @@ export default {
 .result-list {
   .result-item {
     margin-top: 30px;
+    cursor: pointer;
 
     .time {
       font-size: $--font-size-base;
