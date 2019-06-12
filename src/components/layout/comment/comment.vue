@@ -202,10 +202,13 @@ export default {
       padding: 5px;
       outline: none;
       color: var(--font-color-article);
+      white-space: nowrap;
       border: 1px solid var(--border-color);
       border-radius: 4px;
       background-color: var(--app-background-color-light);
       transition: $--theme-transition;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
 
       &:hover {
         border-color: var(--font-color-light);
