@@ -4,6 +4,7 @@
       <i class="avatar"></i>
       <section class="comment-detail">
         <div class="author">
+          <i class="mobile-avatar"></i>
           <span>{{comment.author}}</span>
         </div>
         <div class="content">{{comment.content}}</div>
@@ -61,12 +62,35 @@ export default {
     height: 36px;
     border-radius: 50%;
     background-color: #eee;
+
+    @media (max-width: 479px) {
+      display: none;
+    }
   }
 
   .comment-detail {
     width: calc(100% - 50px);
 
+    @media (max-width: 479px) {
+      width: 100%;
+    }
+
     .author {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      @media (max-width: 479px) {
+        .mobile-avatar {
+          display: inline-block;
+          width: 26px;
+          height: 26px;
+          margin-right: 10px;
+          border-radius: 50%;
+          background-color: #eee;
+        }
+      }
+
       font-size: $--font-size-base;
     }
 
@@ -74,6 +98,11 @@ export default {
       display: flex;
       align-items: center;
       min-height: 42px;
+      margin: 8px 0;
+
+      @media (max-width: 479px) {
+        font-size: $--font-size-medium;
+      }
     }
 
     .reply-content {

@@ -30,6 +30,11 @@ a {
   }
 }
 
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 ::-webkit-scrollbar {
   width: 0.35rem;
   height: 0.35rem;

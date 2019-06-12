@@ -128,10 +128,18 @@ export default {
   height: 36px;
   border-radius: 50%;
   background-color: #eee;
+
+  @media (max-width:  479px) {
+    display: none;
+  }
 }
 
 .comment-wrapper {
   width: calc(100% - 50px);
+
+  @media (max-width: 479px) {
+    width: 100%;
+  }
 
   .list-slide-item {
     transition: all .3s ease-in-out;
