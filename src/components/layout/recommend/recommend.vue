@@ -51,6 +51,7 @@ export default {
   justify-content: flex-start;
   align-items: center;
   margin: 6px 0;
+  cursor: pointer;
 
   .time {
     margin-right: 20px;
@@ -74,8 +75,7 @@ export default {
 
   @media (max-width: 479px) {
     .time {
-      margin-right: 12px;
-      font-size: $--font-size-minimum;
+      display: none;
     }
   }
 }

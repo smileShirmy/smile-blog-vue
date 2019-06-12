@@ -13,6 +13,8 @@
   --app-background-color: #{$theme-primary};
   --app-background-color-light: #{lighten($theme-primary, 3%)};
 
+  --primary-light-0: #{lighten($theme-primary, 5%)};
+
   --font-color-primary: #{$font-color};
   --font-color-article: #{$font-color-article};
   --font-color-light: #{$font-color-light};

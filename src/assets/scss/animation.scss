@@ -37,3 +37,13 @@
 .search-slide-leave-to {
   transform: translateX(100%);
 }
+
+// list-slide
+.list-slide-enter, .list-slide-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.list-slide-leave-active {
+  width: 100%;
+  position: absolute;
+}
