@@ -73,7 +73,7 @@ export default {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  z-index: $--index-normal;
+  z-index: $--index-top;
   box-sizing: border-box;
 
   @media (max-width: 479px) {
