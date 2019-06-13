@@ -218,14 +218,14 @@ export default {
       // box-sizing: border-box;
       width: calc(32% - 20px);
       height: 1em;
-      line-height: 1em;
+      line-height: normal;    // 解决 placeholder 在 ios 无法垂直居中的问题
       padding: 8px 10px;
       outline: none;
       color: var(--font-color-article);
       white-space: nowrap;
       border: 1px solid var(--border-color);
       border-radius: 4px;
-      background-color: var(--app-background-color-light);
+      background-color: var(--app-background-color);
       transition: $--theme-transition;
       -webkit-appearance: none;
       -webkit-tap-highlight-color: transparent;
