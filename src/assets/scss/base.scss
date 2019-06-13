@@ -17,6 +17,7 @@ body {
   color: var(--font-color-primary);
   background-color: var(--app-background-color);
   transition: $--theme-transition;
+  overflow-x: hidden;
 }
 
 a {
