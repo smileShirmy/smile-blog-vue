@@ -15,7 +15,13 @@
               <i class="avatar"></i>
               <span class="name">{{article.author}}</span>
             </div>
-            <div class="time-wrapper">
+            <div class="info-wrapper">
+              <i class="icon icon-eye"></i>
+              <span class="count">1</span>
+              <i class="icon icon-reply"></i>
+              <span class="count">1</span>
+              <i class="icon icon-heart"></i>
+              <span class="count">1</span>
               <time datetime="2018-5-16">{{article.time}}</time>
             </div>
           </footer>
@@ -233,8 +239,24 @@ export default {
       }
     }
 
-    .time-wrapper {
-      font-weight: $--font-weight-bold;
+    .info-wrapper {
+      display: flex;
+      align-items: center;
+      font-size: $--font-size-small;
+
+      >i {
+        display: inline-block;
+        margin-right: 2px;
+      }
+
+      >span {
+        margin-right: 10px;
+        line-height: 1;
+      }
+
+      >time {
+        line-height: 1;
+      }
     }
   }
 }
