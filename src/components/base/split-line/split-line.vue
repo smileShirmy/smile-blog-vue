@@ -17,7 +17,7 @@ export default {
 
 
 <style lang="scss">
-@import '@/assets/scss/variable.scss';
+@import '@/assets/scss/variables.scss';
 
 .split-wrapper {
   display: flex;
