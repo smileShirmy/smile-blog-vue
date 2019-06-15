@@ -92,8 +92,8 @@ export default {
   cursor: pointer;
 
   .icon-search {
-    font-size: $--font-size-extra-large;
-    transition: $--theme-transition;
+    font-size: $font-size-extra-large;
+    transition: $theme-transition;
   }
 }
 
@@ -173,7 +173,7 @@ export default {
   border-bottom-left-radius: 5px;
   background: var(--app-background-color-light);
   box-shadow: 0 2px 24px 5px rgba(0, 0, 0, 0.1);
-  z-index: $--index-top;
+  z-index: $index-top;
 }
 
 .close-btn {
@@ -182,7 +182,7 @@ export default {
   right: 20px;
 
   .icon-close {
-    font-size: $--font-size-large;
+    font-size: $font-size-large;
     cursor: pointer;
 
     &:hover {
@@ -196,7 +196,7 @@ export default {
     display: flex;
     justify-content: flex-start;
     margin-top: 16px;
-    font-weight: $--font-weight-bold;
+    font-weight: $font-weight-bold;
 
     &:first-child {
       margin-top: 0;
@@ -206,7 +206,7 @@ export default {
       position: relative;
 
       &:hover .nav-dot {
-        background-color: $--nav-dot-color;
+        background-color: $nav-dot-color;
       }
     }
 

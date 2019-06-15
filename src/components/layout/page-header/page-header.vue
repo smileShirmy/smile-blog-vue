@@ -73,7 +73,7 @@ export default {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  z-index: $--index-top;
+  z-index: $index-top;
   box-sizing: border-box;
 
   @media (max-width: 479px) {
@@ -84,8 +84,8 @@ export default {
 .header-logo {
   .logo {
     margin-left: 10px;
-    font-size: $--title-font-size-medium;
-    transition: $--theme-transition;
+    font-size: $title-font-size-medium;
+    transition: $theme-transition;
   }
 }
 

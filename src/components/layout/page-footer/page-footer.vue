@@ -73,7 +73,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  z-index: $--index-normal;
+  z-index: $index-normal;
 
   .footer-wrapper {
     box-sizing: border-box;
@@ -134,7 +134,7 @@ export default {
       }
 
       .icon {
-        font-size: $--title-font-size-base;
+        font-size: $title-font-size-base;
 
         &:hover {
           color: var(--theme-active);
@@ -155,7 +155,7 @@ export default {
     color: var(--font-color-light);
 
     .copyright {
-      font-weight: $--font-weight-bold;
+      font-weight: $font-weight-bold;
 
       .logo {
         color: var(--font-color-dark);

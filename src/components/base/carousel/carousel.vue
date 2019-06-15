@@ -193,7 +193,7 @@ export default {
   transition: all .2s ease;
   transform: rotate(-45deg);
   outline: none;
-  z-index: $--index-normal;
+  z-index: $index-normal;
 
   &:hover {
     padding: 8px;

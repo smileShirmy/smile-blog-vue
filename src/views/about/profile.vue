@@ -93,7 +93,7 @@ export default {
   flex-wrap: wrap;
 
   .social-item {
-    font-size: $--title-font-size-base;
+    font-size: $title-font-size-base;
     margin-right: 20px;
     transition: color 0.25s ease-in-out;
     cursor: pointer;
@@ -107,7 +107,7 @@ export default {
     }
 
     @media (max-width: 479px) {
-      font-size: $--title-font-size-small;
+      font-size: $title-font-size-small;
     }
   }
 }

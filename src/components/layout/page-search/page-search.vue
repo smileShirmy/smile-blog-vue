@@ -135,7 +135,7 @@ export default {
   bottom: 0;
   left: 0;
   background: var(--app-background-color);
-  z-index: $--index-top;
+  z-index: $index-top;
 }
 
 .search-image {
@@ -180,8 +180,8 @@ export default {
   }
 
   .icon-close {
-    font-size: $--title-font-size-large;
-    transition: $--theme-transition;
+    font-size: $title-font-size-large;
+    transition: $theme-transition;
     cursor: pointer;
     
     &:hover {
@@ -189,7 +189,7 @@ export default {
     }
 
     @media (max-width: 1023px) {
-      font-size: $--title-font-size-medium;
+      font-size: $title-font-size-medium;
     }
   }
 }
@@ -199,8 +199,8 @@ export default {
     width: 100%;
     height: 62px;
     color: var(--font-color-primary);
-    font-size: $--title-font-size-medium;
-    font-weight: $--font-weight-bold;
+    font-size: $title-font-size-medium;
+    font-weight: $font-weight-bold;
     outline: none;
     border-width: 0 0 7px 0;
     border-style: solid;
@@ -217,14 +217,14 @@ export default {
     }
 
     @media (max-width: 747px) {
-      font-size: $--title-font-size-small;
+      font-size: $title-font-size-small;
     }
   }
 
   .search-result {
     margin-top: 10px;
-    font-size: $--font-size-small;
-    font-weight: $--font-weight-bold;
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
   }
 }
 
@@ -234,19 +234,19 @@ export default {
     cursor: pointer;
 
     .time {
-      font-size: $--font-size-base;
+      font-size: $font-size-base;
 
       @media (max-width: 767px) {
-        font-size: $--font-size-small;
+        font-size: $font-size-small;
       }
     }
 
     .title {
-      font-size: $--title-font-size-base;
-      font-weight: $--font-weight-bold;
+      font-size: $title-font-size-base;
+      font-weight: $font-weight-bold;
 
       @media (max-width: 767px) {
-        font-size: $--title-font-size-small;
+        font-size: $title-font-size-small;
       }
     }
   }

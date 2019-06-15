@@ -40,7 +40,7 @@ export default {
   height: 100%;
   margin: 0 auto;
   padding: 5vh 5% 15vh;
-  font-weight: $--font-weight-bold;
+  font-weight: $font-weight-bold;
   border-radius: 5px;
   background: no-repeat center center;
   background-size: cover;
@@ -59,16 +59,16 @@ export default {
 
     .title {
       margin: 5px 0 25px;
-      font-size: $--title-font-size-maximum;
+      font-size: $title-font-size-maximum;
       text-align: center;
 
       @media (max-width: 1023px) {
-        font-size: $--title-font-size-extra-large;
+        font-size: $title-font-size-extra-large;
       }
 
       @media (max-width: 479px) {
         margin: 3px 0 15px;
-        font-size: $--title-font-size-medium;
+        font-size: $title-font-size-medium;
       }
     }
 
@@ -76,12 +76,12 @@ export default {
       max-width: 750px;
       margin: 3vh auto 0;
       padding: 0 50px;
-      font-size: $--title-font-size-base;
+      font-size: $title-font-size-base;
       text-align: center;
 
       @media (max-width: 479px) {
         padding: 0 15px;
-        font-size: $--font-size-medium;
+        font-size: $font-size-medium;
       }
     }
   }

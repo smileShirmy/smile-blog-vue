@@ -170,7 +170,7 @@ export default {
       right: 5px;
       width: 30px;
       height: 30px;
-      font-size: $--font-size-extra-large;
+      font-size: $font-size-extra-large;
       cursor: pointer;
 
       &:hover {
@@ -190,7 +190,7 @@ export default {
     border-radius: 4px;
     outline: none;
     overflow-y: auto;
-    transition: $--theme-transition;
+    transition: $theme-transition;
 
     &:empty:before {
       content: attr(placeholder);
@@ -226,7 +226,7 @@ export default {
       border: 1px solid var(--border-color);
       border-radius: 4px;
       background-color: var(--app-background-color);
-      transition: $--theme-transition;
+      transition: $theme-transition;
       -webkit-appearance: none;
       -webkit-tap-highlight-color: transparent;
 
@@ -253,7 +253,7 @@ export default {
     width: 30px;
     height: 30px;
     cursor: pointer;
-    transition: $--theme-transition;
+    transition: $theme-transition;
 
     &:hover {
       background-color: var(--tool-background-color);
@@ -264,7 +264,7 @@ export default {
 .editor-tools {
   display: flex;
   justify-content: flex-start;
-  transition: $--theme-transition;
+  transition: $theme-transition;
   margin: 5px 0;
 
   > a {

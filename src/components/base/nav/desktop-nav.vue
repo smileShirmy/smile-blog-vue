@@ -49,10 +49,10 @@ export default {
 
     .nav-link {
       cursor: pointer;
-      transition: $--theme-transition;
+      transition: $theme-transition;
 
       &:hover ~ .nav-dot {
-        background-color: $--nav-dot-color;
+        background-color: $nav-dot-color;
       }
     }
 
@@ -77,9 +77,9 @@ export default {
     }
 
     .icon-search {
-      font-size: $--font-size-large;
+      font-size: $font-size-large;
       cursor: pointer;
-      transition: $--theme-transition;
+      transition: $theme-transition;
 
       &:hover {
         color: var(--theme-active);

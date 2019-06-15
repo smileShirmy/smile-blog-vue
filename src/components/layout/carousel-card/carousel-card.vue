@@ -72,8 +72,8 @@ export default {
 
 .feature-text {
   margin: 20px 0 25px;
-  font-size: $--title-font-size-extra-large;
-  font-weight: $--font-weight-bold;
+  font-size: $title-font-size-extra-large;
+  font-weight: $font-weight-bold;
   line-height: 1.2;
 
   a {
@@ -100,12 +100,12 @@ export default {
 }
 
 .feature-author {
-  font-size: $--font-size-base;
-  font-weight: $--font-weight-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-primary;
 
   a {
-    font-size: $--font-size-large;
-    font-weight: $--font-weight-bold;
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
     cursor: pointer;
   }
 }
@@ -120,7 +120,7 @@ export default {
   }
 
   .feature-text {
-    font-size: $--title-font-size-large;
+    font-size: $title-font-size-large;
   }
 
   .feature-dot {
@@ -151,7 +151,7 @@ export default {
       width: 100%;
       height: 100%;
       padding: 0 0 10vh 0;
-      z-index: $--index-normal;
+      z-index: $index-normal;
     }
 
     .feature-content {
@@ -171,14 +171,14 @@ export default {
   }
 
   .feature-text {
-    font-size: $--title-font-size-extra-large;
+    font-size: $title-font-size-extra-large;
   }
 
   .feature-author {
-    font-size: $--font-size-base;
+    font-size: $font-size-base;
 
     a {
-      font-size: $--font-size-base;
+      font-size: $font-size-base;
     }
   }
 }
@@ -193,7 +193,7 @@ export default {
 
   .feature-text {
     margin: 15px 0 20px;
-    font-size: $--title-font-size-large;
+    font-size: $title-font-size-large;
   }
 }
 
@@ -206,7 +206,7 @@ export default {
   }
 
   .feature-text {
-    font-size: $--title-font-size-medium;
+    font-size: $title-font-size-medium;
   }
 }
 </style>

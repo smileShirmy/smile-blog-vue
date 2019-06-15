@@ -133,28 +133,28 @@ export default {
   .title {
     margin: 0;
     line-height: 1;
-    font-size: $--title-font-size-large;
-    font-weight: $--font-weight-bold;
+    font-size: $title-font-size-large;
+    font-weight: $font-weight-bold;
   
     @media (max-width: 479px) {
-      font-size: $--title-font-size-base;
+      font-size: $title-font-size-base;
     }
   }
   
   .author-wrapper {
     margin-top: 15px;
-    font-size: $--font-size-small;
+    font-size: $font-size-small;
   
     @media (max-width: 479px) {
-      font-size: $--font-size-minimum
+      font-size: $font-size-minimum
     }
   
     .author-name {
-      font-size: $--font-size-medium;
-      font-weight: $--font-weight-bold;
+      font-size: $font-size-medium;
+      font-weight: $font-weight-bold;
   
       @media (max-width: 479px) {
-        font-size: $--font-size-small;
+        font-size: $font-size-small;
       }
     }
   }
@@ -175,7 +175,7 @@ export default {
     border-radius: 5px;
     background-color: var(--app-background-color-light);
     box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
-    transition: $--theme-transition;
+    transition: $theme-transition;
 
     @media (max-width: 479px) {
     box-shadow: none;

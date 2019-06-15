@@ -110,7 +110,7 @@ export default {
   border-radius: 5px;
   background-color: var(--app-background-color-light);
   box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
-  transition: $--theme-transition;
+  transition: $theme-transition;
 
   @media (max-width: 1023px) {
     padding: 30px;
@@ -161,19 +161,19 @@ export default {
 
   .title {
     margin: 10px 0 0;
-    font-weight: $--font-weight-bold;
+    font-weight: $font-weight-bold;
     color: var(--font-color-dark);
 
     @media (max-width: 1399px) {
-      font-size: $--title-font-size-medium;
+      font-size: $title-font-size-medium;
     }
 
     @media (max-width: 1023px) {
-      font-size: $--title-font-size-base;
+      font-size: $title-font-size-base;
     }
 
     @media (max-width: 767px) {
-      font-size: $--title-font-size-small;
+      font-size: $title-font-size-small;
     }
 
     .article-link {
@@ -206,7 +206,7 @@ export default {
     -webkit-box-orient: vertical;
 
     @media (max-width: 479px) {
-      font-size: $--font-size-base;
+      font-size: $font-size-base;
     }
   }
 
@@ -214,7 +214,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: $--font-size-small;
+    font-size: $font-size-small;
 
     .author-wrapper {
       display: flex;
@@ -242,7 +242,7 @@ export default {
     .info-wrapper {
       display: flex;
       align-items: center;
-      font-size: $--font-size-small;
+      font-size: $font-size-small;
 
       >i {
         display: inline-block;

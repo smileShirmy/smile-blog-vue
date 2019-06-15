@@ -43,12 +43,12 @@ export default {
   margin: 0 auto;
 
   .icon-post {
-    font-size: $--title-font-size-base;
+    font-size: $title-font-size-base;
   }
 
   span {
-    font-size: $--font-size-small;
-    font-weight: $--font-weight-bold;
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
     padding-left: 5px;
     letter-spacing: 2px;
     text-transform: uppercase;

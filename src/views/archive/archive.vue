@@ -126,8 +126,8 @@ export default {
   }
 
   .year-name {
-    font-size: $--title-font-size-medium;
-    font-weight: $--font-weight-bold;
+    font-size: $title-font-size-medium;
+    font-weight: $font-weight-bold;
   }
 }
 
@@ -135,8 +135,8 @@ export default {
   @include margin;
 
   .month-name {
-    font-size: $--title-font-size-small;
-    font-weight: $--font-weight-bold;
+    font-size: $title-font-size-small;
+    font-weight: $font-weight-bold;
   }
 }
 

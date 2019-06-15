@@ -126,11 +126,11 @@ export default {
 
     .content {
       flex: 1;
-      font-size: $--font-size-base;
+      font-size: $font-size-base;
     }
 
     .time {
-      font-size: $--font-size-base;
+      font-size: $font-size-base;
       text-align: right;
     }
   }

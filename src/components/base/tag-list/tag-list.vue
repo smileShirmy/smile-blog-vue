@@ -20,15 +20,15 @@ export default {
 @import "@/assets/scss/variables.scss";
 
 .section-tag {
-  font-weight: $--font-weight-bold;
+  font-weight: $font-weight-bold;
 }
 
 .tag-title {
-  font-size: $--title-font-size-medium;
+  font-size: $title-font-size-medium;
   margin-bottom: 10px;
 
   @media (max-width: 767px) {
-    font-size: $--title-font-size-base;
+    font-size: $title-font-size-base;
   }
 }
 
@@ -43,8 +43,8 @@ export default {
     display: inline-block;
     padding: 5px 12px;
     margin: 5px;
-    font-size: $--font-size-minimum;
-    font-weight: $--font-weight-bold;
+    font-size: $font-size-minimum;
+    font-weight: $font-weight-bold;
     letter-spacing: 1.5px;
     border-radius: 20px;
     background: var(--tag-color);

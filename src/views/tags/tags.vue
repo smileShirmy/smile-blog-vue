@@ -157,8 +157,8 @@ export default {
 
   .title {
     padding: 15px 30px;
-    font-size: $--title-font-size-medium;
-    font-weight: $--font-weight-bold;
+    font-size: $title-font-size-medium;
+    font-weight: $font-weight-bold;
   }
 
   .center {

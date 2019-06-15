@@ -91,7 +91,7 @@ export default {
         }
       }
 
-      font-size: $--font-size-base;
+      font-size: $font-size-base;
     }
 
     .content {
@@ -101,14 +101,14 @@ export default {
       margin: 8px 0;
 
       @media (max-width: 479px) {
-        font-size: $--font-size-medium;
+        font-size: $font-size-medium;
       }
     }
 
     .reply-content {
       box-sizing: border-box;
       padding: 6px 10px;      
-      font-size: $--font-size-base;
+      font-size: $font-size-base;
       border: 1px solid var(--border-color);
       border-radius: 4px;
       background-color: var(--primary-light-0);
@@ -120,7 +120,7 @@ export default {
       align-items: center;
 
       .time {
-        font-size: $--font-size-small;
+        font-size: $font-size-small;
       }
 
       .tools {

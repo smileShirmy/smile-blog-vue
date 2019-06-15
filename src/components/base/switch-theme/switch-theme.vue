@@ -47,6 +47,6 @@ export default {
 
 .icon {
   cursor: pointer;
-  transition: $--theme-transition;
+  transition: $theme-transition;
 }
 </style>

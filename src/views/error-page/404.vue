@@ -20,12 +20,12 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  font-weight: $--font-weight-bold;
+  font-weight: $font-weight-bold;
 }
 
 .code {
   margin-top: 20px;
-  font-size: $--title-font-size-extra-maximum;
+  font-size: $title-font-size-extra-maximum;
 }
 
 .desc {

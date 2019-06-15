@@ -55,21 +55,21 @@ export default {
 
   .time {
     margin-right: 20px;
-    font-size: $--font-size-medium;
+    font-size: $font-size-medium;
   }
 
   .title {
-    font-size: $--font-size-large;
+    font-size: $font-size-large;
   }
 
   @media (max-width: 1023px) {
     .time {
       margin-right: 16px;
-      font-size: $--font-size-base;
+      font-size: $font-size-base;
     }
 
     .title {
-      font-size: $--font-size-medium;
+      font-size: $font-size-medium;
     }
   }
 
