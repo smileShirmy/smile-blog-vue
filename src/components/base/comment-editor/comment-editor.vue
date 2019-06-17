@@ -112,6 +112,10 @@ export default {
   }
 }
 
+.slide-wrapper {
+  position: relative;
+}
+
 .message-container {
   .comment-wrapper {
     width: 100%;
