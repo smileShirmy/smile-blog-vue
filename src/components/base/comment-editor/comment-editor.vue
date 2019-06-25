@@ -49,10 +49,9 @@
             <input
               v-if="!isMessageEditor"
               class="user-input"
-              required="true"
               name="email"
               type="email"
-              placeholder="邮箱（必填）"
+              placeholder="邮箱（非必填，用于回复）"
             >
             <input
               v-if="!isMessageEditor"
