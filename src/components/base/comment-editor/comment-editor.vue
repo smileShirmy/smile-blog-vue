@@ -152,8 +152,6 @@ export default {
         alert(inValidMsg)
         return
       }
-      console.log(this.form)
-
       this.$emit('send', this.form)
     },
 
@@ -195,7 +193,7 @@ export default {
           end: `]()`,
         },
         code: {
-          start: '\n```javascript\n',
+          start: '\n```\n',
           end: '\n```',
         }
       }
@@ -345,6 +343,7 @@ export default {
     outline: none;
     overflow-y: auto;
     transition: $theme-transition;
+    font-family: Microsoft Yahei;
 
     &:empty:before {
       content: attr(placeholder);

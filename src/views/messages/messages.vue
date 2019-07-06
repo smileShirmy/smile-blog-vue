@@ -2,14 +2,13 @@
   <div class="messages-container">
     <split-line :icon="'message'" :desc="'留言墙'"></split-line>
     <section class="editor-wrapper">
-      <comment-editor :isMessageEditor="true"></comment-editor>
+      <comment-editor :isMessageEditor="true" @send="onSend"></comment-editor>
     </section>
     <ul class="messages-wrapper">
       <li class="message-item" v-for="message in messageList" :key="message.id">
-        <span class="author">{{message.author}}</span>
+        <span class="nickname">{{message.nickname ? '@' + message.nickname : ''}}</span>
         <div class="content">
-          <p>
-            {{message.content}}
+          <p v-html="marked(message.content)">
           </p>
         </div>
         <time class="time" :datetime="message.time">{{message.time}}</time>
@@ -22,63 +21,7 @@
 import SplitLine from '@/components/base/split-line/split-line'
 import CommentEditor from '@/components/base/comment-editor/comment-editor'
 import message from '@/services/models/message'
-
-const messageList = [
-  {
-    id: 1,
-    author: 'author1',
-    content: 'content1',
-    time: '2019.01.01 23:33'
-  },
-  {
-    id: 2,
-    author: 'author1',
-    content: 'content1',
-    time: '2019.01.01 23:33'
-  },
-  {
-    id: 3,
-    author: 'author1',
-    content: 'content1',
-    time: '2019.01.01 23:33'
-  },
-  {
-    id: 4,
-    author: 'author1',
-    content: 'content1',
-    time: '2019.01.01 23:33'
-  },
-  {
-    id: 5,
-    author: 'author1',
-    content: 'content1content1content1content1content1content1content1content1content1content1',
-    time: '2019.01.01 23:33'
-  },
-  {
-    id: 6,
-    author: 'author1',
-    content: 'content1',
-    time: '2019.01.01 23:33'
-  },
-  {
-    id: 7,
-    author: 'author1',
-    content: 'content1',
-    time: '2019.01.01 23:33'
-  },
-  {
-    id: 8,
-    author: 'author1',
-    content: 'content1',
-    time: '2019.01.01 23:33'
-  },
-  {
-    id: 9,
-    author: 'author1',
-    content: 'content1',
-    time: '2019.01.01 23:33'
-  },
-]
+import markdown from '@/services/markdown/marked'
 
 export default {
   components: {
@@ -88,15 +31,34 @@ export default {
 
   data() {
     return {
-      messageList
+      messageList: []
     }
   },
 
   methods: {
-    getMessages() {
+    // markdown 解析
+    marked(content) {
+      return markdown(content)
+    },
+
+    async getMessages() {
       try {
-        const res = message.getMessages()
-        this.messageList = res
+        const res = await message.getMessages()
+        this.messageList = res.collection
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+    async onSend({nickname, content}) {
+      try {
+        const res = await message.createMessage({
+          nickname,
+          content
+        })
+        if (res.errorCode === 0) {
+          this.getMessages()
+        }
       } catch (e) {
         console.log(e)
       }
@@ -140,9 +102,17 @@ export default {
       transform: translateY(-4px);
     }
 
+    .nickname {
+      height: 24px;
+    }
+
     .content {
       flex: 1;
       font-size: $font-size-base;
+
+      img {
+        width: 50%;
+      }
     }
 
     .time {
