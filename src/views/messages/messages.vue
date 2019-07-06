@@ -19,8 +19,9 @@
 </template>
 
 <script>
-import SplitLine from '@/components/base/split-line/split-line';
-import CommentEditor from '@/components/base/comment-editor/comment-editor';
+import SplitLine from '@/components/base/split-line/split-line'
+import CommentEditor from '@/components/base/comment-editor/comment-editor'
+import message from '@/services/models/message'
 
 const messageList = [
   {
@@ -89,6 +90,21 @@ export default {
     return {
       messageList
     }
+  },
+
+  methods: {
+    getMessages() {
+      try {
+        const res = message.getMessages()
+        this.messageList = res
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  },
+
+  created() {
+    this.getMessages()
   }
 }
 </script>
