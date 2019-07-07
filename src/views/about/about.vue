@@ -11,22 +11,14 @@
         :key="author.id"
         @click="showProfile(author.id)"
       >
-        <div class="author-avatar"></div>
+        <div class="author-avatar" :style="{backgroundImage: `url(${author.avatar})`}"></div>
         <div class="author-info-wrapper">
           <h2 class="author-name">{{author.name}}</h2>
-          <div
-            v-if="author.social"
-            class="social-wrapper"
-          >
-            <a
-              v-for="social in author.social"
-              :key="social.type"
-              :class="'social-item icon icon-' + social.type"
-              @click.stop="showSocial(social.type)"
-            ></a>
+          <div class="social-wrapper">
+            <a class="social-item icon icon-mail" :href="'mailto:' + author.email" @click.stop></a>
           </div>
           <div class="author-social"></div>
-          <p class="author-desc">{{author.desc}}</p>
+          <p class="author-desc">{{author.description}}</p>
         </div>
       </li>
     </ul>
@@ -35,64 +27,7 @@
 
 <script>
 import SplitLine from '@/components/base/split-line/split-line'
-
-const authorList = [
-  {
-    id: 1,
-    name: 'name1',
-    desc: 'Non dolere, inquam, istud quam vim habeat postea viderouid ei reliquisti, nisi te, quoquo modo loqueretur, intellegere, quid diceret.',
-    social: [
-      {
-        type: 'site',
-        content: '',
-      },
-      {
-        type: 'mail',
-        content: '',
-      },
-      {
-        type: 'wechat',
-        content: '',
-      },
-      {
-        type: 'qq',
-        content: '',
-      },
-      {
-        type: 'weibo',
-        content: '',
-      },
-      {
-        type: 'facebook',
-        content: '',
-      },
-      {
-        type: 'github',
-        content: '',
-      }
-    ]
-  },
-  {
-    id: 2,
-    name: 'name1',
-    desc: 'Non dolere, inquam, istud quam vim habeat postea viderouid ei reliquisti, nisi te, quoquo modo loqueretur, intellegere, quid diceret.',
-  },
-  {
-    id: 3,
-    name: 'name1',
-    desc: 'Non dolere, inquam, istud quam vim habeat postea viderouid ei reliquisti, nisi te, quoquo modo loqueretur, intellegere, quid diceret.',
-  },
-  {
-    id: 4,
-    name: 'name1',
-    desc: 'Non dolere, inquam, istud quam vim habeat postea viderouid ei reliquisti, nisi te, quoquo modo loqueretur, intellegere, quid diceret.',
-  },
-  {
-    id: 5,
-    name: 'name1',
-    desc: 'Non dolere, inquam, istud quam vim habeat postea viderouid ei reliquisti, nisi te, quoquo modo loqueretur, intellegere, quid diceret.',
-  },
-]
+import author from '@/services/models/author'
 
 export default {
   components: {
@@ -101,7 +36,7 @@ export default {
 
   data() {
     return {
-      authorList
+      authorList: []
     }
   },
 
@@ -112,9 +47,18 @@ export default {
       })
     },
 
-    showSocial(type) {
-      console.log(type)
+    async getAuthors() {
+      try {
+        const res = await author.getAuthors()
+        this.authorList = res
+      } catch (e) {
+        console.log(e)
+      }
     }
+  },
+
+  created() {
+    this.getAuthors()
   }
 }
 </script>
@@ -152,7 +96,8 @@ export default {
       display: block;
       width: 100%;
       height: 250px;
-      background: url(../../assets/image/lighthouse.jpeg) no-repeat center center;
+      background-repeat: no-repeat;
+      background-position: center center;
       background-size: cover;
     }
 
