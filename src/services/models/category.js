@@ -8,6 +8,14 @@ class Category {
     const res = await get('v1/category/categories')
     return res
   }
+
+  // 获取标签详情
+  async getCategory(id) {
+    const res = await get('v1/category', {
+      id
+    })
+    return res
+  }
 }
 
 export default new Category()

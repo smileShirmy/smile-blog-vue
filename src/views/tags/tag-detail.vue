@@ -1,15 +1,15 @@
 <template>
   <div class="tags-detail-container">
-    <detail-header :name="name" :desc="desc" :coverUrl="coverUrl">
+    <detail-header :name="name" :description="description" :cover="cover">
       <template v-slot:info>
         <div class="posts-number">
           <i class="icon icon-post"></i>
-          <span>10 posts</span>
+          <span>{{articles.length}}&nbsp;posts</span>
         </div>
       </template>
     </detail-header>
     <article class="article-list">
-      <article-list></article-list>
+      <article-list :articles="articles"></article-list>
     </article>
   </div>
 </template>
@@ -17,6 +17,8 @@
 <script>
 import ArticleList from '@/components/layout/article-list/article-list'
 import DetailHeader from '@/components/layout/detail-header/detail-header'
+import article from '@/services/models/article'
+import category from '@/services/models/category'
 
 export default {
   components: {
@@ -26,10 +28,49 @@ export default {
 
   data() {
     return {
-      name: 'JavaScript',
-      desc: 'Enean malesuada imperdiet orci nec euismod. Vivamus posuere sapien ac congue posuere. Sed ut mattis massa. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
-      coverUrl: 'https://resource.shirmy.me/lighthouse.jpeg'
+      categoryId: 0,
+      name: '',
+      description: '',
+      cover: '',
+      articles: [],
     }
+  },
+
+  methods: {
+    async getArticles() {
+      if (!this.categoryId) {
+        return
+      }
+      try {
+        const res = await article.getArticles({
+          categoryId: this.categoryId
+        })
+        this.articles = res
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+    async getCategory() {
+      if (!this.categoryId) {
+        return
+      }
+      try {
+        const res = await category.getCategory(this.categoryId)
+        this.name = res.name
+        this.description = res.description
+        this.cover = res.cover
+        console.log(res)
+      } catch (e) {
+        console.log(e)
+      }
+    },
+  },
+
+  created() {
+    this.categoryId = this.$route.params.id
+    this.getArticles()
+    this.getCategory()
   }
 }
 </script>

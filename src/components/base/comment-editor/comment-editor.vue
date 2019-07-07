@@ -8,7 +8,7 @@
           <div v-if="isShowReplyContent" class="reply-target">
             <i class="icon icon-ant-close" @click="closeReplyContent"></i>
             <strong class="reply-author">@{{reply.nickname}}</strong>
-            <div class="reply-content">{{reply.content}}</div>
+            <div class="reply-content" v-html="reply.content"></div>
           </div>
         </section>
         <!-- 评论内容区域 -->

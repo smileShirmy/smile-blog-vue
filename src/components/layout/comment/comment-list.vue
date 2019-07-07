@@ -8,10 +8,10 @@
           <a v-if="comment.website" class="website icon icon-planet" :href="comment.website" target="_blank"></a>
           <span>{{comment.nickname}}</span>
         </div>
-        <div class="content">{{comment.content}}</div>
+        <div class="content" v-html="comment.content"></div>
         <section class="reply-wrapper" v-if="comment.parent_id !== 0">
           <div class="reply-nickname" v-if="comment.replyName">@{{comment.replyName}}:</div>
-          <div>{{comment.replyContent}}</div>
+          <div v-html="comment.content"></div>
         </section>
         <footer class="comment-footer">
           <time class="time" :datetime="comment.createdDate | filterTime">{{comment.created_date | filterTime}}</time>

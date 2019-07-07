@@ -78,6 +78,11 @@ export default {
   },
 
   methods: {
+    // markdown 解析
+    marked(content) {
+      return markdown(content)
+    },
+
     onShowRecommendDetail(articleId) {
       this.id = articleId
       this.$router.push({
@@ -93,6 +98,7 @@ export default {
           articleId: this.id
         })
         res.forEach(v => {
+          v.content = this.marked(v.content)
           if (v.parent_id !== 0) {
             const reply = res.find(target => target.id === v.parent_id)
             if (reply) {
