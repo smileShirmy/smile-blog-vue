@@ -1,12 +1,16 @@
 <template>
   <div>
-    <carousel class="carousel-container">
-      <carousel-item v-for="item in 4" :key="item">
-        <carousel-card></carousel-card>
+    <carousel class="carousel-container"
+      :showRightArrow="starArticles.length > 1"
+      :showLeftArrow="starArticles.length > 1"
+      :autoplay="starArticles.length > 1"
+    >
+      <carousel-item v-for="article in starArticles" :key="article.id">
+        <carousel-card :article="article"></carousel-card>
       </carousel-item>
     </Carousel>
     <section class="article-wrapper">
-      <article-list></article-list>
+      <article-list :articles="articles"></article-list>
     </section>
   </div>
 </template>
@@ -16,6 +20,24 @@ import Carousel from '@/components/base/carousel/carousel'
 import CarouselItem from '@/components/base/carousel/carousel-item'
 import CarouselCard from '@/components/layout/carousel-card/carousel-card'
 import ArticleList from '@/components/layout/article-list/article-list'
+import article from '@/services/models/article'
+
+const defaultStar = {
+  id: 0,
+  title: '虚弱又赤城地拥抱世界',
+  category: {
+    id: 0,
+    name: '惟有文字 长情陪伴'
+  },
+  authors: [
+    {
+      id: 0,
+      name: '西麦'
+    }
+  ],
+  created_date: Date.now(),
+  cover: 'https://resource.shirmy.me/lighthouse.jpeg'
+}
 
 export default {
   components: {
@@ -23,6 +45,39 @@ export default {
     CarouselItem,
     CarouselCard,
     ArticleList,
+  },
+
+  data() {
+    return {
+      articles: [],
+      // 默认 card
+      starArticles: [defaultStar]
+    }
+  },
+
+  methods: {
+    async getArticles() {
+      try {
+        const res = await article.getArticles()
+        this.articles = res
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+    async getStarArticles() {
+      try {
+        const res = await article.getStarArticles()
+        this.starArticles = res
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  },
+
+  created() {
+    this.getStarArticles()
+    this.getArticles()
   }
 }
 </script>

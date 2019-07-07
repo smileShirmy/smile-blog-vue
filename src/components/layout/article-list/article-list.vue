@@ -1,33 +1,37 @@
 <template>
   <div class="article-list-container">
     <ul class="article-list-wrapper">
-      <li class="article-item" v-for="article in articleList" :key="article.id">
+      <li class="article-item" v-for="article in articles" :key="article.id">
         <article class="article-wrapper">
-          <a class="tag">{{article.tag}}</a>
+          <a class="category">{{article.category.name}}</a>
           <h2 class="title">
             <router-link :to="'/article/' + article.id" class="article-link">
               {{article.title}}<span class="hover-dot"></span>
             </router-link>
           </h2>
-          <p class="content">{{article.content}}</p>
+          <p class="content">{{article.description}}</p>
           <footer class="footer">
             <div class="author-wrapper">
-              <i class="avatar"></i>
-              <span class="name">{{article.author}}</span>
+              <div class="avatar-wrapper">
+                <i class="avatar" v-for="author in article.authors" :key="author.id" :style="{backgroundImage: `url(${author.avatar})`}"></i>
+              </div>
+              <ul class="name-wrapper">
+                <li class="name" v-for="author in article.authors" :key="author.id">{{author.name}}</li>
+              </ul>
             </div>
             <div class="info-wrapper">
               <i class="icon icon-eye"></i>
-              <span class="count">1</span>
+              <span class="count">{{article.views}}</span>
               <i class="icon icon-reply"></i>
-              <span class="count">1</span>
+              <span class="count">{{article.comment_count}}</span>
               <i class="icon icon-heart"></i>
-              <span class="count">1</span>
-              <time datetime="2018-5-16">{{article.time}}</time>
+              <span class="count">{{article.like}}</span>
+              <time :datetime="article.created_date | filterTime">{{article.created_date | filterTime}}</time>
             </div>
           </footer>
         </article>
         <div class="split"></div>
-        <img class="article-image" src="https://resource.shirmy.me/lighthouse.jpeg"/>
+        <img class="article-image" :src="article.cover"/>
       </li>
       <div class="load-more" @click="loadMore"></div>
     </ul>
@@ -35,53 +39,17 @@
 </template>
 
 <script>
-const articleList = [
-  {
-    id: 1,
-    tag: 'JavaScript',
-    title: '标题',
-    content: `这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容`,
-    author: 'smile',
-    time: '2018-5-16'
-  },
-  {
-    id: 2,
-    tag: 'tag2',
-    title: '标题',
-    content: `这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容这些是内容`,
-    author: 'qiushiming',
-    time: '2018-5-16'
-  },
-  {
-    id: 3,
-    tag: 'tag3',
-    title: 'title3',
-    content: 'content3',
-    author: 'author3',
-    time: '2018-5-16'
-  },
-  {
-    id: 4,
-    tag: 'tag4',
-    title: 'title4',
-    content: 'content4',
-    author: 'author4',
-    time: '2018-5-16'
-  },
-  {
-    id: 5,
-    tag: 'tag4',
-    title: 'title4',
-    content: 'content4',
-    author: 'author4',
-    time: '2018-5-16'
-  },
-]
-
 export default {
+  props: {
+    articles: {
+      type: Array,
+      default: () => []
+    }
+  },
+
   data() {
     return {
-      articleList,
+      
     }
   },
 
@@ -154,7 +122,7 @@ export default {
   width: 100%;
   color: var(--font-color-article);
 
-  .tag {
+  .category {
     cursor: pointer;
     color: var(--font-color-light);
   }
@@ -221,21 +189,45 @@ export default {
       justify-content: flex-start;
       align-items: center;
 
-      .avatar {
-        display: inline-block;
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        background-color: #ccc;
+      .avatar-wrapper {
+        display: flex;
+        justify-content: flex-start;
 
-        @media (max-width: 479px) {
-          width: 26px;
-          height: 26px;
+        .avatar {
+          display: inline-block;
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
+
+          @media (max-width: 479px) {
+            width: 26px;
+            height: 26px;
+          }
+
+          &:not(:first-child) {
+            margin-left: -17px;
+          }
         }
       }
 
-      .name {
-        margin-left: 12px;
+      .name-wrapper {
+        display: flex;
+        justify-content: flex-start;
+
+        .name {
+          margin-left: 12px;
+
+          &:not(:first-child) {
+            margin-left: 0;
+          }
+
+          &:not(:first-child)::before {
+            content: ', '
+          }
+        }
       }
     }
 

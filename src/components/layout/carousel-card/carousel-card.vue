@@ -1,12 +1,12 @@
 <template>
   <div class="card-container">
-    <div class="card-image"></div>
+    <div class="card-image" :style="{backgroundImage: `url(${article.cover})`}"></div>
     <div class="feature-wrapper">
       <article class="feature-content">
-        <div class="feature-tag">JavaScript</div>
+        <div class="feature-tag">{{article.category.name}}</div>
         <h2 class="feature-text">
           <router-link :to="'/article/' + id">
-            I think it's the responsibility of a designer to try to break rules and barriers
+            {{article.title}}
             <span
               class="feature-dot"
             ></span>
@@ -14,11 +14,9 @@
         </h2>
         <span class="feature-author">
           by&nbsp;
-          <a href>西麦</a>、
-          <a href>qiushiming</a>
-          <time datetime="2018-5-14">
-            &nbsp;a year
-            ago
+          <span class="author-name" v-for="author in article.authors" :key="author.id">{{author.name}}</span>
+          <time :datetime="article.created_date | filterTime">
+            &nbsp;{{article.created_date | filterTime('Y-m-d')}}
           </time>
         </span>
       </article>
@@ -28,6 +26,13 @@
 
 <script>
 export default {
+  props: {
+    article: {
+      type: Object,
+      default: () => {}
+    }
+  },
+
   data() {
     return {
       id: 1,
@@ -52,7 +57,8 @@ export default {
     width: calc(50% - 45px);
     height: 100%;
     border-radius: 5px;
-    background: url(../../../assets/image/lighthouse.jpeg) no-repeat center center;
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: cover;
 
     @media (max-width: 1023px) {
@@ -103,10 +109,14 @@ export default {
   font-size: $font-size-base;
   font-weight: $font-weight-primary;
 
-  a {
+  .author-name {
     font-size: $font-size-large;
     font-weight: $font-weight-bold;
     cursor: pointer;
+
+    &:not(:first-child)::before {
+      content: '、'
+    }
   }
 }
 
