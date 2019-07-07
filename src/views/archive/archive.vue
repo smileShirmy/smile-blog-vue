@@ -1,14 +1,16 @@
 <template>
   <div class="archive-container">
-    <split-line :icon="'post'" :desc="'10 posts'"></split-line>
-    <div class="year-wrapper" v-for="year in archiveList" :key="year.year">
+    <split-line :icon="'post'" :desc="`${articleCount} posts`"></split-line>
+    <div class="year-wrapper" v-for="year in archive" :key="year.year">
       <div class="year-name">{{year.year}}</div>
       <dl class="month-wrapper" v-for="month in year.monthList" :key="month.month">
         <dt class="month-name">{{month.month | monthTrans}}</dt>
-        <dd class="article-item" v-for="article in month.articleList" :key="article.id">
-          <span class="time">{{article.time}}</span>
+        <dd class="article-item" v-for="article in month.articles" :key="article.id">
+          <span class="time">{{article.created_date | filterTime('m.d')}}</span>
           <router-link class="title" :to="'/article/' + article.id">{{article.title}}</router-link>
-          <i class="avatar"></i>
+          <div class="avtar-wrapper">
+            <i v-for="author in article.authors" :key="author.id" class="avatar" :style="{backgroundImage: `url(${author.avatar})`}"></i>
+          </div>
         </dd>
       </dl>
     </div>
@@ -17,6 +19,8 @@
 
 <script>
 import SplitLine from '@/components/base/split-line/split-line'
+import article from '@/services/models/article'
+import Utils from '@/services/utils/util'
 
 const monthMap = {
   1: 'January',
@@ -33,54 +37,6 @@ const monthMap = {
   12: 'December'
 }
 
-const archiveList = [
-  {
-    year: '2019',
-    monthList: [
-      {
-        month: 5,
-        articleList: [
-          {
-            id: 1,
-            title: '这个标题真的有点长这个标题真的有点长这个标题真的有点长这个标题真的有点长这个标题真的有点长这个标题真的有点长',
-            time: '05.13'
-          }
-        ]
-      },
-      {
-        month: 3,
-        articleList: [
-          {
-            id: 2,
-            title: '标题2',
-            time: '05.13'
-          },
-          {
-            id: 3,
-            title: '标题3',
-            time: '05.13'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    time: '2018',
-    monthList: [
-      {
-        month: 12,
-        articleList: [
-          {
-            id: 4,
-            title: '标题4',
-            time: '05.13'
-          }
-        ]
-      }
-    ]
-  }
-]
-
 export default {
   components: {
     SplitLine
@@ -88,7 +44,8 @@ export default {
 
   data() {
     return {
-      archiveList
+      archive: [],
+      articleCount: 0,
     }
   },
 
@@ -96,6 +53,42 @@ export default {
     monthTrans(month) {
       return monthMap[month]
     }
+  },
+
+  methods: {
+    async getArticles() {
+      try {
+        let res = await article.getArchive()
+        this.articleCount = res.length
+        res.forEach(v => {
+          v.created_date = Utils.timestampToTime(v.created_date)
+        })
+        // step1: 按月份对文章进行分类
+        let months = [...new Set(res.map(v => v.created_date.substr(0, 7)))].map(v => {
+          const month = parseInt(v.split('-')[1])
+          return {
+            year: v.split('-')[0],
+            month,
+            articles: res.filter(v => parseInt(v.created_date.split('-')[1]) === month)
+          }
+        })
+        // step2: 按年份分类月份
+        let years = [...new Set(months.map(v => v.year))].map(v => {
+          return {
+            year: v,
+            monthList: months.filter(month => month.year === v)
+          }
+        })
+        this.archive = years
+        console.log(this.archive)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  },
+
+  created() {
+    this.getArticles()
   }
 }
 </script>
@@ -172,22 +165,33 @@ export default {
     cursor: pointer;
   }
 
-  .avatar {
-    display: inline-block;
-    width: 30px;
-    min-width: 30px;
-    height: 30px;
+  .avtar-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     margin: -3px 0 0 30px;
-    border-radius: 50%;
-    background-color: var(--border-color);
-    opacity: 0;
-    transform: translate(0);
-    transition: all .25s ease-in-out;
 
-    @media (max-width: 479px) {
-      margin: -3px 0 0 10px;
+    .avatar {
+      display: inline-block;
+      width: 30px;
+      min-width: 30px;
+      height: 30px;
+      margin-left: -15px;
+      border-radius: 50%;
+      background-color: var(--border-color);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: 0;
+      transform: translate(0);
+      transition: all .25s ease-in-out;
+
+      @media (max-width: 479px) {
+        margin: -3px 0 0 10px;
+      }
     }
   }
+
 
   &:hover {
     .avatar {

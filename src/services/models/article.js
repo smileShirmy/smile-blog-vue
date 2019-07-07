@@ -17,8 +17,15 @@ class Article {
     return res
   }
 
+  // 获取所有精选文章
   async getStarArticles() {
     const res = await get('v1/article/star/articles')
+    return res
+  }
+  
+  // 获取历史归档
+  async getArchive() {
+    const res = await get('v1/article/archive')
     return res
   }
 }
