@@ -8,9 +8,9 @@
     <ul class="category-list">
       <router-link tag="li" class="category-item" v-for="category in categories" :key="category.id" :to="'/tags/' + category.id">
         <div class="category-wrapper">
-          <div class="category-image"></div>
-          <h2 class="title" :class="{center: !category.desc}">{{category.name}}</h2>
-          <p v-if="category.desc" class="desc">{{category.desc}}</p>
+          <div class="category-image" :style="{backgroundImage: 'url(' + category.cover + ')'}"></div>
+          <h2 class="title" :class="{center: !category.description}">{{category.name}}</h2>
+          <p v-if="category.description" class="desc">{{category.description}}</p>
         </div>
       </router-link>
     </ul>
@@ -20,67 +20,8 @@
 <script>
 import SplitLine from '@/components/base/split-line/split-line'
 import TagList from '@/components/base/tag-list/tag-list'
-
-const categories = [
-  {
-    id: 1,
-    name: 'Poetry',
-    desc: 'Donec elementum ligula eu sapien consequat eleifend. Donec nec dolor erat, condimentum sagittis sem. Praesent porttitor porttitor risus, dapibus rutrum ipsum gravida et. Integer lectus nisi, facilisis sit.'
-  },
-  {
-    id: 2,
-    name: 'Leterature',
-    desc: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Donec elementum ligula eu sapien consequat eleifend.'
-  },
-  {
-    id: 3,
-    name: 'Creativity',
-    desc: '',
-  },
-  {
-    id: 4,
-    name: 'Creativity',
-    desc: '',
-  },
-  {
-    id: 6,
-    name: 'Creativity',
-    desc: '',
-  },
-  {
-    id: 7,
-    name: 'Creativity',
-    desc: '',
-  },
-  {
-    id: 8,
-    name: 'Creativity',
-    desc: '',
-  },
-]
-
-const tagList = [
-  {
-    id: 1,
-    name: 'tag1'
-  },
-  {
-    id: 2,
-    name: 'tag1'
-  },
-  {
-    id: 3,
-    name: 'tag1'
-  },
-  {
-    id: 4,
-    name: 'tag1'
-  },
-  {
-    id: 5,
-    name: 'tag1'
-  },
-]
+import tag from '@/services/models/tag'
+import category from '@/services/models/category'
 
 export default {
   components: {
@@ -90,9 +31,34 @@ export default {
 
   data() {
     return {
-      categories,
-      tagList
+      categories: [],
+      tagList: []
     }
+  },
+
+  methods: {
+    async getTags() {
+      try {
+        const res = await tag.getTags()
+        this.tagList = res
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+    async getCategories() {
+      try {
+        const res = await category.getCategories()
+        this.categories = res
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  },
+
+  created() {
+    this.getTags()
+    this.getCategories()
   }
 }
 </script>
@@ -150,7 +116,8 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(../../assets/image/lighthouse.jpeg) no-repeat center center;
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
   }
