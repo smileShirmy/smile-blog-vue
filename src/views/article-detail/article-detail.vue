@@ -1,11 +1,13 @@
 <template>
   <div>
-    <header class="article-header" :style="coverImage">
+    <header class="article-header" :style="{backgroundImage: `url(${article.cover})`}">
       <div class="header-wrapper">
         <div class="content">
-          <h1 class="title">{{title}}</h1>
+          <h1 class="title">{{article.title}}</h1>
           <div class="author-wrapper">
-            by&nbsp;<span class="author-name">Shirmy</span>&nbsp;<time datetime="2019-01-01">&nbsp;a year ago</time>
+            by&nbsp;
+            <span v-for="author in article.authors" :key="author.id" class="author-name">{{author.name}}</span>
+            &nbsp;<time :datetime="article.created_date | filterTime">&nbsp;{{article.created_date | filterTime}}</time>
           </div>
         </div>
       </div>
@@ -13,11 +15,11 @@
     <div class="article-container">
       <div class="content">
         <div class="article-wrapper">
-          <article class="article-markdown" v-html="marked(content)"></article>
+          <article class="article-markdown" v-html="markedCcontent"></article>
         </div>
         <split-line class="split-line" :icon="'recommend'" :desc="'相关推荐'"></split-line>
         <div class="recommend-wrapper">
-          <recommend></recommend>
+          <recommend :articles="article.categoryArticles" @showRecommendDetail="onShowRecommendDetail"></recommend>
         </div>
         <!-- <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
         <div class="comment-wrapper">
@@ -29,7 +31,7 @@
       <div class="content">
         <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
         <div class="comment-wrapper">
-          <comment></comment>
+          <comment :comments="comments" @createCommentSuccess="getComments" :articleId="parseInt(id)"></comment>
         </div>
       </div>
     </div>
@@ -41,6 +43,8 @@ import markdown from '@/services/markdown/marked'
 import Recommend from '@/components/layout/recommend/recommend'
 import Comment from '@/components/layout/comment/comment'
 import SplitLine from '@/components/base/split-line/split-line'
+import article from '@/services/models/article'
+import comment from '@/services/models/comment'
 
 export default {
   components: {
@@ -51,9 +55,9 @@ export default {
 
   data() {
     return {
-      title: '这是文章题目',
-      coverUrl: 'https://resource.shirmy.me/lighthouse.jpeg',
-      content: ''
+      id: 0,
+      article: {},
+      comments: []
     }
   },
 
@@ -62,18 +66,67 @@ export default {
       return {
         backgroundImage: `url(${this.coverUrl})`
       }
-    }
+    },
+
+    markedCcontent() {
+      if (this.article.content) {
+        return markdown(this.article.content)
+      } else {
+        return ''
+      }
+    },
   },
 
   methods: {
-    marked(content) {
-      return markdown(content)
+    onShowRecommendDetail(articleId) {
+      this.id = articleId
+      this.$router.push({
+        path: `/article/${articleId}`
+      })
+      this.getArticleDetail()
+      this.getComments()
+    },
+
+    async getComments() {
+      try {
+        const res = await comment.getComments({
+          articleId: this.id
+        })
+        res.forEach(v => {
+          if (v.parent_id !== 0) {
+            const reply = res.find(target => target.id === v.parent_id)
+            if (reply) {
+              v.replyName = reply.nickname
+              v.replyContent = reply.content
+            } else {
+              v.replyName = ''
+              v.replyContent = '该评论已被删除'
+            }
+          }
+        })
+        this.comments = res
+        console.log(this.comments)
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+    async getArticleDetail() {
+      try {
+        const res = await article.getArticleDetail({
+          id: this.id
+        })
+        this.article = res
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
 
-  // 测试
-  mounted() {
-    this.content = "# 标题\n# 内容\n```javascript\nfunction abc() {console.log(abc)}\n```"
+  created() {
+    this.id = this.$route.params.id
+    this.getArticleDetail()
+    this.getComments()
   }
 }
 </script>
@@ -155,6 +208,10 @@ export default {
   
       @media (max-width: 479px) {
         font-size: $font-size-small;
+      }
+
+      &:not(:first-child)::before {
+        content: '、'
       }
     }
   }

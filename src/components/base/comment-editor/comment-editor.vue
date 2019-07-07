@@ -7,8 +7,8 @@
         <section class="list-slide-item reply-item" v-if="isShowReplyContent" :key="1">
           <div v-if="isShowReplyContent" class="reply-target">
             <i class="icon icon-ant-close" @click="closeReplyContent"></i>
-            <strong class="reply-author">@作者</strong>
-            <div class="reply-content">要回复的内容</div>
+            <strong class="reply-author">@{{reply.nickname}}</strong>
+            <div class="reply-content">{{reply.content}}</div>
           </div>
         </section>
         <!-- 评论内容区域 -->
@@ -116,6 +116,10 @@ export default {
         email: '',
         website: '',
       },
+      reply: {
+        replyNickname: '',
+        replyContent: '',
+      },
       emojiList,
       cursorPosition: 0,
     }
@@ -126,6 +130,19 @@ export default {
   },
 
   methods: {
+    // 重置为空
+    resetField() {
+      this.form.nickname = ''
+      this.form.content = ''
+      this.form.email = ''
+      this.form.website = ''
+      this.contentText = ''
+      this.contentHtml = ''
+      this.$refs.editContent.innerHTML = ''
+      this.$refs.editContent.innerText = ''
+      this.cursorPosition = 0
+    },
+
     closeReplyContent() {
       this.$emit("closeReplyContent");
     },

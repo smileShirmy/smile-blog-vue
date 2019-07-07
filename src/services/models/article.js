@@ -28,6 +28,18 @@ class Article {
     const res = await get('v1/article/archive')
     return res
   }
+
+  // 获取某篇文章详情
+  async getArticleDetail(query) {
+    const res = await get('v1/article', query)
+    return res
+  }
+
+  // 获取这篇文章下的所有评论
+  async getComments(query) {
+    const res = await get('v1/article/get/comment', query)
+    return res
+  }
 }
 
 export default new Article()

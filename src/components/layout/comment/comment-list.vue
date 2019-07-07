@@ -3,21 +3,23 @@
     <li class="comment-item" v-for="comment in comments" :key="comment.id">
       <i class="avatar"></i>
       <section class="comment-detail">
-        <div class="author">
+        <div class="nickname">
           <i class="mobile-avatar"></i>
-          <span>{{comment.author}}</span>
+          <a v-if="comment.website" class="website icon icon-planet" :href="comment.website" target="_blank"></a>
+          <span>{{comment.nickname}}</span>
         </div>
         <div class="content">{{comment.content}}</div>
-        <section class="reply-content">
-          @{{comment.author}}：{{comment.content}}
+        <section class="reply-wrapper" v-if="comment.parent_id !== 0">
+          <div class="reply-nickname" v-if="comment.replyName">@{{comment.replyName}}:</div>
+          <div>{{comment.replyContent}}</div>
         </section>
         <footer class="comment-footer">
-          <time class="time" datetime="2019-06-12">2019-06-12</time>
+          <time class="time" :datetime="comment.createdDate | filterTime">{{comment.created_date | filterTime}}</time>
           <div class="tools">
-            <i class="icon icon-like">
-              <span class="like-count">1</span>
+            <i class="icon icon-like" @click="likeComment(comment.id)">
+              <span class="like-count">{{comment.like}}</span>
             </i>
-            <i class="icon icon-reply" @click="reply(comment.id)"></i>
+            <i class="icon icon-reply" @click="reply(comment)"></i>
           </div>
         </footer>
         <div class="split"></div>
@@ -27,6 +29,8 @@
 </template>
 
 <script>
+import comment from '@/services/models/comment'
+
 export default {
   props: {
     comments: {
@@ -38,6 +42,21 @@ export default {
   methods: {
     reply(commentId) {
       this.$emit('reply', commentId)
+    },
+
+    async likeComment(id) {
+      try {
+        const res = await comment.likeComment({
+          id
+        })
+        if (res.errorCode === 0) {
+          // TODO: 保存在localStorage判断是否有点赞
+          let comment = this.comments.find(v => v.id === id)
+          comment.like ++
+        }
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }
@@ -75,7 +94,7 @@ export default {
       width: 100%;
     }
 
-    .author {
+    .nickname {
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -89,6 +108,12 @@ export default {
           border-radius: 50%;
           background-color: #eee;
         }
+
+      }
+
+      .website {
+        font-size: $font-size-extra-large;
+        margin-right: 6px;
       }
 
       font-size: $font-size-base;
@@ -105,13 +130,17 @@ export default {
       }
     }
 
-    .reply-content {
+    .reply-wrapper {
       box-sizing: border-box;
       padding: 6px 10px;      
       font-size: $font-size-base;
       border: 1px solid var(--border-color);
       border-radius: 4px;
       background-color: var(--primary-light-0);
+
+      .reply-nickname {
+        font-weight: $font-weight-bold;
+      }
     }
 
     .comment-footer {

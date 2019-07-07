@@ -1,8 +1,10 @@
 <template>
   <div class="comment-container">
     <comment-editor
+      ref="editor"
       :isShowReplyContent="isShowReplyContent"
-      @closeReplyContent="isShowReplyContent = false"
+      @closeReplyContent="closeReply"
+      @send="onSend"
     ></comment-editor>
     <div class="comment-list-wrapper">
       <comment-list :comments="comments" @reply="onReply"></comment-list>
@@ -13,45 +15,7 @@
 <script>
 import CommentList from "./comment-list";
 import CommentEditor from "@/components/base/comment-editor/comment-editor";
-
-const comments = [
-  {
-    id: 1,
-    author: "作者",
-    content: "内容",
-    time: "2019-06-10"
-  },
-  {
-    id: 2,
-    author: "作者",
-    content: "内容",
-    time: "2019-06-10"
-  },
-  {
-    id: 3,
-    author: "作者",
-    content: "内容",
-    time: "2019-06-10"
-  },
-  {
-    id: 4,
-    author: "作者",
-    content: "内容",
-    time: "2019-06-10"
-  },
-  {
-    id: 5,
-    author: "作者",
-    content: "内容",
-    time: "2019-06-10"
-  },
-  {
-    id: 6,
-    author: "作者",
-    content: "内容",
-    time: "2019-06-10"
-  }
-];
+import comment from '@/services/models/comment'
 
 export default {
   components: {
@@ -59,17 +23,77 @@ export default {
     CommentList
   },
 
+  props: {
+    comments: {
+      type: Array,
+      default: () => []
+    },
+
+    articleId: {
+      type: Number
+    }
+  },
+
   data() {
     return {
-      comments,
-      isShowReplyContent: false
+      isShowReplyContent: false,
+      parentId: 0
     };
   },
 
   methods: {
-    onReply(commentId) {
-      console.log(commentId);
+    onReply(comment) {
+      this.parentId = comment.id
+      this.$refs.editor.reply = {
+        nickname: comment.nickname,
+        content: comment.content
+      }
       this.isShowReplyContent = true;
+    },
+
+    closeReply() {
+      this.isShowReplyContent = false
+      this.parentId = 0
+      this.$refs.editor.reply = {
+        nickname: '',
+        content: ''
+      }
+      this.$refs.editor.resetField()
+    },
+
+    async onSend(data) {
+      if (!this.articleId) {
+        return
+      }
+      if (this.isShowReplyContent) {
+        // 回复评论
+        if (!this.parentId) {
+          return
+        }
+        try {
+          data.articleId = this.articleId
+          data.parentId = this.parentId
+          const res = await comment.replyComment(data)
+          if (res.errorCode === 0) {
+            this.closeReply()
+            this.$emit('createCommentSuccess')
+          }
+        } catch (e) {
+          console.log(e)
+        }
+      } else {
+        // 创建评论
+        try {
+          data.articleId = this.articleId
+          const res = await comment.createComment(data)
+          if (res.errorCode === 0) {
+            this.$refs.editor.resetField()
+            this.$emit('createCommentSuccess')
+          }
+        } catch (e) {
+          console.log(e)
+        }
+      }
     }
   }
 };

@@ -2,7 +2,7 @@
   <div class="messages-container">
     <split-line :icon="'message'" :desc="'留言墙'"></split-line>
     <section class="editor-wrapper">
-      <comment-editor :isMessageEditor="true" @send="onSend"></comment-editor>
+      <comment-editor ref="editor" :isMessageEditor="true" @send="onSend"></comment-editor>
     </section>
     <ul class="messages-wrapper">
       <li class="message-item" v-for="message in messageList" :key="message.id">
@@ -57,6 +57,7 @@ export default {
           content
         })
         if (res.errorCode === 0) {
+          this.$refs.editor.resetField()
           this.getMessages()
         }
       } catch (e) {
