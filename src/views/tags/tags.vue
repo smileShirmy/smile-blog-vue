@@ -2,11 +2,11 @@
   <div class="tag-container">
     <split-line :icon="'cloud'" :desc="'标签'"></split-line>
     <div class="tag-wrapper">
-      <tag-list :tagList="tagList"></tag-list>
+      <tag-list :tagList="tagList" @selectTag="onSelectTag"></tag-list>
     </div>
     <split-line :icon="'tag'" :desc="'分类'"></split-line>
     <ul class="category-list">
-      <router-link tag="li" class="category-item" v-for="category in categories" :key="category.id" :to="'/tags/' + category.id">
+      <router-link tag="li" class="category-item" v-for="category in categories" :key="category.id" :to="`/tags/${category.id}/categoryFlag`">
         <div class="category-wrapper">
           <div class="category-image" :style="{backgroundImage: `url(${category.cover})`}"></div>
           <h2 class="title" :class="{center: !category.description}">{{category.name}}</h2>
@@ -37,6 +37,12 @@ export default {
   },
 
   methods: {
+    onSelectTag(tag) {
+      this.$router.push({
+        path: `/tags/${tag.id}/${tag.name}`
+      })
+    },
+
     async getTags() {
       try {
         const res = await tag.getTags()

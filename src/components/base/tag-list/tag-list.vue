@@ -2,7 +2,7 @@
   <section class="section-tag">
     <h5 v-if="title" class="tag-title">{{title}}</h5>
     <ul class="tag-list">
-      <li class="tag-item" v-for="(tag, index) in tagList" :key="index">{{tag.name}}</li>
+      <li class="tag-item" v-for="(tag, index) in tagList" :key="index" @click="$emit('selectTag', tag)">{{tag.name}}</li>
     </ul>
   </section>
 </template>

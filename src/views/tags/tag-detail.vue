@@ -37,13 +37,27 @@ export default {
   },
 
   methods: {
-    async getArticles() {
+    async getCategoryArticles() {
       if (!this.categoryId) {
         return
       }
       try {
         const res = await article.getArticles({
           categoryId: this.categoryId
+        })
+        this.articles = res
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+    async getTagArticles() {
+      if (!this.tagId) {
+        return
+      }
+      try {
+        const res = await article.getArticles({
+          tagId: this.tagId
         })
         this.articles = res
       } catch (e) {
@@ -60,17 +74,24 @@ export default {
         this.name = res.name
         this.description = res.description
         this.cover = res.cover
-        console.log(res)
       } catch (e) {
         console.log(e)
       }
-    },
+    }
   },
 
   created() {
-    this.categoryId = this.$route.params.id
-    this.getArticles()
-    this.getCategory()
+    // 标签
+    if (this.$route.params.name !== 'categoryFlag') {
+      this.name = this.$route.params.name
+      this.cover = 'https://resource.shirmy.me/lighthouse.jpeg'
+      this.tagId = this.$route.params.id
+      this.getTagArticles()
+    } else {
+      this.categoryId = this.$route.params.id
+      this.getCategoryArticles()
+      this.getCategory()
+    }
   }
 }
 </script>
