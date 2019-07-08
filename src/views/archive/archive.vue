@@ -127,6 +127,7 @@ export default {
 
 .archive-container {
   @include container;
+  min-height: 480px;
 }
 
 .year-wrapper {

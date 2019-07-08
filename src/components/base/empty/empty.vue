@@ -1,15 +1,39 @@
 <template>
-  <div class="not-found-container">
-    <div class="code">404</div>
-    <div class="desc">页面未找到 /(ㄒoㄒ)/~~</div>
-    <router-link class="redirect-btn" :to="'/home'">回到首页</router-link>
+  <div class="empty-container">
+    <div class="desc">{{message}}</div>
+    <a v-if="isBack" class="back-btn" @click="back">返回</a>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    isBack: {
+      type: Boolean,
+      default: true
+    },
+
+    message: {
+      type: String,
+      default: '啥也没有 /(ㄒoㄒ)/~~'
+    }
+  },
+
+  methods: {
+    back() {
+      window.history.length > 1
+        ? this.$router.go(-1)
+        : this.$router.push('/')
+    }
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 @import "@/assets/scss/variables.scss";
 
-.not-found-container {
+.empty-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,22 +41,16 @@
   font-weight: $font-weight-bold;
 }
 
-.code {
-  margin-top: 20px;
-  font-size: $title-font-size-extra-maximum;
-}
-
 .desc {
-  margin-top: 30px;
+  margin: 30px 0;
 }
 
-.redirect-btn {
+.back-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 180px;
   height: 60px;
-  margin-top: 50px;
   letter-spacing: .1em;
   border-radius: 30px;
   background: var(--tag-color);

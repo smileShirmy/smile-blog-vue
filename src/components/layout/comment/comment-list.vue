@@ -25,6 +25,8 @@
         <div class="split"></div>
       </section>
     </li>
+    <loading v-if="loading"></loading>
+    <empty v-if="!loading && !comments.length" :message="'还没有评论 /(ㄒoㄒ)/~~'" :isBack="false"></empty>
   </ul>
 </template>
 
@@ -36,6 +38,11 @@ export default {
     comments: {
       type: Array,
       required: true
+    },
+
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
 

@@ -7,7 +7,7 @@
       @send="onSend"
     ></comment-editor>
     <div class="comment-list-wrapper">
-      <comment-list :comments="comments" @reply="onReply"></comment-list>
+      <comment-list :comments="comments" @reply="onReply" :loading="loading"></comment-list>
     </div>
   </div>
 </template>
@@ -31,6 +31,11 @@ export default {
 
     articleId: {
       type: Number
+    },
+
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
 

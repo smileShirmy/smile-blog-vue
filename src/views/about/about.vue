@@ -69,6 +69,7 @@ export default {
 
 .about-container {
   @include container;
+  min-height: 450px;
 }
 
 .author-list {

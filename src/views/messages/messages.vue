@@ -6,14 +6,17 @@
     </section>
     <ul class="messages-wrapper">
       <li class="message-item" v-for="message in messageList" :key="message.id">
-        <span class="nickname">{{message.nickname ? '@' + message.nickname : ''}}</span>
+        <span v-if="message.nickname" class="nickname">@{{message.nickname}}</span>
         <div class="content">
           <p v-html="marked(message.content)">
           </p>
         </div>
-        <time class="time" :datetime="message.time">{{message.time}}</time>
+        <time class="time" :datetime="message.createTime | filterTime">{{message.createTime | filterTime}}</time>
       </li>
     </ul>
+    <div v-show="isLoadMore" class="load-more" @click="loadMore"></div>
+    <loading v-show="loading"></loading>
+    <empty v-if="!loading && !messageList.length" :message="'还没有留言 /(ㄒoㄒ)/~~'" :isBack="false"></empty>
   </div>
 </template>
 
@@ -31,7 +34,20 @@ export default {
 
   data() {
     return {
-    messageList: []
+      loading: false,
+      messageList: [],
+      total: 0,
+      page: 0
+    }
+  },
+
+  computed: {
+    isLoadMore() {
+      if (this.messageList.length && !this.loading) {
+        return this.total % this.messageList.length > 0
+      } else {
+        return false
+      }
     }
   },
 
@@ -41,10 +57,22 @@ export default {
       return markdown(content)
     },
 
+    loadMore() {
+      this.page++
+      this.getMessages()
+    },
+
     async getMessages() {
       try {
-        const res = await message.getMessages()
-        this.messageList = res.collection
+        this.loading = true
+        const res = await message.getMessages(this.page)
+        if (this.page > 0) {
+          this.messageList = this.messageList.concat(res.collection)
+        } else {
+          this.messageList = res.collection
+          this.total = res.total
+        }
+        this.loading = false
       } catch (e) {
         console.log(e)
       }
@@ -89,27 +117,33 @@ export default {
   flex-wrap: wrap;
 
   .message-item {
-    flex: 1 auto;
     display: flex;
     flex-direction: column;
-    min-width: 11em;
-    min-height: 11em;
-    margin: .5em;
+    width: 100%;
+    margin: .4em .5em;
     padding: 1em;
     background-color: var(--tag-color);
     transition: all .25s ease-in-out;
 
+    @media (max-width: 479px) {
+      margin: .2em .5em;
+      padding: .5em;
+    }
+
     &:hover {
-      transform: translateY(-4px);
+      transform: translateY(-2px);
     }
 
     .nickname {
       height: 24px;
+      font-size: $font-size-base;
+      font-weight: $font-weight-bold;
     }
 
     .content {
       flex: 1;
       font-size: $font-size-base;
+      padding: .5em 0;
 
       img {
         width: 50%;
@@ -117,9 +151,27 @@ export default {
     }
 
     .time {
+      margin-top: 1em;
       font-size: $font-size-base;
       text-align: right;
     }
+  }
+}
+
+.load-more {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  margin: 10px auto 0;
+  border: 8px solid #dcdfe7;
+  border-radius: 50%;
+  transition: all .25s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--theme-active);
+    background-color: var(--theme-active);
+    transform: scale(.65);
   }
 }
 </style>

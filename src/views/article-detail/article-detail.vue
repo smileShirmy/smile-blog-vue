@@ -31,7 +31,7 @@
       <div class="content">
         <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
         <div class="comment-wrapper">
-          <comment :comments="comments" @createCommentSuccess="getComments" :articleId="parseInt(id)"></comment>
+          <comment :comments="comments" @createCommentSuccess="getComments" :articleId="parseInt(id)" :loading="loading"></comment>
         </div>
       </div>
     </div>
@@ -68,6 +68,7 @@ export default {
   data() {
     return {
       id: 0,
+      loading: false,
       article: {},
       comments: [],
       likeArticles: [],
@@ -137,6 +138,7 @@ export default {
 
     async getComments() {
       try {
+        this.loading = true
         const res = await comment.getComments({
           articleId: this.id
         })
@@ -155,7 +157,9 @@ export default {
           }
         })
         this.comments = res
+        this.loading = false
       } catch (e) {
+        this.loading = false
         console.log(e)
       }
     },

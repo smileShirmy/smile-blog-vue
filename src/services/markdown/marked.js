@@ -42,5 +42,8 @@ marked.setOptions({
 });
 
 export default (content) => {
+  if (!content) {
+    return ''
+  }
   return marked(content);
 }

@@ -33,7 +33,9 @@
         <div class="split"></div>
         <img class="article-image" :src="article.cover"/>
       </li>
-      <div class="load-more" @click="loadMore"></div>
+      <div v-if="isLoadMore" class="load-more" @click="loadMore"></div>
+      <loading v-if="loading"></loading>
+      <empty v-if="!loading && !articles.length"></empty>
     </ul>
   </div>
 </template>
@@ -44,12 +46,16 @@ export default {
     articles: {
       type: Array,
       default: () => []
-    }
-  },
+    },
 
-  data() {
-    return {
-      
+    loading: {
+      type: Boolean,
+      default: false
+    },
+
+    isLoadMore: {
+      type: Boolean,
+      defualt: false
     }
   },
 

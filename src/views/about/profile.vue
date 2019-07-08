@@ -11,7 +11,7 @@
       </template>
     </detail-header>
     <article class="article-list">
-      <article-list :articles="articles"></article-list>
+      <article-list :articles="articles" :loading="loading"></article-list>
     </article>
   </div>
 </template>
@@ -32,7 +32,8 @@ export default {
     return {
       authorId: 0,
       author: {},
-      articles: []
+      articles: [],
+      loading: false
     };
   },
 
@@ -42,10 +43,12 @@ export default {
         return
       }
       try {
+        this.loading = true
         const res = await article.getArticles({
           authorId: this.authorId
         })
         this.articles = res
+        this.loading = false
       } catch (e) {
         console.log(e)
       }
@@ -66,8 +69,11 @@ export default {
 
   created() {
     this.authorId = this.$route.params.id
-    this.getArticles()
     this.getAuthorDetail()
+  },
+
+  mounted() {
+    this.getArticles()
   }
 };
 </script>
