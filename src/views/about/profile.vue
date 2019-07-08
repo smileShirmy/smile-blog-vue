@@ -11,7 +11,7 @@
       </template>
     </detail-header>
     <article class="article-list">
-      <article-list :articles="articles" :loading="loading"></article-list>
+      <article-list :articles="articles" :loading="loading" :total="total" @loadMore="onLoadMore"></article-list>
     </article>
   </div>
 </template>
@@ -30,6 +30,8 @@ export default {
 
   data() {
     return {
+      total: 0,
+      page: 0,
       authorId: 0,
       author: {},
       articles: [],
@@ -37,19 +39,45 @@ export default {
     };
   },
 
+  watch: {
+    $route(val) {
+      if (!this.authorId) {
+        return
+      }
+      this.page = 0
+      this.total = 0
+      this.author = {}
+      this.articles = []
+      this.authorId = val.params.id
+      this.getAuthorDetail()
+      this.getArticles()
+    }
+  },
+
   methods: {
+    onLoadMore() {
+      if (this.loading) {
+        return
+      }
+      this.page++
+      this.getArticles()
+    },
+
     async getArticles() {
       if (!this.authorId) {
         return
       }
       try {
         this.loading = true
-        const res = await article.getArticles({
-          authorId: this.authorId
+        const { articles, total } = await article.getArticles({
+          authorId: this.authorId,
+          page: this.page
         })
-        this.articles = res
+        this.total = total
+        this.articles = this.articles.concat(articles)
         this.loading = false
       } catch (e) {
+        this.loading = false
         console.log(e)
       }
     },

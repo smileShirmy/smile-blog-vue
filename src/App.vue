@@ -11,6 +11,7 @@
     <transition name="search-slide">
       <page-search v-if="isShowSearch"></page-search>
     </transition>
+    <scroll-top></scroll-top>
   </div>
 </template>
 
@@ -19,12 +20,14 @@ import { mapGetters } from 'vuex'
 import PageHeader from '@/components/layout/page-header/page-header'
 import PageFooter from '@/components/layout/page-footer/page-footer'
 import PageSearch from '@/components/layout/page-search/page-search'
+import ScrollTop from '@/components/layout/scroll-top/scroll-top'
 
 export default {
   components: {
     PageHeader,
     PageFooter,
-    PageSearch
+    PageSearch,
+    ScrollTop
   },
 
   computed: {

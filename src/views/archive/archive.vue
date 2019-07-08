@@ -206,7 +206,7 @@ export default {
       transition: all .25s ease-in-out;
 
       @media (max-width: 479px) {
-        margin: -3px 0 0 10px;
+        margin: -3px 0 0 -15px;
       }
     }
   }

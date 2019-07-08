@@ -299,6 +299,12 @@ export default {
           width: 100%;
         }
       }
+
+      @media (max-width: 479px) {
+        .user-input {
+          width: calc(100% - 20px);
+        }
+      }
     }
 
     .editor-item {
@@ -384,6 +390,10 @@ export default {
     justify-content: space-between;
     align-items: center;
 
+    @media (max-width: 479px) {
+      flex-direction: column;
+    }
+
     .user-input {
       // box-sizing: border-box;
       width: calc(32% - 20px);
@@ -406,6 +416,11 @@ export default {
 
       &:focus {
         border-color: var(--font-color-light);
+      }
+
+      @media (max-width: 479px) {
+        width: calc(100% - 20px);
+        margin: 3px 5px;
       }
     }
   }

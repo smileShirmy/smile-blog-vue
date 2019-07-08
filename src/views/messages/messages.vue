@@ -74,6 +74,7 @@ export default {
         }
         this.loading = false
       } catch (e) {
+        this.loading = false
         console.log(e)
       }
     },
@@ -167,6 +168,11 @@ export default {
   border-radius: 50%;
   transition: all .25s ease-in-out;
   cursor: pointer;
+
+  @media (max-width: 479px) {
+    width: 30px;
+    height: 30px;
+  }
 
   &:hover {
     border-color: var(--theme-active);

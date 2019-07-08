@@ -10,7 +10,7 @@
       </carousel-item>
     </Carousel>
     <section class="article-wrapper">
-      <article-list :articles="articles"></article-list>
+      <article-list :articles="articles" :loading="loading" :total="total" @loadMore="onLoadMore"></article-list>
     </section>
   </div>
 </template>
@@ -49,18 +49,35 @@ export default {
 
   data() {
     return {
+      loading: false,
       articles: [],
       // 默认 card
-      starArticles: [defaultStar]
+      starArticles: [defaultStar],
+      total: 0,
+      page: 0,
     }
   },
 
   methods: {
+    onLoadMore() {
+      if (this.loading) {
+        return
+      }
+      this.page++
+      this.getArticles()
+    },
+
     async getArticles() {
       try {
-        const res = await article.getArticles()
-        this.articles = res
+        this.loading = true
+        const { articles, total } = await article.getArticles({
+          page: this.page
+        })
+        this.total = total
+        this.articles = this.articles.concat(articles)
+        this.loading = false
       } catch (e) {
+        this.loading = false
         console.log(e)
       }
     },

@@ -4,12 +4,12 @@
       <template v-slot:info>
         <div class="posts-number">
           <i class="icon icon-post"></i>
-          <span>{{articles.length}}&nbsp;posts</span>
+          <span>{{total || 0}}&nbsp;posts</span>
         </div>
       </template>
     </detail-header>
     <article class="article-list">
-      <article-list :articles="articles"></article-list>
+      <article-list :articles="articles" :loading="loading" :total="total" @loadMore="onLoadMore"></article-list>
     </article>
   </div>
 </template>
@@ -28,25 +28,64 @@ export default {
 
   data() {
     return {
+      loading: false,
       categoryId: 0,
+      tagId: 0,
       name: '',
       description: '',
       cover: '',
       articles: [],
+      total: 0,
+      page: 0,
+    }
+  },
+
+   watch: {
+    $route(val) {
+      if (val.params.name !== 'categoryFlag') {
+        return
+      }
+      this.page = 0
+      this.total = 0
+      this.tagId = 0
+      this.name = ''
+      this.description = ''
+      this.cover = ''
+      this.categoryId = val.params.id
+      this.articles = []
+      this.getCategory()
+      this.getCategoryArticles()
     }
   },
 
   methods: {
+    onLoadMore() {
+      if (this.loading) {
+        return
+      }
+      this.page++
+      if (this.$route.params.name !== 'categoryFlag') {
+        this.getTagArticles()
+      } else {
+        this.getCategoryArticles()
+      }
+    },
+    
     async getCategoryArticles() {
       if (!this.categoryId) {
         return
       }
       try {
-        const res = await article.getArticles({
-          categoryId: this.categoryId
+        this.loading = true
+        const { articles, total } = await article.getArticles({
+          categoryId: this.categoryId,
+          page: this.page
         })
-        this.articles = res
+        this.articles = this.articles.concat(articles)
+        this.total = total
+        this.loading = false
       } catch (e) {
+        this.loading = false
         console.log(e)
       }
     },
@@ -56,11 +95,16 @@ export default {
         return
       }
       try {
-        const res = await article.getArticles({
-          tagId: this.tagId
+        this.loading = true
+        const { articles, total } = await article.getArticles({
+          tagId: this.tagId,
+          page: this.page
         })
-        this.articles = res
+        this.articles = articles
+        this.total = total
+        this.loading = false
       } catch (e) {
+        this.loading = false
         console.log(e)
       }
     },

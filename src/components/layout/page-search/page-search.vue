@@ -6,20 +6,21 @@
         <i class="icon icon-close"></i>
       </div>
       <div class="search-wrapper">
-        <input class="search-input" type="text" placeholder="search...">
-        <div class="search-result">为你找到 0 项结果</div>
-        <ul class="result-list" v-show="resultList.length">
-          <li class="result-item" v-for="result in resultList" :key="result.id">
-            <time class="time" datetime="2018-5-17">{{result.time}}</time>
-            <h4 class="title">{{result.title}}</h4>
+        <input class="search-input" type="text" placeholder="search..." maxlength="10" v-model="searchVal" @keyup="debouncedSearch">
+        <div class="search-result">为你找到 {{total}} 项结果</div>
+        <loading v-if="!articles.length && loading"></loading>
+        <ul class="result-list" v-show="articles.length">
+          <li class="result-item" v-for="article in articles" :key="article.id">
+            <time class="time" :datetime="article.created_date | filterTime">{{article.created_date| filterTime}}</time>
+            <h4 class="title">{{article.title}}</h4>
           </li>
         </ul>
         <dl class="suggestion-wrapper">
           <dd class="suggestion-item">
-            <tag-list :title="'分类'" :tagList="categories"></tag-list>
+            <tag-list :title="'分类'" :tagList="categories" @selectTag="onSelectCategory"></tag-list>
           </dd>
           <dd class="suggestion-item">
-            <tag-list :title="'作者'" :tagList="authorList"></tag-list>
+            <tag-list :title="'作者'" :tagList="authors" @selectTag="onSelectAuthor"></tag-list>
           </dd>
         </dl>
       </div>
@@ -33,61 +34,13 @@
 </template>
 
 <script>
+import { debounce } from 'throttle-debounce'
 import { mapMutations } from 'vuex'
 import TagList from '@/components/base/tag-list/tag-list'
 import SwitchTheme from '@/components/base/switch-theme/switch-theme'
-
-const resultList = [
-  {
-    id: 1,
-    time: "Published — May 17, 2018",
-    title: "I think it's the responsibility of a designer to try to break rules and barriers"
-  },
-  {
-    id: 2,
-    time: "Published — May 17, 2018",
-    title: "I think it's the responsibility of a designer to try to break rules and barriers"
-  },
-  {
-    id: 3,
-    time: "Published — May 17, 2018",
-    title: "I think it's the responsibility of a designer to try to break rules and barriers"
-  },
-]
-
-const categories = [
-  {
-    id: 1,
-    name: 'JavaScript',
-  },
-  {
-    id: 2,
-    name: 'JavaScript',
-  },
-  {
-    id: 3,
-    name: 'JavaScript',
-  },
-  {
-    id: 4,
-    name: 'JavaScript',
-  },
-  {
-    id: 5,
-    name: 'JavaScript',
-  }
-]
-
-const authorList = [
-  {
-    id: 1,
-    name: 'Smile',
-  },
-  {
-    id: 2,
-    name: 'qiushiming',
-  }
-]
+import author from '@/services/models/author'
+import article from '@/services/models/article'
+import category from '@/services/models/category'
 
 export default {
   components: {
@@ -97,9 +50,13 @@ export default {
 
   data() {
     return {
-      resultList,
-      categories,
-      authorList,
+      loading: false,
+      total: 0,
+      page: 0,
+      articles: [],
+      categories: [],
+      authors: [],
+      searchVal: ''
     }
   },
 
@@ -110,6 +67,63 @@ export default {
 
     ...mapMutations({
       setShowSearch: 'SET_SHOW_SEARCH'
+    }),
+
+    onSelectCategory(category) {
+      this.$router.push(`/tags/${category.id}/categoryFlag`)
+      this.closeSearch()
+    },
+
+    onSelectAuthor(author) {
+      this.$router.push(`/about/${author.id}`)
+      this.closeSearch()
+    },
+
+    async getAuthors() {
+      try {
+        const res = await author.getAuthors()
+        this.authors = res
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+    async getCategories() {
+      try {
+        const res = await category.getCategories()
+        this.categories = res
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+     async searchArticles() {
+      console.log('get')
+      if (!this.searchVal && this.searchVal.length <= 10) {
+        return
+      }
+      try {
+        this.loading = true
+        const { articles, total } = await article.searchArticles({
+          search: this.searchVal
+        })
+        setTimeout(() => {
+          this.articles = articles
+          this.total = total
+          this.loading = false
+        }, 5000);
+      } catch (e) {
+        this.loading = false
+        console.log(e)
+      }
+    },
+  },
+
+  created() {
+    this.getAuthors()
+    this.getCategories()
+    this.debouncedSearch = debounce(1000, false, () => {
+      this.searchArticles()
     })
   },
 
@@ -230,7 +244,7 @@ export default {
 
 .result-list {
   .result-item {
-    margin-top: 30px;
+    margin-top: 20px;
     cursor: pointer;
 
     .time {

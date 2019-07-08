@@ -9,7 +9,8 @@ class Article {
     let query = {
       categoryId: params.categoryId ? params.categoryId : 0,
       authorId: params.authorId ? params.authorId : 0,
-      tagId: params.tagId ? params.tagId : 0
+      tagId: params.tagId ? params.tagId : 0,
+      page: params.page ? params.page : 0
     }
     if (params.search) {
       query.search = params.search
@@ -45,6 +46,16 @@ class Article {
   // 点赞文章
   async likeArticle(id) {
     const res = await put('v1/article/like', {id})
+    return res
+  }
+
+  // 搜索文章
+  async searchArticles(params) {
+    let query = {
+      page: params.page ? params.page : 0,
+      search: params.search
+    }
+    const res = await get('v1/article/search/articles', query)
     return res
   }
 }

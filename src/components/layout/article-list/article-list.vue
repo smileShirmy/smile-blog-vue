@@ -33,7 +33,7 @@
         <div class="split"></div>
         <img class="article-image" :src="article.cover"/>
       </li>
-      <div v-if="isLoadMore" class="load-more" @click="loadMore"></div>
+      <div v-if="isLoadMore" class="load-more" @click="$emit('loadMore')"></div>
       <loading v-if="loading"></loading>
       <empty v-if="!loading && !articles.length"></empty>
     </ul>
@@ -53,15 +53,19 @@ export default {
       default: false
     },
 
-    isLoadMore: {
-      type: Boolean,
-      defualt: false
+    total: {
+      type: Number,
+      default: 0
     }
   },
 
-  methods: {
-    loadMore() {
-      
+  computed: {
+    isLoadMore() {
+      if (this.articles.length && !this.loading) {
+        return this.total % this.articles.length > 0
+      } else {
+        return false
+      }
     }
   }
 }
@@ -308,6 +312,11 @@ export default {
   border-radius: 50%;
   transition: all .25s ease-in-out;
   cursor: pointer;
+
+  @media (max-width: 479px) {
+    width: 30px;
+    height: 30px;
+  }
 
   &:hover {
     border-color: var(--theme-active);

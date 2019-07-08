@@ -6,7 +6,7 @@
           <h1 class="title">{{article.title}}</h1>
           <div class="author-wrapper">
             by&nbsp;
-            <span v-for="author in article.authors" :key="author.id" class="author-name">{{author.name}}</span>
+            <router-link tag="span" v-for="author in article.authors" :key="author.id" class="author-name" :to="`/about/${author.id}`">{{author.name}}</router-link>
             &nbsp;<time :datetime="article.created_date | filterTime">&nbsp;{{article.created_date | filterTime}}</time>
           </div>
         </div>
@@ -19,9 +19,22 @@
         <div class="article-wrapper">
           <article class="article-markdown" v-html="markedCcontent"></article>
         </div>
+        <!-- 文章信息 -->
+        <div class="article-info-wrapper">
+          <div class="tags-wrapper">
+            <i class="icon icon-tags-fill"></i>
+            <ul class="tags">
+              <router-link tag="li" class="tag-item" v-for="tag in article.tags" :key="tag.id" :to="`/tags/${tag.id}/${tag.name}`">{{tag.name}}</router-link>
+            </ul>
+          </div>
+          <div class="like-btn" @click="likeArticle">
+            <i class="icon icon-heart-fill" :class="{'is-like': isLike}"></i>
+            <span>{{article.like}}</span>
+          </div>
+        </div>
         <!-- 相关推荐 -->
-        <split-line class="split-line" :icon="'recommend'" :desc="'相关推荐'"></split-line>
-        <div class="recommend-wrapper">
+        <split-line v-if="haveCategoryArtilces" class="split-line" :icon="'recommend'" :desc="'相关推荐'"></split-line>
+        <div v-if="haveCategoryArtilces" class="recommend-wrapper">
           <recommend :articles="article.categoryArticles" @showRecommendDetail="onShowRecommendDetail"></recommend>
         </div>
       </div>
@@ -56,8 +69,6 @@ import SplitLine from '@/components/base/split-line/split-line'
 import article from '@/services/models/article'
 import comment from '@/services/models/comment'
 
-// TODO: 点赞文章功能
-
 export default {
   components: {
     Recommend,
@@ -87,6 +98,14 @@ export default {
       }
     },
 
+    haveCategoryArtilces() {
+      if (this.article.categoryArticles && this.article.categoryArticles.length) {
+        return true
+      } else {
+        return false
+      }
+    },
+
     markedCcontent() {
       if (this.article.content) {
         return markdown(this.article.content)
@@ -97,6 +116,10 @@ export default {
   },
 
   methods: {
+    onSelectTag() {
+
+    },
+
     // markdown 解析
     marked(content) {
       return markdown(content)
@@ -268,6 +291,7 @@ export default {
     .author-name {
       font-size: $font-size-medium;
       font-weight: $font-weight-bold;
+      cursor: pointer;
   
       @media (max-width: 479px) {
         font-size: $font-size-small;
@@ -331,9 +355,13 @@ export default {
 .like-wrapper {
   position: fixed;
   right: 0;
-  bottom: 16%;
+  bottom: 21%;
   z-index: $index-popper;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .14);
+
+  @media (max-width: 479px) {
+    display: none;
+  }
 
   .item {
     display: flex;
@@ -375,6 +403,64 @@ export default {
     .is-like {
       color: var(--theme-active);
     }
+  }
+}
+
+.article-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tags-wrapper {
+  display: flex;
+  justify-content: flex-start;
+
+  >i {
+    margin: 8px 10px 0 0;
+    font-size: $font-size-extra-large;
+  }
+  
+  .tags {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+
+    .tag-item {
+      cursor: pointer;
+
+      &:not(:first-child)::before {
+        content: '、'
+      }
+    }
+  }
+}
+
+.like-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  cursor: pointer;
+
+  >i {
+    margin-right: 6px;
+    font-size: $font-size-extra-large;
+
+    &:hover {
+      color: var(--theme-active);
+    }
+  }
+
+  > span {
+    white-space: nowrap;
+  }
+
+  .is-like {
+    color: var(--theme-active);
   }
 }
 </style>
