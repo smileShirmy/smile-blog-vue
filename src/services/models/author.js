@@ -8,6 +8,13 @@ class Author {
     const res = await get('v1/author/authors')
     return res
   }
+
+  async getAuthorDetail(id) {
+    const res = await get('v1/author/detail', {
+      id
+    })
+    return res
+  }
 }
 
 export default new Author()

@@ -1,22 +1,17 @@
 <template>
   <div class="profile-container">
-    <detail-header :name="author.name" :desc="author.desc">
+    <detail-header :name="author.name" :description="author.description">
       <template v-slot:header>
-        <div class="avatar"></div>
+        <div class="avatar" :style="{backgroundImage: `url(${author.avatar})`}"></div>
       </template>
       <template v-slot:info>
-        <div v-if="author.social" class="social-wrapper">
-          <a
-            v-for="social in author.social"
-            :key="social.type"
-            :class="'social-item icon icon-' + social.type"
-            @click.stop="showSocial(social.type)"
-          ></a>
+        <div class="social-wrapper">
+          <a class="social-item icon icon-mail"></a>
         </div>
       </template>
     </detail-header>
     <article class="article-list">
-      <article-list></article-list>
+      <article-list :articles="articles"></article-list>
     </article>
   </div>
 </template>
@@ -24,6 +19,8 @@
 <script>
 import DetailHeader from "@/components/layout/detail-header/detail-header";
 import ArticleList from "@/components/layout/article-list/article-list";
+import author from '@/services/models/author'
+import article from '@/services/models/article'
 
 export default {
   components: {
@@ -33,43 +30,44 @@ export default {
 
   data() {
     return {
-      author: {
-        id: 1,
-        name: "Smile",
-        desc:
-          "Non dolere, inquam, istud quam vim habeat postea viderouid ei reliquisti, nisi te, quoquo modo loqueretur, intellegere, quid diceret.",
-        social: [
-          {
-            type: "site",
-            content: ""
-          },
-          {
-            type: "mail",
-            content: ""
-          },
-          {
-            type: "wechat",
-            content: ""
-          },
-          {
-            type: "qq",
-            content: ""
-          },
-          {
-            type: "weibo",
-            content: ""
-          },
-          {
-            type: "facebook",
-            content: ""
-          },
-          {
-            type: "github",
-            content: ""
-          }
-        ]
-      }
+      authorId: 0,
+      author: {},
+      articles: []
     };
+  },
+
+  methods: {
+    async getArticles() {
+      if (!this.authorId) {
+        return
+      }
+      try {
+        const res = await article.getArticles({
+          authorId: this.authorId
+        })
+        this.articles = res
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+    async getAuthorDetail() {
+      if (!this.authorId) {
+        return
+      }
+      try {
+        const res = await author.getAuthorDetail(this.authorId)
+        this.author = res
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  },
+
+  created() {
+    this.authorId = this.$route.params.id
+    this.getArticles()
+    this.getAuthorDetail()
   }
 };
 </script>
@@ -82,7 +80,8 @@ export default {
   height: 120px;
   margin: 0 auto 20px;
   border-radius: 26px;
-  background: url(../../assets/image/lighthouse.jpeg) no-repeat center center;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
 }
 

@@ -26,7 +26,7 @@
               <span class="count">{{article.comment_count}}</span>
               <i class="icon icon-heart"></i>
               <span class="count">{{article.like}}</span>
-              <time :datetime="article.created_date | filterTime">{{article.created_date | filterTime}}</time>
+              <time class="time" :datetime="article.created_date | filterTime('Y-m-d')">{{article.created_date | filterTime('Y-m-d')}}</time>
             </div>
           </footer>
         </article>
@@ -73,7 +73,7 @@ export default {
 
 .article-list-wrapper {
   box-sizing: border-box;
-  padding: 60px;
+  padding: 50px;
   background-color: #fff;
   border-radius: 5px;
   background-color: var(--app-background-color-light);
@@ -216,9 +216,11 @@ export default {
       .name-wrapper {
         display: flex;
         justify-content: flex-start;
+        flex-wrap: nowrap;
 
         .name {
           margin-left: 12px;
+          white-space: nowrap;
 
           &:not(:first-child) {
             margin-left: 0;
@@ -248,6 +250,14 @@ export default {
 
       >time {
         line-height: 1;
+      }
+
+      .count {
+        white-space: nowrap;
+      }
+
+      .time {
+        white-space: nowrap;
       }
     }
   }
