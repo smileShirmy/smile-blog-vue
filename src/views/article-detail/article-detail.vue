@@ -38,7 +38,7 @@
     <aside class="like-wrapper">
       <div class="item" @click="likeArticle">
         <span class="count">{{article.like}}</span>
-        <i class="icon icon-heart-fill"></i>
+        <i class="icon icon-heart-fill" :class="{'is-like': isLike}"></i>
       </div>
       <div class="item" @click="scrollToComment">
         <span class="count">{{comments.length}}</span>
@@ -69,11 +69,17 @@ export default {
     return {
       id: 0,
       article: {},
-      comments: []
+      comments: [],
+      likeArticles: [],
+      likeComments: [],
     }
   },
 
   computed: {
+    isLike() {
+      return this.likeArticles.includes(this.id)
+    },
+
     coverImage() {
       return {
         backgroundImage: `url(${this.coverUrl})`
@@ -97,11 +103,16 @@ export default {
 
     // 点赞文章
     async likeArticle() {
+      if (this.isLike) {
+        return
+      }
       try {
         const res = await article.likeArticle(this.id)
         if (res.errorCode === 0) {
           // 保存到 localStorage
           this.article.like++
+          this.likeArticles.push(this.id)
+          window.localStorage.setItem('LIKE_ARTICLES', JSON.stringify(this.likeArticles))
         }
       } catch (e) {
         console.log(e)
@@ -130,6 +141,7 @@ export default {
           articleId: this.id
         })
         res.forEach(v => {
+          v.is_like = this.likeComments.includes(v.id)
           v.content = this.marked(v.content)
           if (v.parent_id !== 0) {
             const reply = res.find(target => target.id === v.parent_id)
@@ -157,11 +169,21 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+
+    getLikeArticles() {
+      this.likeArticles = JSON.parse(window.localStorage.getItem('LIKE_ARTICLES') || '[]')
+    },
+
+    getLikeComments() {
+      this.likeComments = JSON.parse(window.localStorage.getItem('LIKE_COMMENTS') || '[]')
     }
   },
 
   created() {
     this.id = this.$route.params.id
+    this.getLikeArticles()
+    this.getLikeComments()
     this.getArticleDetail()
     this.getComments()
   }
@@ -344,6 +366,10 @@ export default {
     >i {
       font-size: $font-size-extra-large;
       transition: all .15s linear;
+    }
+
+    .is-like {
+      color: var(--theme-active);
     }
   }
 }

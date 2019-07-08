@@ -16,7 +16,7 @@
         <footer class="comment-footer">
           <time class="time" :datetime="comment.createdDate | filterTime">{{comment.created_date | filterTime}}</time>
           <div class="tools">
-            <i class="icon icon-like" @click="likeComment(comment.id)">
+            <i class="icon icon-like" :class="{'is-like': comment.is_like}" @click="likeComment(comment)">
               <span class="like-count">{{comment.like}}</span>
             </i>
             <i class="icon icon-reply" @click="reply(comment)"></i>
@@ -39,25 +39,43 @@ export default {
     }
   },
 
+  data() {
+    return {
+      likeComments: []
+    }
+  },
+
   methods: {
     reply(commentId) {
       this.$emit('reply', commentId)
     },
 
-    async likeComment(id) {
+    async likeComment(item) {
+      if (this.likeComments.includes(item.id)) {
+        return
+      }
       try {
         const res = await comment.likeComment({
-          id
+          id: item.id
         })
         if (res.errorCode === 0) {
-          // TODO: 保存在localStorage判断是否有点赞
-          let comment = this.comments.find(v => v.id === id)
-          comment.like ++
+          item.like++
+          item.is_like = true
+          this.likeComments.push(item.id)
+          window.localStorage.setItem('LIKE_COMMENTS', JSON.stringify(this.likeComments))
         }
       } catch (e) {
         console.log(e)
       }
+    },
+
+    getLikeComments() {
+      this.likeComments = JSON.parse(window.localStorage.getItem('LIKE_COMMENTS') || '[]')
     }
+  },
+
+  created() {
+    this.getLikeComments()
   }
 }
 </script>
@@ -172,6 +190,10 @@ export default {
           .like-count {
             margin-left: 5px;
           }
+        }
+
+        .is-like {
+          color: var(--theme-active);
         }
       }
     }
