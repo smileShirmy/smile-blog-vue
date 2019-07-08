@@ -63,24 +63,42 @@ export default {
         res.forEach(v => {
           v.created_date = Utils.timestampToTime(v.created_date)
         })
-        // step1: 按月份对文章进行分类
-        let months = [...new Set(res.map(v => v.created_date.substr(0, 7)))].map(v => {
-          const month = parseInt(v.split('-')[1])
-          return {
-            year: v.split('-')[0],
-            month,
-            articles: res.filter(v => parseInt(v.created_date.split('-')[1]) === month)
+
+        // 按年份月份重新组合
+        let archive = []
+        let curYear = ''
+        let curMonth = 0
+        let yearIndex = -1
+        let monthIndex = 0
+        res.forEach(v => {
+          let year = v.created_date.split('-')[0]
+          let month = parseInt(v.created_date.split('-')[1])
+          if (year === curYear) {
+            if (month === curMonth) {
+              archive[yearIndex].monthList[monthIndex].articles.push(v)
+            } else {
+              archive[yearIndex].monthList.push({
+                month,
+                articles: [v]
+              })
+              monthIndex++
+              curMonth = month
+            }
+          } else {
+            archive.push({
+              year,
+              monthList: [{
+                month,
+                articles: [v]
+              }]
+            })
+            yearIndex++
+            monthIndex = 0
+            curMonth = month
+            curYear = year
           }
         })
-        // step2: 按年份分类月份
-        let years = [...new Set(months.map(v => v.year))].map(v => {
-          return {
-            year: v,
-            monthList: months.filter(month => month.year === v)
-          }
-        })
-        this.archive = years
-        console.log(this.archive)
+        this.archive = archive
       } catch (e) {
         console.log(e)
       }

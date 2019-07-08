@@ -46,6 +46,8 @@ import SplitLine from '@/components/base/split-line/split-line'
 import article from '@/services/models/article'
 import comment from '@/services/models/comment'
 
+// TODO: 点赞文章功能
+
 export default {
   components: {
     Recommend,
