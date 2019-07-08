@@ -1,5 +1,6 @@
 import {
-  get
+  get,
+  put
 } from '@/services/http/axios'
 
 class Article {
@@ -38,6 +39,12 @@ class Article {
   // 获取这篇文章下的所有评论
   async getComments(query) {
     const res = await get('v1/article/get/comment', query)
+    return res
+  }
+
+  // 点赞文章
+  async likeArticle(id) {
+    const res = await put('v1/article/like', {id})
     return res
   }
 }

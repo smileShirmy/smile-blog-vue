@@ -12,22 +12,22 @@
         </div>
       </div>
     </header>
+    <!-- 文章区域 -->
     <div class="article-container">
       <div class="content">
+        <!-- 文章内容 -->
         <div class="article-wrapper">
           <article class="article-markdown" v-html="markedCcontent"></article>
         </div>
+        <!-- 相关推荐 -->
         <split-line class="split-line" :icon="'recommend'" :desc="'相关推荐'"></split-line>
         <div class="recommend-wrapper">
           <recommend :articles="article.categoryArticles" @showRecommendDetail="onShowRecommendDetail"></recommend>
         </div>
-        <!-- <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
-        <div class="comment-wrapper">
-          <comment></comment>
-        </div> -->
       </div>
     </div>
-    <div class="article-container comment-container">
+    <!-- 评论区域 -->
+    <div ref="commentArea" class="article-container comment-container">
       <div class="content">
         <split-line class="split-line" :icon="'message'" :desc="'评论'"></split-line>
         <div class="comment-wrapper">
@@ -35,6 +35,16 @@
         </div>
       </div>
     </div>
+    <aside class="like-wrapper">
+      <div class="item" @click="likeArticle">
+        <span class="count">{{article.like}}</span>
+        <i class="icon icon-heart-fill"></i>
+      </div>
+      <div class="item" @click="scrollToComment">
+        <span class="count">{{comments.length}}</span>
+        <i class="icon icon-message-fill"></i>
+      </div>
+    </aside>
   </div>
 </template>
 
@@ -85,6 +95,26 @@ export default {
       return markdown(content)
     },
 
+    // 点赞文章
+    async likeArticle() {
+      try {
+        const res = await article.likeArticle(this.id)
+        if (res.errorCode === 0) {
+          // 保存到 localStorage
+          this.article.like++
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    },
+
+    // 滚动到评论区
+    scrollToComment() {
+      this.$refs.commentArea.scrollIntoView({
+        behavior: 'smooth'
+      })
+    },
+
     onShowRecommendDetail(articleId) {
       this.id = articleId
       this.$router.push({
@@ -113,7 +143,6 @@ export default {
           }
         })
         this.comments = res
-        console.log(this.comments)
       } catch (e) {
         console.log(e)
       }
@@ -269,6 +298,52 @@ export default {
 
     .content {
       padding-top: 0;
+    }
+  }
+}
+
+.like-wrapper {
+  position: fixed;
+  right: 0;
+  bottom: 16%;
+  z-index: $index-popper;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .14);
+
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--tag-color);
+    background-color: var(--app-background-color);
+    cursor: pointer;
+
+    &:not(:last-child) {
+      border-bottom: none;
+    }
+
+    &:hover {
+      >i {
+        color: var(--theme-active);
+      }
+    }
+
+    .count {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0 5px;
+      font-size: $font-size-small;
+      border-radius: 8px;
+      transform: translate(-50%, -50%);
+      background-color: var(--tag-color);
+    }
+
+    >i {
+      font-size: $font-size-extra-large;
+      transition: all .15s linear;
     }
   }
 }
