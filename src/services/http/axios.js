@@ -71,6 +71,7 @@ _axios.interceptors.response.use(async (res) => {
     return res.data
   }
 }, error => {
+  // eslint-disable-next-line no-console
   console.log(error)
 })
 

@@ -78,6 +78,7 @@ export default {
         this.loading = false
       } catch (e) {
         this.loading = false
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     },
@@ -90,6 +91,7 @@ export default {
         const res = await author.getAuthorDetail(this.authorId)
         this.author = res
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     }

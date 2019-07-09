@@ -52,6 +52,7 @@ export default {
         const res = await author.getAuthors()
         this.authorList = res
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     }

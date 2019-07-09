@@ -72,6 +72,7 @@ export default {
           window.localStorage.setItem('LIKE_COMMENTS', JSON.stringify(this.likeComments))
         }
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     },

@@ -48,6 +48,7 @@ export default {
         const res = await tag.getTags()
         this.tagList = res
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     },
@@ -57,6 +58,7 @@ export default {
         const res = await category.getCategories()
         this.categories = res
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     }

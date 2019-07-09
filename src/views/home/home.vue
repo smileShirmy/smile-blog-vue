@@ -79,6 +79,7 @@ export default {
       } catch (e) {
         this.ArticleList = [defaultStar]
         this.loading = false
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     },
@@ -88,6 +89,7 @@ export default {
         const res = await article.getStarArticles()
         this.starArticles = res
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     }

@@ -139,6 +139,7 @@ export default {
           window.localStorage.setItem('LIKE_ARTICLES', JSON.stringify(this.likeArticles))
         }
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     },
@@ -183,6 +184,7 @@ export default {
         this.loading = false
       } catch (e) {
         this.loading = false
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     },
@@ -194,6 +196,7 @@ export default {
         })
         this.article = res
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     },

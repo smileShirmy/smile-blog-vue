@@ -100,6 +100,7 @@ export default {
         })
         this.archive = archive
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     }

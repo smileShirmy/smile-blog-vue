@@ -84,6 +84,7 @@ export default {
         const res = await author.getAuthors()
         this.authors = res
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     },
@@ -93,12 +94,12 @@ export default {
         const res = await category.getCategories()
         this.categories = res
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     },
 
      async searchArticles() {
-      console.log('get')
       if (!this.searchVal && this.searchVal.length <= 10) {
         return
       }
@@ -114,6 +115,7 @@ export default {
         }, 5000);
       } catch (e) {
         this.loading = false
+        // eslint-disable-next-line no-console
         console.log(e)
       }
     },

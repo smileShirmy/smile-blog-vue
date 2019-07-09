@@ -84,6 +84,7 @@ export default {
             this.$emit('createCommentSuccess')
           }
         } catch (e) {
+          // eslint-disable-next-line no-console
           console.log(e)
         }
       } else {
@@ -96,6 +97,7 @@ export default {
             this.$emit('createCommentSuccess')
           }
         } catch (e) {
+          // eslint-disable-next-line no-console
           console.log(e)
         }
       }
