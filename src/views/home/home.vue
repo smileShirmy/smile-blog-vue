@@ -52,7 +52,7 @@ export default {
       loading: false,
       articles: [],
       // 默认 card
-      starArticles: [defaultStar],
+      starArticles: [],
       total: 0,
       page: 0,
     }
@@ -77,6 +77,7 @@ export default {
         this.articles = this.articles.concat(articles)
         this.loading = false
       } catch (e) {
+        this.ArticleList = [defaultStar]
         this.loading = false
         console.log(e)
       }
