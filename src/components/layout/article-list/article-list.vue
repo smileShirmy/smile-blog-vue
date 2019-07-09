@@ -1,42 +1,44 @@
 <template>
   <div class="article-list-container">
-    <ul class="article-list-wrapper">
-      <li class="article-item" v-for="article in articles" :key="article.id">
-        <article class="article-wrapper">
-          <a class="category">{{article.category.name}}</a>
-          <h2 class="title">
-            <router-link :to="'/article/' + article.id" class="article-link">
-              {{article.title}}<span class="hover-dot"></span>
-            </router-link>
-          </h2>
-          <p class="content">{{article.description}}</p>
-          <footer class="footer">
-            <div class="author-wrapper">
-              <div class="avatar-wrapper">
-                <i class="avatar" v-for="author in article.authors" :key="author.id" :style="{backgroundImage: `url(${author.avatar})`}"></i>
+    <div class="article-list-wrapper">
+      <ul v-if="articles.length">
+        <li class="article-item" v-for="article in articles" :key="article.id">
+          <article class="article-wrapper">
+            <a class="category">{{article.category.name}}</a>
+            <h2 class="title">
+              <router-link :to="'/article/' + article.id" class="article-link">
+                {{article.title}}<span class="hover-dot"></span>
+              </router-link>
+            </h2>
+            <p class="content">{{article.description}}</p>
+            <footer class="footer">
+              <div class="author-wrapper">
+                <div class="avatar-wrapper">
+                  <i class="avatar" v-for="author in article.authors" :key="author.id" :style="{backgroundImage: `url(${author.avatar})`}"></i>
+                </div>
+                <ul class="name-wrapper">
+                  <li class="name" v-for="author in article.authors" :key="author.id">{{author.name}}</li>
+                </ul>
               </div>
-              <ul class="name-wrapper">
-                <li class="name" v-for="author in article.authors" :key="author.id">{{author.name}}</li>
-              </ul>
-            </div>
-            <div class="info-wrapper">
-              <i class="icon icon-eye"></i>
-              <span class="count">{{article.views}}</span>
-              <i class="icon icon-reply"></i>
-              <span class="count">{{article.comment_count}}</span>
-              <i class="icon icon-heart"></i>
-              <span class="count">{{article.like}}</span>
-              <time class="time" :datetime="article.created_date | filterTime('Y-m-d')">{{article.created_date | filterTime('Y-m-d')}}</time>
-            </div>
-          </footer>
-        </article>
-        <div class="split"></div>
-        <img class="article-image" :src="article.cover"/>
-      </li>
+              <div class="info-wrapper">
+                <i class="icon icon-eye"></i>
+                <span class="count">{{article.views}}</span>
+                <i class="icon icon-reply"></i>
+                <span class="count">{{article.comment_count}}</span>
+                <i class="icon icon-heart"></i>
+                <span class="count">{{article.like}}</span>
+                <time class="time" :datetime="article.created_date | filterTime('Y-m-d')">{{article.created_date | filterTime('Y-m-d')}}</time>
+              </div>
+            </footer>
+          </article>
+          <div class="split"></div>
+          <img class="article-image" :src="article.cover"/>
+        </li>
+      </ul>
       <div v-if="isLoadMore" class="load-more" @click="$emit('loadMore')"></div>
       <loading v-if="loading"></loading>
       <empty v-if="!loading && !articles.length"></empty>
-    </ul>
+    </div>
   </div>
 </template>
 
