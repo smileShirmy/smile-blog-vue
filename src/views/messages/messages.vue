@@ -4,7 +4,7 @@
     <section class="editor-wrapper">
       <comment-editor ref="editor" :isMessageEditor="true" @send="onSend"></comment-editor>
     </section>
-    <ul class="messages-wrapper">
+    <ul class="messages-wrapper markdown">
       <li class="message-item" v-for="message in messageList" :key="message.id">
         <span v-if="message.nickname" class="nickname">@{{message.nickname}}</span>
         <div class="content">

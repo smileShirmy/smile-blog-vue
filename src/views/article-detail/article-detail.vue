@@ -17,7 +17,7 @@
       <div class="content">
         <!-- 文章内容 -->
         <div class="article-wrapper">
-          <article class="article-markdown" v-html="markedCcontent"></article>
+          <article class="markdown" v-html="markedCcontent"></article>
         </div>
         <!-- 文章信息 -->
         <div class="article-info-wrapper">
@@ -172,7 +172,7 @@ export default {
             const reply = res.find(target => target.id === v.parent_id)
             if (reply) {
               v.replyName = reply.nickname
-              v.replyContent = reply.content
+              v.replyContent = this.marked(reply.content)
             } else {
               v.replyName = ''
               v.replyContent = '该评论已被删除'

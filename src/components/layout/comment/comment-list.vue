@@ -2,16 +2,16 @@
   <ul class="comment-list">
     <li class="comment-item" v-for="comment in comments" :key="comment.id">
       <i class="avatar"></i>
-      <section class="comment-detail">
+      <section class="comment-detail markdown">
         <div class="nickname">
           <i class="mobile-avatar"></i>
           <a v-if="comment.website" class="website icon icon-planet" :href="comment.website" target="_blank"></a>
           <span>{{comment.nickname}}</span>
         </div>
         <div class="content" v-html="comment.content"></div>
-        <section class="reply-wrapper" v-if="comment.parent_id !== 0">
+        <section class="reply-wrapper markdown" v-if="comment.parent_id !== 0">
           <div class="reply-nickname" v-if="comment.replyName">@{{comment.replyName}}:</div>
-          <div v-html="comment.content"></div>
+          <div v-html="comment.replyContent"></div>
         </section>
         <footer class="comment-footer">
           <time class="time" :datetime="comment.createdDate | filterTime">{{comment.created_date | filterTime}}</time>
