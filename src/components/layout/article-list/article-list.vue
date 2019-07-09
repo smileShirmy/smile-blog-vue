@@ -69,6 +69,10 @@ export default {
         return false
       }
     }
+  },
+
+  mounted() {
+    console.log(this.articles)
   }
 }
 </script>
