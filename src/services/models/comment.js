@@ -7,25 +7,25 @@ import {
 class Comment {
   // 获取这篇文章下的所有评论
   async getComments(query) {
-    const res = await get('v1/article/get/comment', query)
+    const res = await get('v1/blog/article/get/comment', query)
     return res
   }
 
   // 点赞某条评论
   async likeComment(data) {
-    const res = await put('v1/article/like/comment', data)
+    const res = await put('v1/blog/article/like/comment', data)
     return res
   }
 
   // 创建一条评论
   async createComment(data) {
-    const res = await post('v1/article/add/comment', data)
+    const res = await post('v1/blog/article/add/comment', data)
     return res
   }
 
   // 回复评论
   async replyComment(data) {
-    const res = await post('v1/article/reply/comment', data)
+    const res = await post('v1/blog/article/reply/comment', data)
     return res
   }
 }

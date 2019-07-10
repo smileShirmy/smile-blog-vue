@@ -5,7 +5,7 @@ import {
 class Tag {
   // 获取所有标签
   async getTags() {
-    const res = await get('v1/tag/tags')
+    const res = await get('v1/blog/tag/tags')
     return res
   }
 }

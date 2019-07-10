@@ -15,37 +15,37 @@ class Article {
     if (params.search) {
       query.search = params.search
     }
-    const res = await get('v1/article/blog/articles', query)
+    const res = await get('v1/blog/article/blog/articles', query)
     return res
   }
 
   // 获取所有精选文章
   async getStarArticles() {
-    const res = await get('v1/article/star/articles')
+    const res = await get('v1/blog/article/star/articles')
     return res
   }
   
   // 获取历史归档
   async getArchive() {
-    const res = await get('v1/article/archive')
+    const res = await get('v1/blog/article/archive')
     return res
   }
 
   // 获取某篇文章详情
   async getArticleDetail(query) {
-    const res = await get('v1/article', query)
+    const res = await get('v1/blog/article', query)
     return res
   }
 
   // 获取这篇文章下的所有评论
   async getComments(query) {
-    const res = await get('v1/article/get/comment', query)
+    const res = await get('v1/blog/article/get/comment', query)
     return res
   }
 
   // 点赞文章
   async likeArticle(id) {
-    const res = await put('v1/article/like', {id})
+    const res = await put('v1/blog/article/like', {id})
     return res
   }
 
@@ -55,7 +55,7 @@ class Article {
       page: params.page ? params.page : 0,
       search: params.search
     }
-    const res = await get('v1/article/search/articles', query)
+    const res = await get('v1/blog/article/search/articles', query)
     return res
   }
 }

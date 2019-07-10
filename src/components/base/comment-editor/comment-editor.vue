@@ -248,7 +248,7 @@ export default {
 
   created() {
     // 发送防抖
-    this.debouncedSend = debounce(5000, true, () => {
+    this.debouncedSend = debounce(2000, true, () => {
       this.send()
     })
   }
