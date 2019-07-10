@@ -11,7 +11,7 @@
         :key="author.id"
         @click="showProfile(author.id)"
       >
-        <div class="author-avatar" :style="{backgroundImage: `url(${author.avatar})`}"></div>
+        <div class="author-avatar" :style="{backgroundImage: `url(${author.avatar}?${Date.now()})`}"></div>
         <div class="author-info-wrapper">
           <h2 class="author-name">{{author.name}}</h2>
           <div class="social-wrapper">
