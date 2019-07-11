@@ -31,8 +31,6 @@ export default {
       } else {
         this.setTheme('light')
       }
-
-      document.body.id = this.theme;
     },
 
     ...mapMutations({

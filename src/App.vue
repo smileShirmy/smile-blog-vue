@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import PageHeader from '@/components/layout/page-header/page-header'
 import PageFooter from '@/components/layout/page-footer/page-footer'
 import PageSearch from '@/components/layout/page-search/page-search'
@@ -36,7 +36,16 @@ export default {
     ])
   },
 
+  methods: {
+    ...mapMutations({
+      setTheme: 'SET_THEME'
+    })
+  },
+
   mounted() {
+    const theme = window.localStorage.getItem('THEME')
+    this.setTheme(theme || 'light')
+    
     document.getElementById('loader').style.display = 'none'
   },
 }

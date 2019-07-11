@@ -7,6 +7,7 @@ import filters from '@/services/filter'
 import loading from '@/components/base/loading/loading'
 import empty from '@/components/base/empty/empty'
 
+import '@/services/copy/copy'
 import 'highlight.js/styles/darkula.css';
 
 import '@/assets/scss/index.scss'
