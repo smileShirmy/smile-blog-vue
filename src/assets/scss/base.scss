@@ -1,7 +1,5 @@
 html,
 body {
-  height: 100%;
-  max-height: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,7 +15,6 @@ body {
   color: var(--font-color-primary);
   background-color: var(--app-background-color);
   transition: $theme-transition;
-  overflow-x: hidden;
 }
 
 a {
@@ -30,6 +27,27 @@ a {
     color: var(--font-color-primary);
   }
 }
+
+// 滚动条终极解决方案
+html {
+  overflow-y: scroll;
+}
+
+:root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+:root body {
+  position: absolute;
+}
+
+body {
+  width: 100vw;
+  overflow: hidden;
+}
+
+// 滚动条终极解决方案 end
 
 img {
   max-width: 100%;
