@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="article-header" :style="{backgroundImage: `url(${article.cover}?${Date.now()})`}">
+    <header class="article-header" :style="{backgroundImage: `url(${article.cover})`}">
       <div class="header-wrapper">
         <div class="content">
           <h1 class="title">{{article.title}}</h1>
@@ -94,7 +94,7 @@ export default {
 
     coverImage() {
       return {
-        backgroundImage: `url(${this.coverUrl}?${Date.now()})`
+        backgroundImage: `url(${this.coverUrl})`
       }
     },
 

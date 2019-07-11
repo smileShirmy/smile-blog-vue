@@ -2,7 +2,7 @@
   <div class="profile-container">
     <detail-header :name="author.name" :description="author.description">
       <template v-slot:header>
-        <div class="avatar" :style="{backgroundImage: `url(${author.avatar}?${Date.now()})`}"></div>
+        <div class="avatar" :style="{backgroundImage: `url(${author.avatar})`}"></div>
       </template>
       <template v-slot:info>
         <div class="social-wrapper">

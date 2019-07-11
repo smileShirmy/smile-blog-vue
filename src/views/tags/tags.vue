@@ -8,7 +8,7 @@
     <ul class="category-list">
       <router-link tag="li" class="category-item" v-for="category in categories" :key="category.id" :to="`/tags/${category.id}/categoryFlag`">
         <div class="category-wrapper">
-          <div class="category-image" :style="{backgroundImage: `url(${category.cover}?${Date.now()})`}"></div>
+          <div class="category-image" :style="{backgroundImage: `url(${category.cover})`}"></div>
           <h2 class="title" :class="{center: !category.description}">{{category.name}}</h2>
           <p v-if="category.description" class="desc">{{category.description}}</p>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <header class="detail-header" :style="{backgroundImage: `url(${cover}?${Date.now()})`}" :class="cover ? 'is-cover' : ''">
+  <header class="detail-header" :style="{backgroundImage: `url(${cover})`}" :class="cover ? 'is-cover' : ''">
     <div class="detail-content">
       <slot name="header"></slot>
       <h1 class="title">{{name}}</h1>

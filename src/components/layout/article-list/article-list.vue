@@ -14,7 +14,7 @@
             <footer class="footer">
               <div class="author-wrapper">
                 <div class="avatar-wrapper">
-                  <i class="avatar" v-for="author in article.authors" :key="author.id" :style="{backgroundImage: `url(${author.avatar}?${Date.now()})`}"></i>
+                  <i class="avatar" v-for="author in article.authors" :key="author.id" :style="{backgroundImage: `url(${author.avatar})`}"></i>
                 </div>
                 <ul class="name-wrapper">
                   <li class="name" v-for="author in article.authors" :key="author.id">{{author.name}}</li>

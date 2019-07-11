@@ -9,7 +9,7 @@
           <span class="time">{{article.created_date | filterTime('m.d')}}</span>
           <router-link class="title" :to="'/article/' + article.id">{{article.title}}</router-link>
           <div class="avtar-wrapper">
-            <i v-for="author in article.authors" :key="author.id" class="avatar" :style="{backgroundImage: `url(${author.avatar}?${Date.now()})`}"></i>
+            <i v-for="author in article.authors" :key="author.id" class="avatar" :style="{backgroundImage: `url(${author.avatar})`}"></i>
           </div>
         </dd>
       </dl>

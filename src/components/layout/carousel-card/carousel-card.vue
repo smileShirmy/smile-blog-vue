@@ -1,6 +1,6 @@
 <template>
   <div class="card-container">
-    <div class="card-image" :style="{backgroundImage: `url(${article.cover}?${Date.now()})`}"></div>
+    <div class="card-image" :style="{backgroundImage: `url(${article.cover})`}"></div>
     <div class="feature-wrapper">
       <article class="feature-content">
         <div class="feature-tag">{{article.category.name}}</div>
