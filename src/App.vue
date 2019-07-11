@@ -34,7 +34,11 @@ export default {
     ...mapGetters([
       'isShowSearch'
     ])
-  }
+  },
+
+  mounted() {
+    document.getElementById('loader').style.display = 'none'
+  },
 }
 </script>
 
