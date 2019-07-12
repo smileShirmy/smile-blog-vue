@@ -35,15 +35,30 @@ marked.setOptions({
   smartypants: false,
   highlight: (code, lang) => {
     if (languages.includes(lang)) {
-      return highlight.highlight(lang, code).value;
+      return highlight.highlight(lang, code).value
     }
-    return highlight.highlightAuto(code).value;
+    return highlight.highlightAuto(code).value
   },
-});
+})
+
+const imageParse = (src, title, alt) => {
+  return `
+    <figure class="image-wrapper">
+      <div class="progress-image">
+        <img src="${src}" title="${title || alt || 'shirmy'}" class="image-popper"/>
+      </div>
+      <div class="image-caption">
+        <span>${title || alt || ''}</span>
+      </div>
+    </figure>
+  `
+}
+
+renderer.image = imageParse
 
 export default (content) => {
   if (!content) {
     return ''
   }
-  return marked(content);
+  return marked(content)
 }
