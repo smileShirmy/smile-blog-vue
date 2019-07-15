@@ -5,7 +5,7 @@
         <div class="content">
           <tag-list :tagList="article.tags"></tag-list>
           <h1 class="title">{{article.title}}</h1>
-          <div class="author-wrapper">
+          <div class="author-wrapper" v-show="article.created_date">
             by&nbsp;
             <router-link tag="span" v-for="author in article.authors" :key="author.id" class="author-name" :to="`/about/${author.id}`">{{author.name}}</router-link>
             &nbsp;<time :datetime="article.created_date | filterTime">&nbsp;{{article.created_date | filterTime}}</time>
