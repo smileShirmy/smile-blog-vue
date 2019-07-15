@@ -85,11 +85,11 @@ export default {
 
 .article-list-wrapper {
   box-sizing: border-box;
-  padding: 50px;
+  padding: 50px 70px;
   background-color: #fff;
   border-radius: 5px;
   background-color: var(--app-background-color-light);
-  box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
+  // box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
   transition: $theme-transition;
 
   @media (max-width: 1023px) {
@@ -285,7 +285,7 @@ export default {
   min-width: 420px;
   border-radius: 2px;
   background-size: cover;
-  box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
+  // box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
   cursor: pointer;
 
   @media (min-width: 1024px) and (max-width: 1399px) {

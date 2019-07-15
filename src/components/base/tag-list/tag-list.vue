@@ -43,6 +43,7 @@ export default {
     display: inline-block;
     padding: 5px 12px;
     margin: 5px;
+    color: var(--font-color-primary);
     font-size: $font-size-minimum;
     font-weight: $font-weight-bold;
     letter-spacing: 1.5px;

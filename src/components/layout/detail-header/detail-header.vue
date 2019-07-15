@@ -39,7 +39,6 @@ export default {
 
 .detail-header {
   width: calc(100% - 85px - 85px);
-  height: 100%;
   margin: 0 auto;
   padding: 5vh 5% 15vh;
   font-weight: $font-weight-bold;
@@ -54,6 +53,7 @@ export default {
   }
 
   .detail-content {
+    @include headerPadding;
     position: relative;
     display: flex;
     flex-direction: column;

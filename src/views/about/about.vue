@@ -82,6 +82,7 @@ export default {
     @include noCover;
     box-sizing: border-box;
     flex: 1 0 25%;
+    max-width: 420px;
     min-width: 290px;
     margin: 15px;
     padding-bottom: 40px;
@@ -95,7 +96,6 @@ export default {
     }
 
     .author-avatar {
-      display: block;
       width: 100%;
       height: 250px;
       background-repeat: no-repeat;
@@ -153,7 +153,5 @@ export default {
     }
   }
 }
-
-
 
 </style>

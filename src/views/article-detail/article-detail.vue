@@ -3,6 +3,7 @@
     <header class="article-header" :style="{backgroundImage: `url(${article.cover})`}">
       <div class="header-wrapper">
         <div class="content">
+          <tag-list :tagList="article.tags"></tag-list>
           <h1 class="title">{{article.title}}</h1>
           <div class="author-wrapper">
             by&nbsp;
@@ -66,6 +67,7 @@ import markdown from '@/services/markdown/marked'
 import Recommend from '@/components/layout/recommend/recommend'
 import Comment from '@/components/layout/comment/comment'
 import SplitLine from '@/components/base/split-line/split-line'
+import TagList from '@/components/base/tag-list/tag-list'
 import article from '@/services/models/article'
 import comment from '@/services/models/comment'
 
@@ -73,7 +75,8 @@ export default {
   components: {
     Recommend,
     Comment,
-    SplitLine
+    SplitLine,
+    TagList
   },
 
   data() {
@@ -224,28 +227,14 @@ export default {
 @import '@/assets/scss/variables.scss';
 @import '@/assets/scss/mixin.scss';
 
-@mixin contentPadding {
-  padding: 50px 60px;
-
-  @media (max-width: 1399px) {
-    padding: 35px 45px;
-  }
-
-  @media (max-width: 1023px) {
-    padding: 20px 30px;
-  }
-
-  @media (max-width: 479px) {
-    padding: 10px 0;
-  }
-}
-
 .article-header {
   @include cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: calc(100% - 85px - 85px);
-  height: 100%;
+  height: calc(100vh - 245px);
   margin: 0 auto;
-  padding: 15vh 0 25vh;
   color: #fff;
   border-radius: 5px;
   background: no-repeat center center;
@@ -258,7 +247,12 @@ export default {
     border-radius: 0;
   }
 
+  @media (max-width: 1023px) {
+    height: calc(100vh - 160px);
+  }
+
   @media (max-width: 479px) {
+    height: auto;
     padding: 15vh 0 15vh;
   }
 
@@ -269,13 +263,18 @@ export default {
   }
 
   .content {
-    @include contentPadding;
+    @include headerPadding;
+    margin-top: -10vh;
+
+    @media (max-width: 479px) {
+      margin-top: 0;
+    }
   }
 
   .title {
-    margin: 0;
+    margin: .7em 0;
     line-height: 1;
-    font-size: $title-font-size-large;
+    font-size: $title-font-size-extra-large;
     font-weight: $font-weight-bold;
   
     @media (max-width: 479px) {
@@ -284,7 +283,6 @@ export default {
   }
   
   .author-wrapper {
-    margin-top: 15px;
     font-size: $font-size-small;
   
     @media (max-width: 479px) {
@@ -292,7 +290,7 @@ export default {
     }
   
     .author-name {
-      font-size: $font-size-medium;
+      font-size: $font-size-large;
       font-weight: $font-weight-bold;
       cursor: pointer;
   
@@ -318,10 +316,10 @@ export default {
   }
 
   .content {
-    @include contentPadding;
+    @include headerPadding;
     border-radius: 5px;
     background-color: var(--app-background-color-light);
-    box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
+    // box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
     transition: $theme-transition;
 
     @media (max-width: 479px) {
@@ -340,7 +338,7 @@ export default {
 }
 
 .comment-container {
-  margin-top: 20px;
+  // margin-top: 20px;
 
   .content {
     padding-top: 5px;

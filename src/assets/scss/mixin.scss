@@ -59,3 +59,19 @@
     padding: 0 15px;
   }
 }
+
+@mixin headerPadding {
+  padding: 60px 200px;
+
+  @media (max-width: 1399px) {
+    padding: 40px 100px;
+  }
+
+  @media (max-width: 1023px) {
+    padding: 30px 50px;
+  }
+
+  @media (max-width: 479px) {
+    padding: 10px 0;
+  }
+}
