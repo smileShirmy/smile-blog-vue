@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="article-header" :style="{backgroundImage: `url(${article.cover})`}">
+    <header class="article-header" :style="articleCover">
       <div class="header-wrapper">
         <div class="content">
           <tag-list :tagList="article.tags"></tag-list>
@@ -72,6 +72,7 @@ import TagList from '@/components/base/tag-list/tag-list'
 import article from '@/services/models/article'
 import comment from '@/services/models/comment'
 import Dialog from '@/components/base/dialog/dialog'
+import defaultCover from '@/assets/image/lighthouse.jpeg'
 
 export default {
   components: {
@@ -93,6 +94,7 @@ export default {
       comments: [],
       likeArticles: [],
       likeComments: [],
+      articleCover: {}
     }
   },
 
@@ -200,6 +202,11 @@ export default {
           id: this.id
         })
         this.article = res
+        if (res.cover) {
+          this.articleCover = { backgroundImage: `url(${res.cover})` }
+        } else {
+          this.articleCover = { backgroundImage: `url(${defaultCover})` }
+        }
         this.initImg()
       } catch (e) {
         // eslint-disable-next-line no-console

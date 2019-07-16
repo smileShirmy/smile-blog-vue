@@ -5,11 +5,11 @@
         <li class="article-item" v-for="article in articles" :key="article.id">
           <article class="article-wrapper">
             <a class="category">{{article.category.name}}</a>
-            <h2 class="title">
+            <h3 class="title">
               <router-link :to="'/article/' + article.id" class="article-link">
                 {{article.title}}<span class="hover-dot"></span>
               </router-link>
-            </h2>
+            </h3>
             <p class="content">{{article.description}}</p>
             <footer class="footer">
               <div class="author-wrapper">
@@ -31,8 +31,8 @@
               </div>
             </footer>
           </article>
-          <div class="split"></div>
-          <img class="article-image" :src="article.cover"/>
+          <div v-if="article.cover" class="split"></div>
+          <img v-if="article.cover" class="article-image" :src="article.cover"/>
         </li>
       </ul>
       <div v-if="isLoadMore" class="load-more" @click="$emit('loadMore')"></div>
@@ -85,19 +85,27 @@ export default {
 
 .article-list-wrapper {
   box-sizing: border-box;
-  padding: 50px 70px;
+  padding: 50px 120px;
   background-color: #fff;
   border-radius: 5px;
   background-color: var(--app-background-color-light);
   // box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
   transition: $theme-transition;
 
+  @media (max-width: 1399px) {
+    padding: 40px 90px;
+  }
+
+  @media (max-width: 1199px) {
+    padding: 40px 70px;
+  }
+
   @media (max-width: 1023px) {
     padding: 30px;
   }
 
   @media (max-width: 479px) {
-    padding: 0;
+    padding: 10px;
     box-shadow: none;
     background: var(--app-background-color);
   }
@@ -144,14 +152,6 @@ export default {
     font-weight: $font-weight-bold;
     color: var(--font-color-dark);
 
-    @media (max-width: 1399px) {
-      font-size: $title-font-size-medium;
-    }
-
-    @media (max-width: 1023px) {
-      font-size: $title-font-size-base;
-    }
-
     @media (max-width: 767px) {
       font-size: $title-font-size-small;
     }
@@ -178,7 +178,7 @@ export default {
   }
 
   .content {
-    margin: 1em 0;
+    margin: 1.5em 0;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -281,17 +281,12 @@ export default {
 }
 
 .article-image {
-  width: 420px;
-  min-width: 420px;
-  border-radius: 2px;
+  width: 340px;
+  min-width: 340px;
+  border-radius: 4px;
   background-size: cover;
   // box-shadow: 0 5px 26px -3px rgba(0, 0, 0, .12);
   cursor: pointer;
-
-  @media (min-width: 1024px) and (max-width: 1399px) {
-    width: 360px;
-    min-width: 360px;
-  }
 
   @media (max-width: 1023px) {
     width: 100%;
