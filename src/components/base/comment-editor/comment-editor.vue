@@ -64,7 +64,7 @@
               class="user-input"
               name="email"
               type="email"
-              placeholder="邮箱（非必填，用于回复）"
+              placeholder="邮箱（非必填）"
             >
             <input
               v-model="form.website"
