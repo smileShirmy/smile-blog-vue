@@ -1,9 +1,12 @@
 // markdown 样式
 
 .markdown {
+  font-size: 15px;
+
   pre {
     margin: .5em 0;
     padding: 1em;
+    font-size: 85%;
     border-radius: 5px;
     background-color: var(--code-background);
     overflow-x: auto;
@@ -13,6 +16,7 @@
     margin: 0 .2em;
     padding: .1em .2em;
     background-color: var(--code-background);
+    font-family: Roboto Mono, Monaco, courier, monospace;
   }
 
   p {
@@ -21,10 +25,12 @@
 
   h1, h2, h3, h4, h5, h6 {
     margin: 1em 0;
+    line-height: 1;
   }
 
   a {
-    border-bottom: 1px solid var(--font-color-primary);
+    margin: 0 .3em;
+    color: var(--link-color);
   }
 
   blockquote {
@@ -43,15 +49,53 @@
     }
   }
 
+  ul {
+    margin: 1em 0;
+    padding-left: 2em;
+
+    li {
+      padding: .3em;
+      list-style: disc;
+    }
+  }
+  
+
   .image-wrapper {
     display: flex;
     flex-direction: column;
+    margin: 1.5em 0;
     width: 100%;
 
     .progress-image {
+      box-sizing: border-box;
       display: flex;
       justify-content: center;
+      position: relative;
       width: 100%;
+      padding: 0 1em;
+      cursor: zoom-in;
+
+      img {
+        border-radius: 4px;
+        transition: all .25s linear;
+      }
+
+      .thumbnail {
+        filter: blur(8px);  
+      }
+
+      .real-image {
+        opacity: 0;
+        position: absolute;
+      }
+
+      .loaded {
+        opacity: 1;
+      }
+
+      .hidden {
+        opacity: 0;
+      }
     }
 
     .image-caption {

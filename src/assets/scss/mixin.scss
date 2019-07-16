@@ -75,3 +75,19 @@
     padding: 10px 0;
   }
 }
+
+@mixin articlePadding {
+  padding: 60px 200px 0;
+
+  @media (max-width: 1399px) {
+    padding: 40px 100px 0;
+  }
+
+  @media (max-width: 1023px) {
+    padding: 30px 50px 0;
+  }
+
+  @media (max-width: 479px) {
+    padding: 10px 0 0;
+  }
+}

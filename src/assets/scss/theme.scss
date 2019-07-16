@@ -6,6 +6,7 @@
   $font-color-light,
   $font-color-dark,
   $theme-active,
+  $link-color,
   $border-color,
   $tag-color,
   $code-bg
@@ -28,6 +29,8 @@
   --tag-color: #{$tag-color};
 
   --code-background: #{$code-bg};
+
+  --link-color: #{$link-color};
 }
 
 
@@ -40,6 +43,7 @@ body {
       $font-color-light: #999,
       $font-color-dark: #161b3d,
       $theme-active: #2821fc,
+      $link-color: #75bfd7,
       $border-color: #dcdfe7,
       $tag-color: #f4f4f4,
       $code-bg: #f7f7f7,
@@ -53,7 +57,8 @@ body {
       $font-color-article: #c0c0c0,
       $font-color-light: #999,
       $font-color-dark: #d3d3d3,
-      $theme-active: #22b3eb,
+      $theme-active: #75bfd7,
+      $link-color: #75bfd7,
       $border-color: #545c6f,
       $tag-color: #333844,
       $code-bg: #21252c

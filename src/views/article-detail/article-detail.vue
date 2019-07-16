@@ -18,7 +18,7 @@
       <div class="content">
         <!-- 文章内容 -->
         <div class="article-wrapper">
-          <article class="markdown" v-html="markedCcontent"></article>
+          <article ref="markedContent" class="markdown" v-html="markedContent"></article>
         </div>
         <!-- 文章信息 -->
         <div class="article-info-wrapper">
@@ -59,6 +59,7 @@
         <i class="icon icon-message-fill"></i>
       </div>
     </aside>
+    <Dialog :visible.sync="dialogVisible" :loading="imgLoading" :imgSrc="imgSrc"></Dialog>
   </div>
 </template>
 
@@ -70,17 +71,22 @@ import SplitLine from '@/components/base/split-line/split-line'
 import TagList from '@/components/base/tag-list/tag-list'
 import article from '@/services/models/article'
 import comment from '@/services/models/comment'
+import Dialog from '@/components/base/dialog/dialog'
 
 export default {
   components: {
     Recommend,
     Comment,
     SplitLine,
-    TagList
+    TagList,
+    Dialog
   },
 
   data() {
     return {
+      dialogVisible: false,
+      imgLoading: false,
+      imgSrc: '',
       id: 0,
       loading: false,
       article: {},
@@ -109,7 +115,7 @@ export default {
       }
     },
 
-    markedCcontent() {
+    markedContent() {
       if (this.article.content) {
         return markdown(this.article.content)
       } else {
@@ -119,10 +125,6 @@ export default {
   },
 
   methods: {
-    onSelectTag() {
-
-    },
-
     // markdown 解析
     marked(content) {
       return markdown(content)
@@ -198,6 +200,9 @@ export default {
           id: this.id
         })
         this.article = res
+        this.$nextTick(() => {
+          this.initImg()
+        })
       } catch (e) {
         // eslint-disable-next-line no-console
         console.log(e)
@@ -210,10 +215,39 @@ export default {
 
     getLikeComments() {
       this.likeComments = JSON.parse(window.localStorage.getItem('LIKE_COMMENTS') || '[]')
+    },
+
+    initImg() {
+      import('../../services/utils/lazy-img').then(res => {
+        res.default('.image-popper')
+      })
+      const el = this.$refs.markedContent
+      el.addEventListener('click', e => {
+        const target = e.target
+        if (target.nodeName.toLocaleLowerCase() === 'img' && target.classList.contains('image-popper')) {
+          e.stopPropagation()
+          this.imgLoading = true
+          this.dialogVisible = true
+          const src = target.dataset.origin
+
+          const image = new Image()
+          image.src = src
+          
+          image.onload = () => {
+            this.imgSrc = src
+            this.imgLoading = false
+          }
+
+          image.onerror = () => {
+            this.imgSrc = src
+            this.imgLoading = false
+          }
+        }
+      })
     }
   },
 
-  created() {
+  mounted() {
     this.id = this.$route.params.id
     this.getLikeArticles()
     this.getLikeComments()
@@ -316,16 +350,16 @@ export default {
   }
 
   .content {
-    @include headerPadding;
+    @include articlePadding;
     border-radius: 5px;
     background-color: var(--app-background-color-light);
     // box-shadow: 0 2px 24px 5px rgba(0, 0, 0, .05);
     transition: $theme-transition;
 
     @media (max-width: 479px) {
-    box-shadow: none;
-    background-color: var(--app-background-color);
-  }
+      box-shadow: none;
+      background-color: var(--app-background-color);
+    }
   }
 
   .split-line {
@@ -338,7 +372,7 @@ export default {
 }
 
 .comment-container {
-  // margin-top: 20px;
+  margin-top: 0;
 
   .content {
     padding-top: 5px;

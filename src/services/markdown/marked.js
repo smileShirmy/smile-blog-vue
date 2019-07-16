@@ -1,5 +1,6 @@
 import marked from 'marked'
 import highlight from './highlight'
+import Config from '../../config'
 
 const languages = [
   'cpp',
@@ -42,10 +43,28 @@ marked.setOptions({
 })
 
 const imageParse = (src, title, alt) => {
+  if (!src.includes(Config.staticPath)) {
+    return `
+      <figure class="image-wrapper">
+        <div class="progress-image">
+          <img
+            src="${src}" title="${title || alt || 'shirmy'}" />
+        </div>
+        <div class="image-caption">
+          <span>${title || alt || ''}</span>
+        </div>
+      </figure>
+    `
+  }
   return `
     <figure class="image-wrapper">
       <div class="progress-image">
-        <img src="${src}" title="${title || alt || 'shirmy'}" class="image-popper"/>
+        <img src="${src}-thumbnail" title="${title || alt || 'shirmy'}"
+          class="thumbnail"/>
+        <img
+          data-origin="${src}"
+          data-src="${src}-progressive" title="${title || alt || 'shirmy'}"
+          class="image-popper real-image"/>
       </div>
       <div class="image-caption">
         <span>${title || alt || ''}</span>

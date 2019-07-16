@@ -6,5 +6,5 @@ export default {
       return ''
     }
     return Utils.timestampToTime(date, formats)
-  },
-}
+  }
+} 
