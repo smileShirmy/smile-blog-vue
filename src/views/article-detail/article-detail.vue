@@ -200,6 +200,7 @@ export default {
           id: this.id
         })
         this.article = res
+        this.initImg()
       } catch (e) {
         // eslint-disable-next-line no-console
         console.log(e)
@@ -248,9 +249,8 @@ export default {
     this.id = this.$route.params.id
     this.getLikeArticles()
     this.getLikeComments()
-    await this.getArticleDetail()
     await this.getComments()
-    this.initImg()
+    await this.getArticleDetail()
   }
 }
 </script>
