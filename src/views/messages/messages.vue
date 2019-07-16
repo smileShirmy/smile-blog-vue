@@ -72,12 +72,19 @@ export default {
           this.messageList = res.collection
           this.total = res.total
         }
+        this.initImage()
         this.loading = false
       } catch (e) {
         this.loading = false
         // eslint-disable-next-line no-console
         console.log(e)
       }
+    },
+
+    initImage() {
+      import('../../services/utils/lazy-img').then(res => {
+        res.default('.image-popper')
+      })
     },
 
     async onSend({nickname, content}) {
