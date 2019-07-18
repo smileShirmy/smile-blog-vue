@@ -95,6 +95,7 @@ export default {
         })
         if (res.errorCode === 0) {
           this.$refs.editor.resetField()
+          this.page = 0
           this.getMessages()
         }
       } catch (e) {
