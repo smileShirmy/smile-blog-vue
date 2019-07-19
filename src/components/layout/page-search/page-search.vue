@@ -12,7 +12,7 @@
         <ul class="result-list" v-show="articles.length">
           <li class="result-item" v-for="article in articles" :key="article.id">
             <time class="time" :datetime="article.created_date | filterTime">{{article.created_date| filterTime}}</time>
-            <h4 class="title">{{article.title}}</h4>
+            <h4 class="title" @click="selectArticle(article.id)">{{article.title}}</h4>
           </li>
         </ul>
         <dl class="suggestion-wrapper">
@@ -76,6 +76,11 @@ export default {
 
     onSelectAuthor(author) {
       this.$router.push(`/about/${author.id}`)
+      this.closeSearch()
+    },
+
+    selectArticle(id) {
+      this.$router.push(`/article/${id}`)
       this.closeSearch()
     },
 
@@ -245,7 +250,6 @@ export default {
 .result-list {
   .result-item {
     margin-top: 20px;
-    cursor: pointer;
 
     .time {
       font-size: $font-size-base;
@@ -258,6 +262,7 @@ export default {
     .title {
       font-size: $title-font-size-base;
       font-weight: $font-weight-bold;
+      cursor: pointer;
 
       @media (max-width: 767px) {
         font-size: $title-font-size-small;

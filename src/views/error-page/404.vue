@@ -2,7 +2,7 @@
   <div class="not-found-container">
     <div class="code">404</div>
     <div class="desc">页面未找到 /(ㄒoㄒ)/~~</div>
-    <router-link class="redirect-btn" :to="'/home'">回到首页</router-link>
+    <router-link class="redirect-btn" to="/">回到首页</router-link>
   </div>
 </template>
 
