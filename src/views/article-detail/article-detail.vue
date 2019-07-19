@@ -103,18 +103,8 @@ export default {
       return this.likeArticles.includes(this.id)
     },
 
-    coverImage() {
-      return {
-        backgroundImage: `url(${this.coverUrl})`
-      }
-    },
-
     haveCategoryArtilces() {
-      if (this.article.categoryArticles && this.article.categoryArticles.length) {
-        return true
-      } else {
-        return false
-      }
+      return this.article.categoryArticles && this.article.categoryArticles.length
     },
 
     markedContent() {
