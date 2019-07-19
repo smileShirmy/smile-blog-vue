@@ -108,11 +108,9 @@ export default {
         const { articles, total } = await article.searchArticles({
           search: this.searchVal
         })
-        setTimeout(() => {
-          this.articles = articles
-          this.total = total
-          this.loading = false
-        }, 5000);
+        this.articles = articles
+        this.total = total
+        this.loading = false
       } catch (e) {
         this.loading = false
         // eslint-disable-next-line no-console
